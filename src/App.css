@@ -1,0 +1,33 @@
+/* App.css */
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.signature-font {
+  font-family: 'Parisienne', cursive;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  font-size: 2rem;
+}
+
+.signature-font-highlight {
+    font-family: 'Parisienne', cursive;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  font-size: 2rem;
+  color: #f0b90b;
+}
+

@@ -1,0 +1,155 @@
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+
+  &__links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        color: #f0b90b;
+      }
+    }
+
+    .navbar__lang {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-weight: 500;
+        cursor: pointer;
+
+        &.active {
+          color: white;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          color: #f0b90b;
+        }
+      }
+    }
+
+    .navbar__dropdown {
+      position: relative;
+      cursor: pointer;
+      font-weight: 500;
+      color: white;
+
+      &:hover {
+        color: #f0b90b;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #111;
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        min-width: 140px;
+
+        .dropdown-item {
+          padding: 0.5rem 1rem;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #222;
+            color: #f0b90b;
+          }
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    display: none;
+    background: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+        position: fixed; // Force fixed on mobile if sticky fails
+    top: 0;
+    left: 0;
+    right: 0;
+    &__toggle {
+      display: block;
+    }
+
+    &__links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #111;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      display: none;
+
+      &.active {
+        display: flex;
+      }
+
+      a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+      }
+
+      .navbar__dropdown {
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+          background-color: transparent;
+          padding: 0;
+
+          .dropdown-item {
+            padding: 1rem 0;
+            color: #fff;
+
+            &:hover {
+              color: #f0b90b;
+              background: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
