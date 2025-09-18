@@ -1,111 +1,87 @@
 import React from "react";
 import "./Contact.scss";
-import thayCover from "../../assets/thay_cover.jpg";
-import tdermCover from "../../assets/tderm_cover.jpg";
-import gotCover from "../../assets/got_cover.jpg";
-import comingsoon from "../../assets/comingsoon.png";
 
-const venues = [
+const VENUES = [
   {
-    name: "THAY",
-    img: thayCover,
-    address: "123 Sukhumvit 55, Bangkok 10110",
-    hours: ["Mon–Thu: 6PM – 1AM", "Fri–Sat: 6PM – 2AM", "Sun: Closed"],
-    contact: ["02-xxx-xxxx", "thay@tgroup.com"],
-    map: "https://goo.gl/maps/thay123",
+    key: "thay",
+    title: "THAY EKAMAI",
+    address: [
+      "Sukhumvit 63, Phra Khanong Nuea,",
+      "Watthana, Bangkok 10110",
+    ],
+    tel: "081 666 9969",
+    email: "contact@thay.co.th",
   },
   {
-    name: "TDERM",
-    img: tdermCover,
-    address: "455 Sukhumvit 63, Bangkok 10110",
-    hours: ["Everyday: 6PM – 2AM"],
-    contact: ["02-xxx-xxxx", "tderm@tgroup.com"],
-    map: "https://goo.gl/maps/tderm123",
+    key: "tderm",
+    title: "TDERM",
+    address: [
+      "455 Sukhumvit 63, Khlong Tan Nuea,",
+      "Watthana, Bangkok 10110",
+    ],
+    tel: "084 455 6663",
+    email: "contact@tderm.co.th",
   },
   {
-    name: "GOT",
-    img: gotCover,
-    address: "97 Sukhumvit 24 Alley, Khlong Tan, Khlong Toei, Bangkok 10110",
-    hours: ["Wed–Sun: 7PM – 3AM", "Mon–Tue: Closed"],
-    contact: ["02-xxx-xxxx", "got@tgroup.com"],
-    map: "https://goo.gl/maps/got123",
+    key: "got",
+    title: "GOT (GOOD OLD TIMES)",
+    address: [
+      "97 Sukhumvit 24 Alley, Khlong Tan,",
+      "Khlong Toei, Bangkok 10110",
+    ],
+    tel: "080 626 6999",
+    email: "contact@got.co.th",
   },
   {
-    name: "REC",
-    img: comingsoon,
-    address: "Coming soon...",
-    hours: ["Everyday: 6PM – 2AM"],
-    contact: ["02-xxx-xxxx", "rec@tgroup.com"],
-    map: "https://goo.gl/maps/rec123",
-  },
-  {
-    name: "XIM",
-    img: comingsoon,
-    address: "Coming soon...",
-    hours: ["Thu–Sun: 8PM – 3AM"],
-    contact: ["02-xxx-xxxx", "xim@tgroup.com"],
-    map: "https://goo.gl/maps/xim123",
+    key: "rec",
+    title: "REC (RECORD ROOM)",
+    address: [
+      "63 Wireless Road (Witthayu),",
+      "Lumphini Pathumwan, Bangkok, Thailand 10330",
+    ],
+    tel: "096 539 6696",
+    // Using the email as shown in your reference image
+    email: "contact@got.co.th",
   },
 ];
 
-const Contact = () => {
+export default function Contact() {
   return (
-    <div className="contact-page container">
-      <h1>Contact Us</h1>
+    <section className="contact section">
+      <div className="container">
+        <h1 className="contact__title">CONTACT&nbsp;US</h1>
 
-      <div className="venue-list">
-        {venues.map((venue, index) => (
-          <div className="venue-card" key={index}>
-            <img src={venue.img} alt={venue.name} />
+        <div className="contact__list">
+          {VENUES.map((v) => (
+            <div className="contact__card" key={v.key}>
+              <h3 className="contact__name">{v.title}</h3>
 
-            {/* Card Header */}
-            <h2>{venue.name}</h2>
+              <p className="contact__row">
+  <span className="contact__label">Location</span>
+  <span className="contact__text">
+    {v.address.join(", ")}
+  </span>
+</p>
 
-            {/* Card Body (grows to fill height) */}
-            <div className="venue-info">
-              <div className="info-item">
-                <strong>Address</strong>
-                <p>{venue.address}</p>
-              </div>
+<p className="contact__row">
+  <span className="contact__label">Tel</span>
+  <span className="contact__text">
+    <a href={`tel:${v.tel.replace(/\s+/g, "")}`}>{v.tel}</a>
+  </span>
+</p>
 
-              <div className="info-item">
-                <strong>Opening Hours</strong>
-                <p>{venue.hours.join(" | ")}</p>
-              </div>
+<p className="contact__row">
+  <span className="contact__label">Email</span>
+  <span className="contact__text">
+    <a href={`mailto:${v.email}`}>{v.email}</a>
+  </span>
+</p>
 
-              <div className="info-item">
-                <strong>Contact</strong>
-                <p>{venue.contact.join(" | ")}</p>
-              </div>
+              <div className="contact__rule" aria-hidden />
             </div>
-
-            {/* Card Footer (button/link pinned bottom) */}
-            <div className="venue-footer">
-              <a href={venue.map} target="_blank" rel="noopener noreferrer">
-                Google Maps →
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      {/* Contact Form */}
-      <div className="contact-form">
-        <h2>General Inquiry</h2>
-        <form>
-          <input type="text" name="name" placeholder="Your name" required />
-          <input type="email" name="email" placeholder="Your email" required />
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Your message"
-            required
-          ></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </div>
+    </section>
   );
-};
-
-export default Contact;
+}

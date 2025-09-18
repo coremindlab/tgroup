@@ -1,0 +1,273 @@
+/* Base */
+.venue-layout {
+  /* defaults (overridden by modifiers below) */
+  --accent: #fff;
+  --bg: #0f0f0f;
+
+  background: var(--bg);
+  color: #eaeaea;
+
+  /* tokens */
+  --hero-h: min(56vw, 680px);
+  --quote-size: clamp(40px, 8vw, 90px); /* 3.3 => up to 90px */
+  --para-size: 16px;
+  --btn-radius: 999px;
+  --btn-border: 2px;
+  --gap: 24px;
+
+  &__hero {
+    height: var(--hero-h);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute; inset: 0;
+    // background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
+    display: flex; align-items: end;
+    padding: 28px 2rem;
+  }
+
+  /* QUOTE SECTION */
+  &__quote {
+    padding: 56px 2rem 36px;
+    text-align: right;
+
+    &--cta {
+      padding: 80px 2rem;     /* more generous spacing */
+      margin: 40px;
+      margin-bottom: 0;       /* extra separation */
+      text-align: center;
+
+      .venue-layout__blockquote { margin-bottom: 28px; }
+    }
+  }
+
+  /* 3.1 Year (left) — Clash Grotesk Regular 18px */
+  &__meta {
+    max-width: 1200px;
+    margin: 0 auto 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--accent);
+
+    .venue-layout__year {
+      font-family: var(--font-grotesk);
+      font-weight: 400;
+      font-size: 18px;        /* ✅ spec 3.1 */
+      letter-spacing: .04em;
+    }
+
+    /* 3.2 Name (right) — Clash Display Medium 64px */
+    .venue-layout__name {
+      font-family: var(--font-display);
+      font-weight: 500;       /* Medium */
+      font-size: 64px;        /* ✅ spec 3.2 */
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+  }
+
+  /* 3.3 Quote — Clash Display Medium, 90px + animation */
+  &__blockquote {
+    font-family: var(--font-display);
+    font-weight: 500;         /* Medium */
+    color: var(--accent);
+    font-size: var(--quote-size);  /* ✅ tops at 90px on desktop */
+    line-height: 1.05;
+    margin: 0 auto;
+    max-width: 1200px;
+    animation: quoteRise .8s ease-out .05s both;
+    font-size: 90px;
+    margin-top: 4rem;
+  }
+
+  @keyframes quoteRise {
+    from { opacity: 0; transform: translateY(12px) scale(.985); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  &__paragraph {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 2rem;
+    position: relative;
+    text-align: center;
+
+    .accent { color: var(--accent); font-weight: 600; }
+
+    /* Paragraph alignment modifiers (used via VenueLayout.jsx) */
+    & > .venue-layout__p {
+      font-family: var(--font-anuphan);
+      font-size: 32px;
+      line-height: 1.5;
+      color: #f2f2f2;
+      margin: 0 0 16px;
+      padding: 24px 0;
+      text-align: center; /* default */
+
+      &--left   { text-align: left; }
+      &--right  { text-align: right; }
+      &--center { text-align: center; }
+    }
+  }
+
+  /* Decorative quote icon alignment */
+  &__quote-icon {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+
+    svg {
+      font-size: 120px;
+      fill: transparent;        /* outline-only look */
+      stroke: var(--accent);
+      stroke-width: 1.2px;
+    }
+
+    /* horizontal alignment */
+    &--left   { justify-content: flex-start; }
+    &--center { justify-content: center; }
+    &--right  { justify-content: flex-end; }
+
+    /* vertical spacing only on wrappers */
+    &--top    { margin-bottom: 20px; }
+    &--bottom { margin-top: 20px; }
+
+    /* rotate only the icon for bottom variant */
+    &--bottom svg { transform: rotate(180deg); }
+  }
+
+  /* ===== Inserts (icons row + vertical line) ===================== */
+  &__insert { margin: 24px 0; }
+
+  /* Row of 3 icons (THAY) */
+  &__icon-row {
+    display: flex;
+    gap: clamp(16px, 4vw, 32px);
+    justify-content: center;
+    align-items: center;
+    padding: 28px 0;
+    margin: 2rem 0;
+
+    img {
+      width: clamp(64px, 14vw, 240px);
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  /* Horizontal accent line (generic) */
+.venue-layout__hline {
+  position: relative;
+  height: 2px;
+  width: clamp(120px, 40%, 320px);
+  margin: 20px 0;
+  background: var(--accent);
+  border-radius: 2px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before { left: 0; }
+  &::after  { right: 0; }
+
+  /* Alignment variants */
+  &--left   { margin-left: 0; margin-right: auto; }
+  &--center { margin-left: auto; margin-right: auto; }
+  &--right  { margin-left: auto; margin-right: 0; }
+}
+
+  
+
+  /* Vertical accent line with dots (between paras 2→3) */
+  &__vline {
+    position: relative;
+    width: 2px;
+    height: clamp(290px, 16vw, 140px);
+    margin: 24px auto;
+    background: var(--accent);
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &::before { top: 0; }
+    &::after  { bottom: 0; transform: translate(-50%, 50%); }
+  }
+
+  /* BUTTONS */
+  &__buttons { display: flex; gap: 24px; justify-content: center; margin-top: 6rem; }
+  &__btn {
+    font-family: var(--font-grotesk);
+    color: var(--accent);
+    border: var(--btn-border) solid var(--accent);
+    padding: 8px 18px;
+    border-radius: var(--btn-radius);
+    background: transparent;
+    text-decoration: none;
+    letter-spacing: .06em;
+    &:hover { background: color-mix(in oklab, var(--accent) 10%, transparent); }
+  }
+
+  /* GALLERY */
+  &__gallery { padding: 24px 2rem 48px; max-width: 1200px; margin: 0 auto; }
+  &__gallery-grid {
+    display: grid; gap: var(--gap);
+    grid-template-columns: repeat(3, 1fr);
+    img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; }
+  }
+  &__gallery-highlight {
+  margin-top: var(--gap);
+
+  img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+
+    /* Mobile first: taller than before */
+    height: 50vh;       /* takes half of viewport height */
+    min-height: 320px;
+
+    /* Tablets */
+    @media (min-width: 768px) {
+      height: 65vh;     /* fills ~2/3 of screen */
+      min-height: 420px;
+    }
+
+    /* Desktop */
+    @media (min-width: 1200px) {
+      height: 80vh;     /* cinematic big image */
+      min-height: 520px;
+      max-height: 1000px; /* prevent absurd stretching */
+    }
+  }
+}
+
+}
+
+/* =========================================================
+   THEME MODIFIERS — placed AFTER base so they WIN the cascade
+   ========================================================= */
+.venue-layout.venue-layout--thay  { --accent: #1fff93; --bg: #0b0f0c; }
+.venue-layout.venue-layout--tderm { --accent: #bf8347; --bg: #0f0d0b; }
+.venue-layout.venue-layout--got   { --accent: #f2da76; --bg: #14120e; }
+.venue-layout.venue-layout--rec   { --accent: #f4eacf; --bg: #141312; }

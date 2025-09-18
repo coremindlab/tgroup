@@ -1,6 +1,6 @@
 export default {
   hero: {
-    title: "Where the Night Finds You",
+    title: "From a personal passion to a beloved music bar.",
     subtitle:
       "A collection of concept bars defined by detail, mood, and the art of presence.",
   },
@@ -9,8 +9,6 @@ export default {
     about: "About Us",
     venue: "Venues",
     contact: "Contact Us",
-    career: "Career",
-    events: "News & Events",
   },
   home: {
     aboutTitle: "About T-Group",

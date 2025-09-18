@@ -8,8 +8,6 @@ export default {
     about: "เกี่ยวกับเรา",
     venue: "สถานที่",
     contact: "ติดต่อเรา",
-    career: "ร่วมงานกับเรา",
-    events: "ข่าวสาร"
   },
   home: {
   aboutTitle: "เกี่ยวกับ T-GROUP",

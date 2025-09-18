@@ -3,29 +3,83 @@
 
 }
 
-.milestone-section {
-  padding: 100px 20px 60px;
-  text-align: center;
+.home-band {
+  background: #737373; /* grey background */
+  color: #fff;
+  width: 100%;
+  min-height: 60svh;
+  display: grid;
+  place-items: center;
+  margin-top: 4rem;
 
-  .milestone-title {
-    font-family: 'Parisienne', cursive;
-    font-size: 2.5rem;
-    color: #ccc;
-    margin-bottom: 60px;
+  &__inner {
+    width: 100%;
+    max-width: 1600px;
+    height: 100%; /* make the grid fill section */
+    padding: 60px 2rem;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      ". right"
+      "left .";
   }
 
-  @media (max-width: 768px) {
-    padding: 60px 16px 40px;
+  &__left {
+    grid-area: left;
+    align-self: end; /* stick to bottom left */
+    text-align: left;
 
-    .milestone-title {
-      font-size: 2rem;
-      margin-bottom: 40px;
+    p {
+      font-family: var(--font-anuphan);
+      font-weight: 400;
+      font-size: clamp(16px, 1.4vw, 22px);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 580px;
     }
   }
-}
 
-.gallery-section {
-  padding: 100px 20px 60px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  &__right {
+    grid-area: right;
+    align-self: start; /* stick to top right */
+    text-align: right;
+
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.05;
+      margin: 0;
+      font-size: clamp(36px, 6vw, 88px);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "right"
+        "left";
+      gap: 40px;
+    }
+
+    &__right {
+      text-align: left;
+      h2 { font-size: clamp(34px, 8vw, 64px); }
+    }
+
+    &__left {
+      align-self: start;
+      p { max-width: 100%; }
+    }
+  }
+
+  @media (max-width: 640px) {
+    &__inner { padding: 60px 1.25rem; }
+    &__right h2 { font-size: clamp(30px, 9vw, 52px); }
+    &__left p { font-size: clamp(15px, 3.8vw, 18px); }
+  }
 }

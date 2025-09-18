@@ -1,13 +1,20 @@
 /* App.css */
 
+/* Global variables */
+:root {
+  --font-anuphan: "Anuphan", sans-serif;
+  --font-display: "Clash Display", sans-serif;
+  --font-grotesk: "Clash Grotesk", sans-serif;
+}
+
 body {
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;        /* ⬅ wider than 1200px */
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;   
 }
 
 .section {

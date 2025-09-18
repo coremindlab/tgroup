@@ -1,32 +1,95 @@
-import React from 'react';
-import { Container, Typography } from '@mui/material';
-import { useLanguage } from '../../context/LanguageContext';
-import './Hero.scss';
-import gotHero from '../../assets/got/got_10.jpg'; // ✅ import the image
+import React, { useEffect, useRef, useState } from "react";
+import "./Hero.scss";
 
-const Hero = () => {
-  const { t } = useLanguage();
+import slide1 from "../../assets/home/slide1.jpg";
+import slide2 from "../../assets/home/slide2.jpg";
+import slide3 from "../../assets/home/slide3.jpg";
+import slide4 from "../../assets/home/slide4.jpg";
+
+const SLIDES = [slide1, slide2, slide3, slide4];
+const INTERVAL_MS = 3000; // ⏱️ 3 seconds
+
+export default function Hero() {
+  const [idx, setIdx] = useState(0);
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(
+      () => setIdx(v => (v + 1) % SLIDES.length),
+      INTERVAL_MS
+    );
+  };
+
+  const stopTimer = () => clearInterval(timerRef.current);
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const goTo = (i) => {
+    setIdx(i);
+    startTimer(); // restart cycle after manual nav
+  };
 
   return (
-    <div
-      className="hero"
-      style={{
-        backgroundImage: `url(${gotHero})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      <Container className="hero__content">
-        <Typography variant="h2" className="hero__title">
-          {t('hero.title')}
-        </Typography>
-        <Typography variant="h6" className="hero__subtitle">
-          {t('hero.subtitle')}
-        </Typography>
-      </Container>
-    </div>
-  );
-};
+    <section className="hero">
+      <div className="hero__inner container">
+        {/* Left: copy */}
+        <div className="hero__copy">
+          <h1 className="hero__title">From a personal passion to a beloved music bar.</h1>
+          <p className="hero__line">
+            From different places and institutions, united by a shared love for music, evolving into a team of
+            entrepreneurs with music at the heart of their vision.
+          </p>
+          <p className="hero__line">
+            Bringing the lively vibe of university-town bars to the city center, creating a go-to hangout where
+            young people can always have fun, anytime.
+          </p>
+        </div>
 
-export default Hero;
+        {/* Right: slider + dots */}
+        <div
+          className="hero__media"
+          onMouseEnter={stopTimer}     // 🛑 pause on hover
+          onMouseLeave={startTimer}   // ▶️ resume on leave
+        >
+          <div
+            className="hero__slider"
+            aria-roledescription="carousel"
+            aria-label="Venue highlights"
+          >
+            {SLIDES.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`highlight ${i + 1}`}
+                className={`hero__slide ${i === idx ? "is-active" : ""}`}
+                loading={i === 0 ? "eager" : "lazy"}
+                draggable="false"
+              />
+            ))}
+          </div>
+
+          {/* Dots only (no progress bar) */}
+          <div className="hero__dots" role="tablist" aria-label="Slide navigation">
+            <span className="hero__dots-rail" aria-hidden />
+            <div className="hero__dots-buttons">
+              {SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  role="tab"
+                  aria-selected={i === idx}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`hero__dot ${i === idx ? "is-active" : ""}`}
+                  onClick={() => goTo(i)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

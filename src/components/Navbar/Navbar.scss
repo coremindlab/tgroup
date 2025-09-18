@@ -1,3 +1,12 @@
+/* Accent mapping (same colors as footer) */
+.navbar--thay  { --accent: #1fff93; }
+.navbar--tderm { --accent: #bf8347; }
+.navbar--got   { --accent: #f2da76; }
+.navbar--rec   { --accent: #f4eacf; }
+.navbar--xim   { --accent: #d9d9d9; }
+.navbar--home  { --accent: #fff; } /* neutral */
+
+/* your existing styles below, with small tweaks */
 .navbar {
   background-color: #000;
   color: #fff;
@@ -11,143 +20,151 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
   }
 
   &__logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
     text-decoration: none;
-    color: white;
+    color: #fff;
   }
 
   &__links {
     display: flex;
     gap: 2rem;
     align-items: center;
+    text-transform: uppercase;
 
-    a {
+    .navlink {
+      font-family: var(--font-grotesk);
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
       text-decoration: none;
-      color: white;
-      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
 
-      &:hover {
-        color: #f0b90b;
-      }
-    }
-
-    .navbar__lang {
-      display: flex;
-      gap: 0.5rem;
-
-      button {
-        background: none;
-        border: none;
-        color: #ccc;
+      &.is-active {
+        border-color: #fff;     /* HOME/CONTACT active = white border */
         font-weight: 500;
-        cursor: pointer;
-
-        &.active {
-          color: white;
-          text-decoration: underline;
-        }
-
-        &:hover {
-          color: #f0b90b;
-        }
       }
     }
 
+    /* Venues dropdown */
     .navbar__dropdown {
       position: relative;
-      cursor: pointer;
-      font-weight: 500;
-      color: white;
 
-      &:hover {
-        color: #f0b90b;
+      .navbar__dropdown-trigger {
+        appearance: none;
+        background: transparent;
+        border: 1px solid transparent;  /* neutral by default */
+        color: #fff;
+        cursor: pointer;
+        text-transform: inherit;
+        padding: 0.4rem 0.8rem;
+        border-radius: 12px;
+        font-family: var(--font-grotesk);
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      /* ✅ On venue pages, add .is-active to the container to accent the trigger */
+      &.is-active .navbar__dropdown-trigger {
+        border-color: var(--accent);
+        color: var(--accent);
+        font-weight: 600;
       }
 
       .dropdown-menu {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         left: 0;
         background-color: #111;
-        border-radius: 8px;
+        border-radius: 12px;
         padding: 0.5rem 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
         z-index: 999;
-        min-width: 140px;
+        min-width: 200px;
 
         .dropdown-item {
-          padding: 0.5rem 1rem;
-          color: white;
+          font-family: var(--font-grotesk);
+          font-weight: 400;
+          font-size: 14px;
+          padding: 0.6rem 1rem;
+          color: #fff;
           cursor: pointer;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
-          &:hover {
-            background-color: #222;
-            color: #f0b90b;
+          &:last-child { border-bottom: 0; }
+          &:hover { background-color: #222; }
+
+          /* ✅ active venue item shows accent text */
+          &.is-active {
+            color: var(--accent);
+            font-weight: 600;
           }
         }
+      }
+    }
+
+    /* Language switcher (unchanged) */
+    .navbar__lang {
+      display: flex;
+      gap: 0.5rem;
+      button{
+        font-family: var(--font-grotesk);
+        font-weight: 400;
+        font-size: 14px;
+        background: none;
+        border: 2px solid transparent;
+        border-radius: 6px;
+        padding: 0.3rem 0.6rem;
+        color: #ccc;
+        cursor: pointer;
+
+        &.active { color: #fff; border-color: #fff; font-weight: 500; }
       }
     }
   }
 
   &__toggle {
-    display: none;
-    background: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    border: none;
+    display: none; background: none; color: #fff; font-size: 1.8rem; cursor: pointer; border: none;
+  }
+
+  @media (max-width: 1199px) {
+    &__logo { font-size: 20px; }
+    &__links {
+      gap: 1.5rem;
+      .navlink, .navbar__dropdown { font-size: 12px; }
+      .navbar__dropdown .dropdown-menu { min-width: 180px; }
+    }
   }
 
   @media (max-width: 768px) {
-        position: fixed; // Force fixed on mobile if sticky fails
-    top: 0;
-    left: 0;
-    right: 0;
-    &__toggle {
-      display: block;
-    }
+    position: fixed; top: 0; left: 0; right: 0; padding: 0.75rem 1rem;
+    &__logo { font-size: 18px; }
+    &__toggle { display: block; }
 
     &__links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #111;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 1.5rem 2rem;
-      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background-color: #111; flex-direction: column; align-items: flex-start;
+      padding: 1rem 1.25rem; display: none;
 
-      &.active {
-        display: flex;
-      }
+      &.active { display: flex; }
 
-      a {
-        font-size: 1.1rem;
-        padding: 0.5rem 0;
+      .navlink, .navbar__dropdown, .navbar__lang button {
+        font-size: 14px; width: 100%; padding: 0.6rem 0.8rem;
       }
 
       .navbar__dropdown {
+        width: 100%;
         .dropdown-menu {
-          position: static;
-          box-shadow: none;
-          background-color: transparent;
-          padding: 0;
-
-          .dropdown-item {
-            padding: 1rem 0;
-            color: #fff;
-
-            &:hover {
-              color: #f0b90b;
-              background: none;
-            }
-          }
+          position: static; box-shadow: none; background: transparent; padding: 0; min-width: 0;
+          .dropdown-item { padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
         }
       }
     }
