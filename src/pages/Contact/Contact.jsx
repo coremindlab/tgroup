@@ -58,7 +58,6 @@ export default function Contact() {
                 <span className="contact__label">Location</span>
                 <a className="contact__value" href={v.mapUrl} target="_blank" rel="noreferrer">
                   <span className="contact__text">{v.address.join(" ")}</span>
-                  <RightChevron />
                 </a>
               </p>
 
@@ -67,7 +66,6 @@ export default function Contact() {
                 <span className="contact__label">Tel</span>
                 <a className="contact__value" href={`tel:${sanitizeTel(v.tel)}`}>
                   <span className="contact__text">{v.tel}</span>
-                  <RightChevron />
                 </a>
               </p>
 
@@ -76,7 +74,6 @@ export default function Contact() {
                 <span className="contact__label">Email</span>
                 <a className="contact__value" href={`mailto:${v.email}`}>
                   <span className="contact__text">{v.email}</span>
-                  <RightChevron />
                 </a>
               </p>
 

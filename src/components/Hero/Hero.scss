@@ -87,7 +87,7 @@
   /* DOTS */
   &__dots { position: relative; width: 100%; height: 18px; }
   &__dots-rail {
-    position: absolute; left: 0; right: 0; top: 50%;
+    position: absolute; left: 0; right: 0; top: 40%;
     transform: translateY(-50%);
     height: 2px; background: rgba(0,0,0,.15); border-radius: 2px;
   }
@@ -109,55 +109,64 @@
      - Mobile ≤768px (image first)
      ──────────────────────────────────────────────────────────── */
 
-  /* Laptop */
-  @media (max-width: 1199px) {
-    &__inner {
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 20px;
-    }
-    &__slider { height: 60vh; min-height: 320px; max-height: 480px; }
-    &__title { font-size: 48px; }
+  /* ─────────────────────────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS
+   - Laptop ≤1199px
+   - Tablet ≤992px
+   - Mobile ≤768px (image first)
+   ──────────────────────────────────────────────────────────── */
+
+/* Laptop */
+@media (max-width: 1199px) {
+  &__inner { grid-template-columns: 0.95fr 1.05fr; gap: 20px; }
+  &__slider { height: 60vh; min-height: 320px; max-height: 480px; }
+  &__title { font-size: 48px; }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  /* ⬅️ add space under fixed navbar */
+  margin-top: 4rem;
+
+  &__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "copy";
+    gap: 20px;
+  }
+  &__copy { padding: 0 16px; }
+  &__title { font-size: 36px; }
+  &__line  { font-size: 18px; }
+  &__slider { height: 45vh; min-height: 260px; max-height: 420px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* ⬅️ add space + keep tighter vertical padding */
+  margin-top: 4rem;
+  padding-block: 24px;
+
+  &__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "copy"; /* image on top */
+    gap: 16px;
   }
 
-  /* Tablet */
-  @media (max-width: 992px) {
-    &__inner {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "media"
-        "copy";
-      gap: 20px;
-    }
-    &__copy { padding: 0 16px; }
-    &__title { font-size: 36px; }
-    &__line { font-size: 18px; }
-    &__slider { height: 45vh; min-height: 260px; max-height: 420px; }
+  &__copy { gap: 8px; padding: 0 12px; }
+  &__title { font-size: 28px; margin-top: 8px; }
+  &__line  { font-size: 16px; margin-top: 8px; }
+
+  &__slider {
+    height: 38vh;
+    min-height: 220px;
+    max-height: 360px;
+    border-radius: 10px;
   }
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    padding-block: 24px;
+  &__dot { width: 12px; height: 12px; }
+}
 
-    &__inner {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "media"
-        "copy"; /* ✅ image goes on top */
-      gap: 16px;
-    }
-
-    &__copy { gap: 8px; padding: 0 12px; }
-    &__title { font-size: 28px; margin-top: 8px; }
-    &__line { font-size: 16px; margin-top: 8px; }
-
-    &__slider {
-      height: 38vh;
-      min-height: 220px;
-      max-height: 360px;
-      border-radius: 10px;
-    }
-
-    /* Optional: smaller dots on tight screens */
-    &__dot { width: 12px; height: 12px; }
-  }
 }
