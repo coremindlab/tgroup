@@ -110,14 +110,14 @@ export const venueData = {
         title: "Event : Thay Long Talay 2",
         gallery: {
           small: [
-            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_1.png",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_1.jpg",
             "/images/highlights/thay/thaylongtalay2/thaylongtalay2_2.jpg",
-            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_3.png",
-            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_4.png", // optional (4th~6th)
-            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_5.png",
-            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_6.png",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_3.jpg",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_4.jpg", // optional (4th~6th)
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_5.jpg",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_6.jpg",
           ],
-          highlight: "/images/highlights/thay/thaylongtalay2/thaylongtalay2_cover.png",
+          highlight: "/images/highlights/thay/thaylongtalay2/thaylongtalay2_cover.jpg",
         },
       },
       {
@@ -125,14 +125,14 @@ export const venueData = {
         title: "Event : Thay Long Talay 3",
         gallery: {
           small: [
-            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_1.png",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_1.jpg",
             "/images/highlights/thay/thaylongtalay3/thaylongtalay3_2.jpg",
-            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_3.png",
-            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_4.png", // optional (4th~6th)
-            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_5.png",
-            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_6.png",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_3.jpg",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_4.jpg", // optional (4th~6th)
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_5.jpg",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_6.jpg",
           ],
-          highlight: "/images/highlights/thay/thaylongtalay3/thaylongtalay3_cover.png",
+          highlight: "/images/highlights/thay/thaylongtalay3/thaylongtalay3_cover.jpg",
         },
       },
     ],
@@ -177,14 +177,14 @@ export const venueData = {
         title: "Event : Halloween",
         gallery: {
           small: [
-            "/images/highlights/tderm/halloween/tdermhalloween_1.png",
+            "/images/highlights/tderm/halloween/tdermhalloween_1.jpg",
             "/images/highlights/tderm/halloween/tdermhalloween_2.jpg",
-            "/images/highlights/tderm/halloween/tdermhalloween_3.png",
-            "/images/highlights/tderm/halloween/tdermhalloween_4.png", // optional (4th~6th)
-            "/images/highlights/tderm/halloween/tdermhalloween_5.png",
-            "/images/highlights/tderm/halloween/tdermhalloween_6.png",
+            "/images/highlights/tderm/halloween/tdermhalloween_3.jpg",
+            "/images/highlights/tderm/halloween/tdermhalloween_4.jpg", // optional (4th~6th)
+            "/images/highlights/tderm/halloween/tdermhalloween_5.jpg",
+            "/images/highlights/tderm/halloween/tdermhalloween_6.jpg",
           ],
-          highlight: "/images/highlights/tderm/halloween/tdermhalloween_cover.png",
+          highlight: "/images/highlights/tderm/halloween/tdermhalloween_cover.jpg",
         },
       },
       {
@@ -251,14 +251,14 @@ export const venueData = {
         title: "Event : Special Guest DJ & Party",
         gallery: {
           small: [
-            "/images/highlights/got/guest/gotguest_1.png",
+            "/images/highlights/got/guest/gotguest_1.jpg",
             "/images/highlights/got/guest/gotguest_2.jpg",
-            "/images/highlights/got/guest/gotguest_3.png",
-            "/images/highlights/got/guest/gotguest_4.png", // optional (4th~6th)
-            "/images/highlights/got/guest/gotguest_5.png",
-            "/images/highlights/got/guest/gotguest_6.png",
+            "/images/highlights/got/guest/gotguest_3.jpg",
+            "/images/highlights/got/guest/gotguest_4.jpg", // optional (4th~6th)
+            "/images/highlights/got/guest/gotguest_5.jpg",
+            "/images/highlights/got/guest/gotguest_6.jpg",
           ],
-          highlight: "/images/highlights/got/guest/gotguest_cover.png",
+          highlight: "/images/highlights/got/guest/gotguest_cover.jpg",
         },
       },
       {
@@ -346,14 +346,14 @@ export const venueData = {
         title: "Event : Opening",
         gallery: {
           small: [
-            "/images/highlights/rec/opening/recopening_1.png",
+            "/images/highlights/rec/opening/recopening_1.jpg",
             "/images/highlights/rec/opening/recopening_2.jpg",
-            "/images/highlights/rec/opening/recopening_3.png",
-            "/images/highlights/rec/opening/recopening_4.png", // optional (4th~6th)
-            "/images/highlights/rec/opening/recopening_5.png",
-            "/images/highlights/rec/opening/recopening_6.png",
+            "/images/highlights/rec/opening/recopening_3.jpg",
+            "/images/highlights/rec/opening/recopening_4.jpg", // optional (4th~6th)
+            "/images/highlights/rec/opening/recopening_5.jpg",
+            "/images/highlights/rec/opening/recopening_6.jpg",
           ],
-          highlight: "/images/highlights/rec/opening/recopening_cover.png",
+          highlight: "/images/highlights/rec/opening/recopening_cover.jpg",
         },
       },
       {

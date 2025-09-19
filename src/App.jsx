@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 
 
 
+
 // ✅ New: data-driven venue pages
 import VenueDetails from "./pages/VenueDetails/VenueDetails";
 import VenueHighlights from "./pages/VenueHighlights/VenueHighlights";
@@ -21,6 +22,7 @@ const App = () => {
       <Navbar />
       <LanguageSwitcher />
 
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
