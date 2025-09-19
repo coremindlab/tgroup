@@ -6,6 +6,9 @@ import slide2 from "../../assets/home/slide2.jpg";
 import slide3 from "../../assets/home/slide3.jpg";
 import slide4 from "../../assets/home/slide4.jpg";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const SLIDES = [slide1, slide2, slide3, slide4];
 const INTERVAL_MS = 3000; // ⏱️ 3 seconds
 
@@ -33,13 +36,17 @@ export default function Hero() {
     startTimer(); // restart cycle after manual nav
   };
 
+    useEffect(() => {
+      AOS.init({ duration: 800, once: true });
+    }, []);
+
   return (
     <section className="hero">
       <div className="hero__inner container">
         {/* Left: copy */}
-        <div className="hero__copy">
+        <div className="hero__copy" data-aos="fade-up">
           <h1 className="hero__title">From a personal passion to a beloved music bar.</h1>
-          <p className="hero__line">
+          <p className="hero__line" >
             From different places and institutions, united by a shared love for music, evolving into a team of
             entrepreneurs with music at the heart of their vision.
           </p>

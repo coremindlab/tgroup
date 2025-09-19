@@ -12,12 +12,8 @@ export default function Thay() {
   return (
     <VenueLayout
       {...data}
-      accent="thay"                        // ensure correct theme class
-      themeVars={{
-        "--accent": "#1fff93",
-        "--bg": "#0b0f0c",
-        // DO NOT set "--quote-size" here
-      }}
+      accent="thay"
+      themeVars={{ "--accent": "#1fff93", "--bg": "#0b0f0c" }}
       inserts={[
         {
           afterIndex: 0,
@@ -25,8 +21,16 @@ export default function Thay() {
           node: (
             <div className="venue-layout__icon-row" data-aos="fade-up">
               <img src={iconHappy} alt="Happy" loading="lazy" decoding="async" />
-              <img src={iconHeart} alt="Heart" loading="lazy" decoding="async" />
-              <img src={iconSad}   alt="Sad"   loading="lazy" decoding="async" />
+              {/* bouncing heart */}
+              <img
+                src={iconHeart}
+                alt="Heart"
+                loading="lazy"
+                decoding="async"
+                className="venue-layout__icon--heart"
+                
+              />
+              <img src={iconSad} alt="Sad" loading="lazy" decoding="async" />
             </div>
           ),
         },

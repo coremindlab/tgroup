@@ -44,6 +44,98 @@ export const venueData = {
       ["relax, connect, and celebrate."],// paragraph 1
       [],                                // paragraph 2 (none)
     ],
+    eventHighlights: [
+      {
+        id: "thay-uni-night",
+        title: "Event : Uni Night  EP.1 - 2",
+        gallery: {
+          small: [
+            "/images/highlights/thay/uninight/thayuni_1.png",
+            "/images/highlights/thay/uninight/thayuni_2.jpg",
+            "/images/highlights/thay/uninight/thayuni_3.png",
+            "/images/highlights/thay/uninight/thayuni_4.png", // optional (4th~6th)
+            "/images/highlights/thay/uninight/thayuni_5.png",
+            "/images/highlights/thay/uninight/thayuni_6.png",
+          ],
+          highlight: "/images/highlights/thay/uninight/thayuni_cover.png",
+        },
+      },
+      {
+        id: "thay-halloween",
+        title: "Event : Halloween Nights",
+        gallery: {
+          small: [
+            "/images/highlights/thay/halloween/thayhalloween_1.jpg",
+            "/images/highlights/thay/halloween/thayhalloween_2.jpg",
+            "/images/highlights/thay/halloween/thayhalloween_3.jpg",
+            "/images/highlights/thay/halloween/thayhalloween_4.jpg", // optional (4th~6th)
+            "/images/highlights/thay/halloween/thayhalloween_5.jpg",
+            "/images/highlights/thay/halloween/thayhalloween_6.jpg",
+          ],
+          highlight: "/images/highlights/thay/halloween/thayhalloween_cover.jpg",
+        },
+      },
+      {
+        id: "thay-valentine",
+        title: "Event : Valentine's",
+        gallery: {
+          small: [
+            "/images/highlights/thay/valentine/thayvalentine_1.png",
+            "/images/highlights/thay/valentine/thayvalentine_2.jpg",
+            "/images/highlights/thay/valentine/thayvalentine_3.png",
+            "/images/highlights/thay/valentine/thayvalentine_4.png", // optional (4th~6th)
+            "/images/highlights/thay/valentine/thayvalentine_5.png",
+            "/images/highlights/thay/valentine/thayvalentine_6.png",
+          ],
+          highlight: "/images/highlights/thay/valentine/thayvalentine_cover.png",
+        },
+      },
+      {
+        id: "thay-longtalay",
+        title: "Event : Thay Long Talay",
+        gallery: {
+          small: [
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_1.png",
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_2.jpg",
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_3.png",
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_4.png", // optional (4th~6th)
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_5.png",
+            "/images/highlights/thay/thaylongtalay/thaylongtalay_6.png",
+          ],
+          highlight: "/images/highlights/thay/thaylongtalay/thaylongtalay_cover.png",
+        },
+      },
+      {
+        id: "thay-longtalay2",
+        title: "Event : Thay Long Talay 2",
+        gallery: {
+          small: [
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_1.png",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_2.jpg",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_3.png",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_4.png", // optional (4th~6th)
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_5.png",
+            "/images/highlights/thay/thaylongtalay2/thaylongtalay2_6.png",
+          ],
+          highlight: "/images/highlights/thay/thaylongtalay2/thaylongtalay2_cover.png",
+        },
+      },
+      {
+        id: "thay-longtalay3",
+        title: "Event : Thay Long Talay 3",
+        gallery: {
+          small: [
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_1.png",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_2.jpg",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_3.png",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_4.png", // optional (4th~6th)
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_5.png",
+            "/images/highlights/thay/thaylongtalay3/thaylongtalay3_6.png",
+          ],
+          highlight: "/images/highlights/thay/thaylongtalay3/thaylongtalay3_cover.png",
+        },
+      },
+    ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1c2fQdMh5ksObkT5zKT0Zyrz-GN8w8cGP/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/thay/highlight" },
@@ -79,6 +171,53 @@ export const venueData = {
       ["TDERM"], // para 1
       [], [], [], // rest none (optional)
     ],
+    eventHighlights: [
+      {
+        id: "tderm-halloween",
+        title: "Event : Halloween",
+        gallery: {
+          small: [
+            "/images/highlights/tderm/halloween/tdermhalloween_1.png",
+            "/images/highlights/tderm/halloween/tdermhalloween_2.jpg",
+            "/images/highlights/tderm/halloween/tdermhalloween_3.png",
+            "/images/highlights/tderm/halloween/tdermhalloween_4.png", // optional (4th~6th)
+            "/images/highlights/tderm/halloween/tdermhalloween_5.png",
+            "/images/highlights/tderm/halloween/tdermhalloween_6.png",
+          ],
+          highlight: "/images/highlights/tderm/halloween/tdermhalloween_cover.png",
+        },
+      },
+      {
+        id: "tderm-valentine",
+        title: "Event : Valentine's Day",
+        gallery: {
+          small: [
+            "/images/highlights/tderm/valentine/tdermvalentine_1.jpg",
+            "/images/highlights/tderm/valentine/tdermvalentine_2.jpg",
+            "/images/highlights/tderm/valentine/tdermvalentine_3.jpg",
+            "/images/highlights/tderm/valentine/tdermvalentine_4.jpg", // optional (4th~6th)
+            "/images/highlights/tderm/valentine/tdermvalentine_5.jpg",
+            "/images/highlights/tderm/valentine/tdermvalentine_6.jpg",
+          ],
+          highlight: "/images/highlights/tderm/valentine/tdermvalentine_cover.jpg",
+        },
+      },
+      {
+        id: "tderm-xmas",
+        title: "Event : X'mas",
+        gallery: {
+          small: [
+            "/images/highlights/tderm/xmas/tdermxmas_1.jpg",
+            "/images/highlights/tderm/xmas/tdermxmas_2.jpg",
+            "/images/highlights/tderm/xmas/tdermxmas_3.jpg",
+            "/images/highlights/tderm/xmas/tdermxmas_4.jpg", // optional (4th~6th)
+            "/images/highlights/tderm/xmas/tdermxmas_5.jpg",
+            "/images/highlights/tderm/xmas/tdermxmas_6.jpg",
+          ],
+          highlight: "/images/highlights/tderm/xmas/tdermxmas_cover.jpg",
+        },
+      },
+    ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/136Us-TGTSPrj2WyPfRsJWn4S7b7VWhsR/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/tderm/highlight" },
@@ -105,6 +244,71 @@ export const venueData = {
     highlights: [
       ["Good Old Times (GOT)"], // para 0
       ["GOT"],                  // para 1
+    ],
+    eventHighlights: [
+      {
+        id: "got-special-guest",
+        title: "Event : Special Guest DJ & Party",
+        gallery: {
+          small: [
+            "/images/highlights/got/guest/gotguest_1.png",
+            "/images/highlights/got/guest/gotguest_2.jpg",
+            "/images/highlights/got/guest/gotguest_3.png",
+            "/images/highlights/got/guest/gotguest_4.png", // optional (4th~6th)
+            "/images/highlights/got/guest/gotguest_5.png",
+            "/images/highlights/got/guest/gotguest_6.png",
+          ],
+          highlight: "/images/highlights/got/guest/gotguest_cover.png",
+        },
+      },
+      {
+        id: "got-xmas",
+        title: "Event : Xmas",
+        gallery: {
+          small: [
+            "/images/highlights/got/xmas/gotxmas_1.jpg",
+            "/images/highlights/got/xmas/gotxmas_2.jpg",
+            "/images/highlights/got/xmas/gotxmas_3.jpg",
+          ],
+          highlight: "/images/highlights/got/xmas/gotxmas_cover.jpg",
+        },
+      },
+      {
+        id: "got-chinese-new-year",
+        title: "Event : Chinese New Year",
+        gallery: {
+          small: [
+            "/images/highlights/got/cny/gotcny_1.jpg",
+            "/images/highlights/got/cny/gotcny_2.jpg",
+            "/images/highlights/got/cny/gotcny_3.jpg",
+          ],
+          highlight: "/images/highlights/got/cny/gotcny_cover.jpg",
+        },
+      },
+      {
+        id: "got-valentine",
+        title: "Event : Valentine's Day",
+        gallery: {
+          small: [
+            "/images/highlights/got/valentine/gotvalentine_1.jpg",
+            "/images/highlights/got/valentine/gotvalentine_2.jpg",
+            "/images/highlights/got/valentine/gotvalentine_3.jpg",
+          ],
+          highlight: "/images/highlights/got/valentine/gotvalentine_cover.jpg",
+        },
+      },
+      {
+        id: "got-parade",
+        title: "Event : Parade",
+        gallery: {
+          small: [
+            "/images/highlights/got/parade/gotparade_1.jpg",
+            "/images/highlights/got/parade/gotparade_2.jpg",
+            "/images/highlights/got/parade/gotparade_3.jpg",
+          ],
+          highlight: "/images/highlights/got/parade/gotparade_cover.jpg",
+        },
+      },
     ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1Ik-5Mut9Amy8vY-ychLhsTIw-xJRfnvL/view", external: true },
@@ -135,6 +339,40 @@ export const venueData = {
       ["REC", "DJ Corner"],               // para 0
       ["Metronome Details", "REC"],       // para 1
     ],
+
+    eventHighlights: [
+      {
+        id: "rec-opening",
+        title: "Event : Opening",
+        gallery: {
+          small: [
+            "/images/highlights/rec/opening/recopening_1.png",
+            "/images/highlights/rec/opening/recopening_2.jpg",
+            "/images/highlights/rec/opening/recopening_3.png",
+            "/images/highlights/rec/opening/recopening_4.png", // optional (4th~6th)
+            "/images/highlights/rec/opening/recopening_5.png",
+            "/images/highlights/rec/opening/recopening_6.png",
+          ],
+          highlight: "/images/highlights/rec/opening/recopening_cover.png",
+        },
+      },
+      {
+        id: "thay-vineriaxemie",
+        title: "Event : Vineria X Emie",
+        gallery: {
+          small: [
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_1.jpg",
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_2.jpg",
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_3.jpg",
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_4.jpg", // optional (4th~6th)
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_5.jpg",
+            "/images/highlights/rec/vineriaxemie/vineriaxemie_6.jpg",
+          ],
+          highlight: "/images/highlights/rec/vineriaxemie/vineriaxemie_cover.jpg",
+        },
+      },
+    ],
+    
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1TmDyw_KAAlZF-VI5-cwvxGW71Uj1Vyrw/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/rec/highlight" },

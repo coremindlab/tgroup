@@ -12,7 +12,7 @@ import Footer from "./components/Footer/Footer";
 
 // ✅ New: data-driven venue pages
 import VenueDetails from "./pages/VenueDetails/VenueDetails";
-// import VenueHighlight from "./pages/VenueHighlight/VenueHighlight";
+import VenueHighlights from "./pages/VenueHighlights/VenueHighlights";
 
 const App = () => {
   return (
@@ -24,9 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-
-        {/* ✅ Highlights must come before the generic slug route
-        <Route path="/:slug/highlight" element={<VenueHighlight />} /> */}
+        <Route path="/:slug/highlight" element={<VenueHighlights />} />
         <Route path="/:slug" element={<VenueDetails />} />
       </Routes>
 
