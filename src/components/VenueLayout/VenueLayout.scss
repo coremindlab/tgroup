@@ -1,20 +1,24 @@
+/* =======================
+   VENUE LAYOUT (FINAL)
+   ======================= */
+
 /* Base */
 .venue-layout {
-  /* defaults (overridden by modifiers below) */
+  /* tokens & theme vars */
   --accent: #fff;
   --bg: #0f0f0f;
 
-  background: var(--bg);
-  color: #eaeaea;
-
-  /* tokens */
   --hero-h: min(56vw, 680px);
-  --quote-size: clamp(40px, 8vw, 90px); /* 3.3 => up to 90px */
+  --quote-size: clamp(40px, 8vw, 90px);  /* desktop tops at 90px */
   --para-size: 16px;
   --btn-radius: 999px;
   --btn-border: 2px;
   --gap: 24px;
 
+  background: var(--bg);
+  color: #eaeaea;
+
+  /* HERO */
   &__hero {
     height: var(--hero-h);
     background-size: cover;
@@ -24,27 +28,37 @@
 
   &__overlay {
     position: absolute; inset: 0;
-    // background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
     display: flex; align-items: end;
     padding: 28px 2rem;
+    /* optional:
+    background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)); */
   }
 
-  /* QUOTE SECTION */
+  /* QUOTE SECTION WRAPPER */
   &__quote {
     padding: 56px 2rem 36px;
     text-align: right;
 
     &--cta {
-      padding: 80px 2rem;     /* more generous spacing */
+      padding: 80px 2rem;
       margin: 40px;
-      margin-bottom: 0;       /* extra separation */
+      margin-bottom: 0;
       text-align: center;
 
-      .venue-layout__blockquote { margin-bottom: 28px; }
+      .venue-layout__blockquote {
+        font-family: var(--font-display);
+        font-weight: 500;
+        color: var(--accent);
+        font-size: var(--quote-size);
+        line-height: 1.05;
+        margin: 4rem auto 0;
+        max-width: 1200px;
+        animation: quoteRise .8s ease-out .05s both;
+      }
     }
   }
 
-  /* 3.1 Year (left) — Clash Grotesk Regular 18px */
+  /* META: Year (left), Name (right) */
   &__meta {
     max-width: 1200px;
     margin: 0 auto 18px;
@@ -54,32 +68,31 @@
     .venue-layout__year {
       font-family: var(--font-grotesk);
       font-weight: 400;
-      font-size: 18px;        /* ✅ spec 3.1 */
+      font-size: 18px;
       letter-spacing: .04em;
     }
 
-    /* 3.2 Name (right) — Clash Display Medium 64px */
     .venue-layout__name {
       font-family: var(--font-display);
-      font-weight: 500;       /* Medium */
-      font-size: 64px;        /* ✅ spec 3.2 */
+      font-weight: 500;
+      font-size: 64px;
       text-transform: uppercase;
       line-height: 1.05;
+      letter-spacing: 0;
     }
   }
 
-  /* 3.3 Quote — Clash Display Medium, 90px + animation */
+  /* BLOCKQUOTE (main hero quote) */
   &__blockquote {
     font-family: var(--font-display);
-    font-weight: 500;         /* Medium */
+    font-weight: 500;
     color: var(--accent);
-    font-size: var(--quote-size);  /* ✅ tops at 90px on desktop */
+    font-size: var(--quote-size);        /* token-driven */
     line-height: 1.05;
-    margin: 0 auto;
+    margin: 4rem auto 0;
     max-width: 1200px;
     animation: quoteRise .8s ease-out .05s both;
-    font-size: 90px;
-    margin-top: 4rem;
+    letter-spacing: 0;
   }
 
   @keyframes quoteRise {
@@ -87,6 +100,7 @@
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
+  /* PARAGRAPHS */
   &__paragraph {
     max-width: 900px;
     margin: 0 auto;
@@ -96,15 +110,14 @@
 
     .accent { color: var(--accent); font-weight: 600; }
 
-    /* Paragraph alignment modifiers (used via VenueLayout.jsx) */
-    & > .venue-layout__p {
+    > .venue-layout__p {
       font-family: var(--font-anuphan);
       font-size: 32px;
       line-height: 1.5;
       color: #f2f2f2;
       margin: 0 0 16px;
       padding: 24px 0;
-      text-align: center; /* default */
+      text-align: center;
 
       &--left   { text-align: left; }
       &--right  { text-align: right; }
@@ -112,7 +125,7 @@
     }
   }
 
-  /* Decorative quote icon alignment */
+  /* DECORATIVE QUOTE ICON */
   &__quote-icon {
     width: 100%;
     max-width: 900px;
@@ -121,28 +134,25 @@
 
     svg {
       font-size: 120px;
-      fill: transparent;        /* outline-only look */
+      fill: transparent;
       stroke: var(--accent);
       stroke-width: 1.2px;
     }
 
-    /* horizontal alignment */
+    /* legacy alignment helpers (can keep for compatibility) */
     &--left   { justify-content: flex-start; }
     &--center { justify-content: center; }
     &--right  { justify-content: flex-end; }
 
-    /* vertical spacing only on wrappers */
     &--top    { margin-bottom: 20px; }
     &--bottom { margin-top: 20px; }
-
-    /* rotate only the icon for bottom variant */
     &--bottom svg { transform: rotate(180deg); }
   }
 
-  /* ===== Inserts (icons row + vertical line) ===================== */
+  /* INSERTS */
   &__insert { margin: 24px 0; }
 
-  /* Row of 3 icons (THAY) */
+  /* ICON ROW */
   &__icon-row {
     display: flex;
     gap: clamp(16px, 4vw, 32px);
@@ -159,43 +169,39 @@
     }
   }
 
-  /* Horizontal accent line (generic) */
-.venue-layout__hline {
-  position: relative;
-  height: 2px;
-  width: clamp(120px, 40%, 320px);
-  margin: 20px 0;
-  background: var(--accent);
-  border-radius: 2px;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 8px;
-    height: 8px;
+  /* HORIZONTAL ACCENT LINE */
+  &__hline {
+    position: relative;
+    height: 2px;
+    width: clamp(120px, 40%, 320px);
+    margin: 20px 0;
     background: var(--accent);
-    border-radius: 50%;
-    transform: translateY(-50%);
+    border-radius: 2px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before { left: 0; }
+    &::after  { right: 0; }
+
+    &--left   { margin-left: 0; margin-right: auto; }
+    &--center { margin-left: auto; margin-right: auto; }
+    &--right  { margin-left: auto; margin-right: 0; }
   }
 
-  &::before { left: 0; }
-  &::after  { right: 0; }
-
-  /* Alignment variants */
-  &--left   { margin-left: 0; margin-right: auto; }
-  &--center { margin-left: auto; margin-right: auto; }
-  &--right  { margin-left: auto; margin-right: 0; }
-}
-
-  
-
-  /* Vertical accent line with dots (between paras 2→3) */
+  /* VERTICAL ACCENT LINE */
   &__vline {
     position: relative;
     width: 2px;
-    height: clamp(290px, 16vw, 140px);
+    height: clamp(140px, 16vw, 290px);
     margin: 24px auto;
     background: var(--accent);
 
@@ -215,15 +221,29 @@
   /* BUTTONS */
   &__buttons { display: flex; gap: 24px; justify-content: center; margin-top: 6rem; }
   &__btn {
+    box-sizing: border-box;
     font-family: var(--font-grotesk);
     color: var(--accent);
     border: var(--btn-border) solid var(--accent);
-    padding: 8px 18px;
     border-radius: var(--btn-radius);
     background: transparent;
     text-decoration: none;
     letter-spacing: .06em;
-    &:hover { background: color-mix(in oklab, var(--accent) 10%, transparent); }
+
+    font-weight: 600;
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1;
+    padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2vw, 20px);
+    inline-size: clamp(180px, 30%, 280px);
+    max-width: 100%;
+    text-align: center;
+
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+
+    @media (hover:hover) {
+      &:hover { background: var(--accent); color: #000; transform: translateY(-2px); }
+    }
+    &:active { transform: translateY(0); }
   }
 
   /* GALLERY */
@@ -233,41 +253,189 @@
     grid-template-columns: repeat(3, 1fr);
     img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; }
   }
+
   &__gallery-highlight {
-  margin-top: var(--gap);
+    margin-top: var(--gap);
 
-  img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
 
-    /* Mobile first: taller than before */
-    height: 50vh;       /* takes half of viewport height */
-    min-height: 320px;
+      /* Mobile-first */
+      height: 50vh;
+      min-height: 320px;
 
-    /* Tablets */
-    @media (min-width: 768px) {
-      height: 65vh;     /* fills ~2/3 of screen */
-      min-height: 420px;
-    }
+      /* Tablets */
+      @media (min-width: 768px) {
+        height: 65vh;
+        min-height: 420px;
+      }
 
-    /* Desktop */
-    @media (min-width: 1200px) {
-      height: 80vh;     /* cinematic big image */
-      min-height: 520px;
-      max-height: 1000px; /* prevent absurd stretching */
+      /* Desktops */
+      @media (min-width: 1200px) {
+        height: 80vh;
+        min-height: 520px;
+        max-height: 1000px;
+      }
     }
   }
 }
 
+/* =========================
+   RESPONSIVE FONT & LAYOUT
+   ========================= */
+
+@media (max-width: 1199px) {
+  .venue-layout {
+    --quote-size: clamp(40px, 4.2vw, 60px);
+    --para-size: 18px;
+  }
 }
 
-/* =========================================================
-   THEME MODIFIERS — placed AFTER base so they WIN the cascade
-   ========================================================= */
+@media (max-width: 992px) {
+  .venue-layout {
+    --quote-size: clamp(40px, 6vw, 56px);
+    --para-size: 17px;
+
+    &__hero { --hero-h: clamp(360px, 56vh, 520px); }
+    &__overlay { padding: 24px 1.5rem; }
+
+    /* keep year left / name right */
+    &__meta {
+      max-width: 1000px; padding: 0 1.5rem;
+      gap: 8px; flex-direction: row;
+      justify-content: space-between; align-items: center;
+
+      .venue-layout__year { font-size: 16px; }
+      .venue-layout__name { font-size: clamp(36px, 5.5vw, 52px); }
+    }
+
+    &__quote { padding: 48px 1.5rem 28px; }
+    &__blockquote { max-width: 1000px; }
+
+    &__paragraph {
+      max-width: 840px; padding: 64px 1.5rem;
+      .venue-layout__p { font-size: clamp(18px, 2.2vw, 22px); }
+    }
+
+    &__icon-row img { width: clamp(72px, 12vw, 160px); }
+    &__vline { height: clamp(160px, 18vw, 260px); }
+    &__buttons { gap: 16px; margin-top: 4rem; }
+    &__btn {
+      display: block;
+      inline-size: clamp(200px, 60%, 340px);
+      margin-inline: auto;
+      padding: 10px 18px;
+    }
+
+    &__gallery { max-width: 1000px; padding: 20px 1.5rem 44px; }
+    &__gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    &__gallery-highlight img { height: 60vh; min-height: 420px; }
+  }
+}
+
+@media (max-width: 768px) {
+  .venue-layout {
+    --quote-size: clamp(28px, 7vw, 40px);
+    --para-size: 16px;
+
+    &__hero { --hero-h: clamp(280px, 52vh, 420px); }
+    &__overlay { padding: 20px 1rem; align-items: flex-end; }
+
+    /* keep side-by-side alignment */
+    &__meta {
+      max-width: 92vw; padding: 0 1rem;
+      flex-direction: row; justify-content: space-between; align-items: center; gap: 6px;
+
+      .venue-layout__year { font-size: 14px; letter-spacing: .03em; }
+      .venue-layout__name { font-size: clamp(28px, 6vw, 40px); line-height: 1.08; }
+    }
+
+    &__quote { padding: 32px 1rem 20px; text-align: center; }
+
+    &__blockquote {
+      font-size: var(--quote-size);
+      line-height: 1.2;
+      max-width: 92vw;
+      margin-top: 1.5rem;
+    }
+
+    &__paragraph {
+      max-width: 92vw; padding: 40px 1rem;
+      .venue-layout__p { font-size: clamp(14px, 4.2vw, 17px); line-height: 1.55; text-align: left; }
+    }
+
+    &__quote-icon { max-width: 92vw; svg { font-size: clamp(44px, 12vw, 72px); } }
+
+    &__icon-row { padding: 16px 0; margin: 1rem 0; flex-wrap: wrap;
+      img { width: clamp(56px, 24vw, 120px); }
+    }
+
+    &__hline { width: clamp(96px, 40vw, 220px);
+      &--left, &--right { margin-left: auto; margin-right: auto; }
+    }
+
+    &__vline { height: clamp(120px, 26vw, 200px); }
+
+    &__buttons { flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; padding: 0 1rem; }
+    &__btn {
+      width: 100%;
+      text-align: center;
+      padding: 10px 14px;
+      inline-size: 100%;
+      margin-inline: 0;
+    }
+
+    &__gallery { padding: 16px 1rem 32px; max-width: 92vw; }
+    &__gallery-grid { grid-template-columns: 1fr; gap: 12px; }
+    &__gallery-highlight img { height: 50vh; min-height: 280px; }
+  }
+}
+
+@media (max-width: 480px) {
+  .venue-layout {
+    --quote-size: clamp(24px, 6.5vw, 32px);
+    --para-size: 15px;
+
+    &__paragraph .venue-layout__p { font-size: clamp(13px, 4.1vw, 16px); }
+    &__btn { font-size: 13px; padding: 7px 12px; }
+  }
+}
+
+/* =========================
+   THEME MODIFIERS (colors)
+   ========================= */
 .venue-layout.venue-layout--thay  { --accent: #1fff93; --bg: #0b0f0c; }
 .venue-layout.venue-layout--tderm { --accent: #bf8347; --bg: #0f0d0b; }
 .venue-layout.venue-layout--got   { --accent: #f2da76; --bg: #14120e; }
 .venue-layout.venue-layout--rec   { --accent: #f4eacf; --bg: #141312; }
+
+/* ===========================================
+   THEME-BASED QUOTE ICON ALIGNMENT (PUT HERE)
+   =========================================== */
+/* THAY = Top: Left, Bottom: Right */
+.venue-layout.venue-layout--thay {
+  .venue-layout__quote-icon--top    { justify-content: flex-start; }
+  .venue-layout__quote-icon--bottom { justify-content: flex-end; }
+}
+
+/* TDERM = Top: Middle, Bottom: Middle */
+.venue-layout.venue-layout--tderm {
+  .venue-layout__quote-icon--top,
+  .venue-layout__quote-icon--bottom { justify-content: center; }
+}
+
+/* GOT = Top: Right, Bottom: Left */
+.venue-layout.venue-layout--got {
+  .venue-layout__quote-icon--top    { justify-content: flex-end; }
+  .venue-layout__quote-icon--bottom { justify-content: flex-start; }
+}
+
+/* REC = Top: Left, Bottom: Right */
+.venue-layout.venue-layout--rec {
+  .venue-layout__quote-icon--top    { justify-content: flex-start; }
+  .venue-layout__quote-icon--bottom { justify-content: flex-end; }
+}

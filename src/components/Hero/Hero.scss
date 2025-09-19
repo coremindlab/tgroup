@@ -8,8 +8,10 @@
   padding-block: 40px;
 
   &__inner {
+    /* Desktop default */
     display: grid;
     grid-template-columns: 1fr 1.2fr;
+    grid-template-areas: "copy media";
     gap: 24px;
     margin-block: auto;
     align-items: start;
@@ -19,6 +21,7 @@
 
   /* LEFT */
   &__copy {
+    grid-area: copy;
     display: grid;
     gap: 16px;
     padding: 0 24px;
@@ -38,6 +41,7 @@
 
   /* RIGHT */
   &__media {
+    grid-area: media;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -81,55 +85,79 @@
   }
 
   /* DOTS */
-  &__dots {
-    position: relative;
-    width: 100%;
-    height: 18px;
-  }
+  &__dots { position: relative; width: 100%; height: 18px; }
   &__dots-rail {
-    position: absolute;
-    left: 0; right: 0;
-    top: 50%;
+    position: absolute; left: 0; right: 0; top: 50%;
     transform: translateY(-50%);
-    height: 2px;
-    background: rgba(0,0,0,.15);
-    border-radius: 2px;
+    height: 2px; background: rgba(0,0,0,.15); border-radius: 2px;
   }
   &__dots-buttons {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    position: relative; display: flex; justify-content: space-between; align-items: center; width: 100%;
   }
   &__dot {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #000;
-    cursor: pointer;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; border: 2px solid #000; cursor: pointer;
     transition: transform .2s ease, background .2s ease;
 
-    &.is-active {
-      background: #000;
-      transform: scale(1.15);
-    }
+    &.is-active { background: #000; transform: scale(1.15); }
   }
 
-  /* RESPONSIVE */
+  /* ─────────────────────────────────────────────────────────────
+     RESPONSIVE BREAKPOINTS
+     - Laptop ≤1199px
+     - Tablet ≤992px
+     - Mobile ≤768px (image first)
+     ──────────────────────────────────────────────────────────── */
+
+  /* Laptop */
   @media (max-width: 1199px) {
-    &__inner { grid-template-columns: 1fr; gap: 18px; }
-    &__slider { height: 48vh; min-height: 300px; }
-    &__title { font-size: 44px; }
+    &__inner {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
+    }
+    &__slider { height: 60vh; min-height: 320px; max-height: 480px; }
+    &__title { font-size: 48px; }
   }
 
+  /* Tablet */
+  @media (max-width: 992px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "media"
+        "copy";
+      gap: 20px;
+    }
+    &__copy { padding: 0 16px; }
+    &__title { font-size: 36px; }
+    &__line { font-size: 18px; }
+    &__slider { height: 45vh; min-height: 260px; max-height: 420px; }
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
     padding-block: 24px;
-    &__copy {
-      gap: 0;
+
+    &__inner {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "media"
+        "copy"; /* ✅ image goes on top */
+      gap: 16px;
     }
-    &__title { font-size: 24px; margin-top: 4rem; }
-    &__line { font-size: 16px; }
-    &__slider { height: 35vh; min-height: 220px; max-height: 360px; }
+
+    &__copy { gap: 8px; padding: 0 12px; }
+    &__title { font-size: 28px; margin-top: 8px; }
+    &__line { font-size: 16px; margin-top: 8px; }
+
+    &__slider {
+      height: 38vh;
+      min-height: 220px;
+      max-height: 360px;
+      border-radius: 10px;
+    }
+
+    /* Optional: smaller dots on tight screens */
+    &__dot { width: 12px; height: 12px; }
   }
 }

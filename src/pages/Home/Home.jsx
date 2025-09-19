@@ -25,13 +25,13 @@ const Home = () => {
       {/* Full-bleed grey band */}
       <section className="home-band">
   <div className="home-band__inner">
-    <div className="home-band__left" data-aos="fade-up">
+    <div className="home-band__left" data-aos="fade-down">
       <p>
         We craft vibrant spaces where music moves you, lights draw you in,
         and every drink and dish turns moments into memories.
       </p>
     </div>
-    <div className="home-band__right" data-aos="fade-left">
+    <div className="home-band__right" data-aos="fade-down" data-aos-delay="200">
       <h2>
         When night falls,<br />
         the city comes alive —<br />

@@ -10,7 +10,7 @@
 
   &__title {
     font-family: var(--font-display);
-    font-weight: 600;                 /* was 'semi-bold' (invalid) */
+    font-weight: 600;
     font-size: clamp(28px, 5vw, 64px);
     padding: 8px 24px;
     border: 2px solid #000;
@@ -68,7 +68,7 @@
     position: relative;
     z-index: 2;
 
-    display: flex;              /* image + text side by side on larger screens */
+    display: flex;
     gap: clamp(12px, 2vw, 20px);
     align-items: flex-start;
   }
@@ -96,7 +96,6 @@
     color: #000;
     line-height: 1.25;
   }
-
   &__content h3 span { font-weight: 700; }
 
   &__content p {
@@ -108,23 +107,28 @@
   }
 
   &__btn {
+    box-sizing: border-box;
     font-family: var(--font-anuphan);
-    font-size: 16px;
-    padding: 8px 16px;
+    font-weight: 400;
+    font-size: clamp(14px, 1.2vw, 16px);         /* scales down smoothly */
+    line-height: 1;
+    padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2vw, 20px);
     border: .4px solid #000;
     border-radius: 999px;
     background: none;
     color: #000;
     cursor: pointer;
-    width: min(240px, 30%);         /* nicer cap on desktop */
-    text-align: center;
-    display: inline-block;
-    transition: all .3s ease;
 
-    &:hover {
-      background: #000;
-      color: #fff;
-      transform: translateY(-2px);
+    /* Desktop/tablet default: flexible but capped */
+    display: inline-block;
+    inline-size: clamp(180px, 30%, 280px);       /* replaces width:min(240px,30%) */
+    max-width: 100%;
+    text-align: center;
+
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+
+    @media (hover:hover) {
+      &:hover { background: #000; color: #fff; transform: translateY(-2px); }
     }
     &:active { transform: translateY(0); }
   }
@@ -147,7 +151,7 @@
   /* Opposite-side year (light grey) + AOS scroll-in */
   .venue-grid__year-opposite {
     opacity: 0;
-    transform: translateY(-30%);
+    transform: translateY(-50%);
     transition: opacity .6s ease, transform .6s ease;
   }
   .venue-grid__year-opposite[data-aos].aos-animate {
@@ -157,8 +161,8 @@
 
   &__year-opposite {
     position: absolute;
-    top: 30%;
-    transform: translateY(-30%);
+    top: 50%;
+    transform: translateY(-50%);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(72px, 8vw, 120px);
@@ -175,59 +179,117 @@
   /* Large tablets / small laptops */
   @media (max-width: 1199px) {
     &__title { font-size: clamp(28px, 5vw, 48px); }
+    &__btn {
+      inline-size: clamp(180px, 40%, 260px);
+      font-size: clamp(14px, 1.4vw, 16px);
+      padding: clamp(8px, 1.2vw, 12px) clamp(14px, 2.2vw, 20px);
+    }
   }
 
   /* Tablets */
   @media (max-width: 992px) {
     &__item.left  { padding-right: 28px; }
     &__item.right { padding-left: 28px; }
-
+    &__btn {
+      display: block;                         /* easier centering */
+      inline-size: clamp(200px, 60%, 340px);  /* wider on tablet */
+      margin-inline: auto;                    /* center the button */
+      font-size: clamp(14px, 1.8vw, 16px);
+    }
     &__img {
       flex-basis: 35%;
       max-width: 35%;
     }
   }
 
-  /* Phones */
-  @media (max-width: 768px) {
-    &__line {
-      left: 24px;
-      transform: none;
-    }
-
-    &__item.left,
-    &__item.right {
-      width: 100%;
-      margin: 0;
-      padding-left: 48px;      /* room for the center line & dot */
-      padding-right: 0;
-    }
-
-    &__card {
-      flex-direction: column;  /* stack image above text */
-      align-items: stretch;
-    }
-    &__img {
-      max-width: 100%;
-      width: 100%;
-      height: clamp(160px, 32vw, 240px);  /* keep a nice thumb height */
-      object-fit: cover;
-    }
-
-    &__btn {
-      width: 100%;             /* full-width CTA on mobile */
-      margin-top: 8px;
-    }
-
-    &__item::before { left: 16px; right: auto; }
-    &__year-opposite { display: none; } /* hide the huge year */
+  /* Phones (center line + centered smaller card + year below + no dots) */
+@media (max-width: 768px) {
+  /* Make the center line start/stop within the items area */
+  &__timeline {
+    padding-block: 24px;             /* creates start/end for the line */
+  }
+  &__line {
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    top: 34px;                        /* start at first item area */
+    bottom: 34px;                     /* end at last item area */
   }
 
-  /* Small phones */
-  @media (max-width: 480px) {
-    &__kicker { font-size: 13px; }
-    &__content h3 { font-size: 18px; }
-    &__content p  { font-size: 13px; }
-    &__item { gap: 8px; }
+  &__btn {
+      display: block;
+      inline-size: 100%;                      /* full-width CTA */
+      margin: 8px auto 0;
+      font-size: 15px;                        /* readable on phones */
+      padding: 12px 16px;
+      border-width: 1px;                      /* slightly bolder edge on small screens */
+    }
+  /* Full-width item row; center text */
+  &__item.left,
+  &__item.right {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
   }
+
+  /* Hide the connector dots on mobile */
+  &__item::before { display: none; }
+
+  /* Smaller, centered card */
+  &__card {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: min(480px, 92vw);      /* smaller than before */
+    margin: 12px auto;                /* centered */
+    padding: clamp(10px, 3.5vw, 16px);
+  }
+
+  /* Image full-width thumbnail */
+  &__img {
+    max-width: 100%;
+    width: 100%;
+    height: clamp(150px, 34vw, 200px);
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Button full-width */
+&__btn {
+      display: block;
+      inline-size: 100%;                      /* full-width CTA */
+      margin: 8px auto 0;
+      font-size: 15px;                        /* readable on phones */
+      padding: 12px 16px;
+      border-width: 1px;                      /* slightly bolder edge on small screens */
+    }
+
+  /* Year: show BELOW the card, centered, smaller */
+  &__year-opposite {
+    position: static;                 /* take it out of absolute flow */
+    display: none;
+    transform: none;
+    left: auto; right: auto; top: auto;
+    margin-top: 8px;
+    font-size: clamp(28px, 10vw, 48px);
+    color: rgba(0,0,0,.20);           /* a bit stronger since it's below */
+    text-align: center;
+    z-index: 0;
+  }
+}
+
+/* Small phones tweaks */
+@media (max-width: 480px) {
+  &__timeline { padding-block: 20px; }
+  &__kicker { font-size: 13px; }
+  &__content h3 { font-size: 18px; }
+  &__content p  { font-size: 13px; }
+  &__card { max-width: min(440px, 94vw); }
+      &__btn {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+}
+
 }

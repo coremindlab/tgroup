@@ -1,22 +1,23 @@
-// Navbar.jsx
+// Navbar.jsx (only diffs that matter)
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
+import ComingSoonPopup from "../ComingSoonPopup/ComingSoonPopup"; // ⬅️ add this
 import "./Navbar.scss";
 
 const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim"];
 
 const Navbar = () => {
-  const { t, language, setLanguage } = useLanguage();
+  const { t } = useLanguage();
   const [showVenueDropdown, setShowVenueDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [ximOpen, setXimOpen] = useState(false);           // ⬅️ new
   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const first = pathname.split("/")[1] || "";
-const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "home";
-
+  const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "home";
 
   const isHome = pathname === "/";
   const isContact = pathname.startsWith("/contact");
@@ -24,12 +25,8 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
     (s) => pathname === `/${s}` || pathname.startsWith(`/events/${s}`)
   );
 
-  // Close Venues menu on route change
-  useEffect(() => {
-    setShowVenueDropdown(false);
-  }, [pathname]);
+  useEffect(() => setShowVenueDropdown(false), [pathname]);
 
-  // Close when clicking outside
   useEffect(() => {
     function onDocClick(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -40,8 +37,14 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
     return () => document.removeEventListener("mousedown", onDocClick);
   }, [showVenueDropdown]);
 
-  const goToVenue = (path) => {
-    navigate(path);
+  const goToVenue = (slug) => {
+    if (slug === "xim") {        // ⬅️ intercept XIM
+      setXimOpen(true);
+      setMenuOpen(false);
+      setShowVenueDropdown(false);
+      return;
+    }
+    navigate(`/${slug}`);
     setShowVenueDropdown(false);
     setMenuOpen(false);
   };
@@ -52,19 +55,11 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
         <Link to="/" className="navbar__logo">T-HOSPITALITY</Link>
 
         <div className={`navbar__links ${menuOpen ? "active" : ""}`}>
-          <Link
-            to="/"
-            className={`navlink ${isHome ? "is-active" : ""}`}
-            onClick={() => setMenuOpen(false)}
-          >
-            {t("nav.home")}
+          <Link to="/" className={`navlink ${isHome ? "is-active" : ""}`} onClick={() => setMenuOpen(false)}>
+            <span className="navbar__label">{t("nav.home")}</span>
           </Link>
 
-          {/* Venues + / − click-to-toggle */}
-          <div
-            ref={dropdownRef}
-            className={`navbar__dropdown ${isVenue ? "is-active" : ""}`}
-          >
+          <div ref={dropdownRef} className={`navbar__dropdown ${isVenue ? "is-active" : ""}`}>
             <button
               type="button"
               className="navbar__dropdown-trigger"
@@ -72,7 +67,8 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
               aria-expanded={showVenueDropdown}
               onClick={() => setShowVenueDropdown((v) => !v)}
             >
-              {t("nav.venue")} {showVenueDropdown ? "−" : "+"}
+              <span className="navbar__label">{t("nav.venue")}</span>
+              <span aria-hidden>{showVenueDropdown ? "−" : "+"}</span>
             </button>
 
             {showVenueDropdown && (
@@ -82,7 +78,7 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
                     key={slug}
                     className="dropdown-item"
                     role="menuitem"
-                    onClick={() => goToVenue(`/${slug}`)}
+                    onClick={() => goToVenue(slug)}   // ⬅️ XIM triggers modal
                   >
                     {slug.toUpperCase()}
                   </div>
@@ -96,17 +92,15 @@ const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "h
             className={`navlink ${isContact ? "is-active" : ""}`}
             onClick={() => setMenuOpen(false)}
           >
-            {t("nav.contact")}
+            <span className="navbar__label">{t("nav.contact")}</span>
           </Link>
-
-          {/* <div className="navbar__lang">
-            <button onClick={() => setLanguage("en")} className={language === "en" ? "active" : ""}>EN</button>
-            <button onClick={() => setLanguage("th")} className={language === "th" ? "active" : ""}>TH</button>
-          </div> */}
         </div>
 
         <button className="navbar__toggle" onClick={() => setMenuOpen((p) => !p)}>☰</button>
       </div>
+
+      {/* One tiny popup instance here in Navbar */}
+      <ComingSoonPopup open={ximOpen} onClose={() => setXimOpen(false)} title="Coming Soon" />
     </nav>
   );
 };

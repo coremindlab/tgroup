@@ -6,7 +6,6 @@
 .navbar--xim   { --accent: #d9d9d9; }
 .navbar--home  { --accent: #fff; } /* neutral */
 
-/* your existing styles below, with small tweaks */
 .navbar {
   background-color: #000;
   color: #fff;
@@ -17,26 +16,17 @@
   z-index: 999;
 
   &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1600px;
-    margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1600px; margin: 0 auto;
   }
 
   &__logo {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 24px;
-    text-decoration: none;
-    color: #fff;
+    font-family: var(--font-display); font-weight: 600; font-size: 24px;
+    text-decoration: none; color: #fff;
   }
 
   &__links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    text-transform: uppercase;
+    display: flex; gap: 2rem; align-items: center; text-transform: uppercase;
 
     .navlink {
       font-family: var(--font-grotesk);
@@ -49,8 +39,8 @@
       border: 1px solid transparent;
 
       &.is-active {
-        border-color: #fff;     /* HOME/CONTACT active = white border */
-        font-weight: 500;
+        border-color: #fff;      /* desktop/tablet pill */
+        font-weight: 700;
       }
     }
 
@@ -70,9 +60,10 @@
         font-family: var(--font-grotesk);
         font-size: 14px;
         font-weight: 400;
+        display: inline-flex; align-items: center; gap: 8px;
       }
 
-      /* ✅ On venue pages, add .is-active to the container to accent the trigger */
+      /* On venue pages, accent the trigger (desktop/tablet) */
       &.is-active .navbar__dropdown-trigger {
         border-color: var(--accent);
         color: var(--accent);
@@ -102,7 +93,6 @@
           &:last-child { border-bottom: 0; }
           &:hover { background-color: #222; }
 
-          /* ✅ active venue item shows accent text */
           &.is-active {
             color: var(--accent);
             font-weight: 600;
@@ -111,29 +101,19 @@
       }
     }
 
-    /* Language switcher (unchanged) */
     .navbar__lang {
-      display: flex;
-      gap: 0.5rem;
-      button{
-        font-family: var(--font-grotesk);
-        font-weight: 400;
-        font-size: 14px;
-        background: none;
-        border: 2px solid transparent;
-        border-radius: 6px;
-        padding: 0.3rem 0.6rem;
-        color: #ccc;
-        cursor: pointer;
+      display: flex; gap: 0.5rem;
+      button {
+        font-family: var(--font-grotesk); font-weight: 400; font-size: 14px;
+        background: none; border: 2px solid transparent; border-radius: 6px;
+        padding: 0.3rem 0.6rem; color: #ccc; cursor: pointer;
 
         &.active { color: #fff; border-color: #fff; font-weight: 500; }
       }
     }
   }
 
-  &__toggle {
-    display: none; background: none; color: #fff; font-size: 1.8rem; cursor: pointer; border: none;
-  }
+  &__toggle { display: none; background: none; color: #fff; font-size: 1.8rem; cursor: pointer; border: none; }
 
   @media (max-width: 1199px) {
     &__logo { font-size: 20px; }
@@ -143,30 +123,139 @@
       .navbar__dropdown .dropdown-menu { min-width: 180px; }
     }
   }
+}
 
-  @media (max-width: 768px) {
-    position: fixed; top: 0; left: 0; right: 0; padding: 0.75rem 1rem;
-    &__logo { font-size: 18px; }
+/* ===========================
+   MOBILE (text-only bottom border on active)
+   =========================== */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 0.75rem 1rem;
+
+    &__logo   { font-size: 18px; }
     &__toggle { display: block; }
 
     &__links {
-      position: absolute; top: 100%; left: 0; right: 0;
-      background-color: #111; flex-direction: column; align-items: flex-start;
-      padding: 1rem 1.25rem; display: none;
+      --padX: 1.25rem;
+      --padY: 0.8rem;
+      --divider: rgba(255,255,255,.06);
+
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background-color: #111;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      display: none;
+      border-top: 1px solid var(--divider);
 
       &.active { display: flex; }
 
-      .navlink, .navbar__dropdown, .navbar__lang button {
-        font-size: 14px; width: 100%; padding: 0.6rem 0.8rem;
-      }
-
-      .navbar__dropdown {
+      /* HOME / CONTACT rows — full width row; underline only on label when active */
+      .navlink {
         width: 100%;
-        .dropdown-menu {
-          position: static; box-shadow: none; background: transparent; padding: 0; min-width: 0;
-          .dropdown-item { padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        font-size: 14px;
+        padding: var(--padY) var(--padX);
+        border: 0;               /* kill pill border on mobile */
+        border-radius: 0;
+        text-decoration: none;
+
+        .navbar__label {
+          display: inline-block;
+          border-bottom: 2px solid transparent;  /* hidden by default */
+          line-height: 1.2;
+        }
+
+        &.is-active {
+          border: 0 !important;                  /* ensure no pill border returns */
+        }
+        &.is-active .navbar__label {
+          border-bottom-color: #fff;             /* text-only underline */
+          font-weight: 700;
         }
       }
+
+      /* VENUES dropdown — same text-only underline on label; no pill border */
+      .navbar__dropdown {
+        width: 100%;
+
+        .navbar__dropdown-trigger {
+          all: unset;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: .75rem;
+
+          width: 100%;
+          padding: var(--padY) var(--padX);
+          font: inherit;
+          font-size: 14px;
+          line-height: 1.25;
+          color: #fff;
+          cursor: pointer;
+
+          /* only keep the row divider, not a pill border */
+          border: 0;
+          border-bottom: 1px solid var(--divider);
+
+          .navbar__label {
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+            line-height: 1.2;
+          }
+        }
+
+        /* Container has .is-active on venue routes */
+        &.is-active .navbar__dropdown-trigger {
+          border: 0 !important;                  /* remove desktop accent/pill border */
+        }
+        &.is-active .navbar__dropdown-trigger .navbar__label {
+          border-bottom-color: var(--accent);    /* text-only underline */
+          color: var(--accent);
+          font-weight: 700;
+        }
+
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+          background: transparent;
+          padding: 0; margin: 0; min-width: 0; border: 0;
+
+          .dropdown-item {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            padding: var(--padY) calc(var(--padX) * 0.9)
+                     var(--padY) calc(var(--padX) + 8px);
+            border-bottom: 1px solid var(--divider);
+            position: relative;
+          }
+        }
+      }
+
+      /* Language buttons row */
+      .navbar__lang button {
+        width: 100%;
+        padding: var(--padY) var(--padX);
+        font-size: 14px;
+        text-align: left;
+        border-bottom: 1px solid var(--divider);
+        border-radius: 0;
+      }
+    }
+
+    /* Tap targets */
+    .navlink,
+    .navbar__dropdown .navbar__dropdown-trigger,
+    .navbar__lang button,
+    .dropdown-item {
+      min-height: 44px;
     }
   }
 }

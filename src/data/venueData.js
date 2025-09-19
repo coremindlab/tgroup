@@ -2,7 +2,8 @@
 import slide1 from "../assets/home/slide1.jpg";
 import slide2 from "../assets/home/slide2.jpg";
 import slide3 from "../assets/home/slide3.jpg";
-import slide4 from "../assets/home/slide4.jpg";
+// import slide4 from "../assets/home/slide4.jpg";
+import slide4 from "../assets/home/slide4.png";
 import thay_1 from "../assets/thay/thay_1.jpg";
 import thay_2 from "../assets/thay/thay_2.jpg";
 import thay_3 from "../assets/thay/thay_3.jpg";
@@ -44,7 +45,7 @@ export const venueData = {
       [],                                // paragraph 2 (none)
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/your-thay-menu", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1c2fQdMh5ksObkT5zKT0Zyrz-GN8w8cGP/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/thay/highlight" },
     ],
     gallery: [thay_1, thay_2, thay_3, thay_4],
@@ -79,7 +80,7 @@ export const venueData = {
       [], [], [], // rest none (optional)
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/your-tderm-menu", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/136Us-TGTSPrj2WyPfRsJWn4S7b7VWhsR/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/tderm/highlight" },
     ],
     gallery: [tderm_1, tderm_2, tderm_3, tderm_4],
@@ -106,7 +107,7 @@ export const venueData = {
       ["GOT"],                  // para 1
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/your-got-menu", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1Ik-5Mut9Amy8vY-ychLhsTIw-xJRfnvL/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/got/highlight" },
     ],
     gallery: [got_1, got_2, got_3, got_4],
@@ -135,7 +136,7 @@ export const venueData = {
       ["Metronome Details", "REC"],       // para 1
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/your-rec-menu", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1TmDyw_KAAlZF-VI5-cwvxGW71Uj1Vyrw/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/rec/highlight" },
     ],
     gallery: [rec_1, rec_2, rec_3, rec_4],

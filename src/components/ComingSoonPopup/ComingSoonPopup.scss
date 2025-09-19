@@ -1,0 +1,51 @@
+.cs-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+  z-index: 9998;
+  border: 0;
+  padding: 0;
+}
+
+.cs-portal {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cs-dialog {
+  pointer-events: auto;
+  width: min(90vw, 420px);
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 16px;
+  padding: 20px 20px 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  text-align: center;
+  font-family: var(--font-grotesk, system-ui);
+}
+
+.cs-title {
+  margin: 0;
+  font-family: var(--font-display, system-ui);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.cs-text {
+  margin: 10px 0 18px;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.cs-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
