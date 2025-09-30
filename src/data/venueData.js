@@ -229,7 +229,7 @@ export const venueData = {
   },
 
   got: {
-    year: "2025",
+    year: "2024",
     title: "GOT",
     accent: "got",
     heroImage: slide3,

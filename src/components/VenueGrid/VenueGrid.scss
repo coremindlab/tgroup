@@ -4,6 +4,7 @@
   &__kicker {
     font-family: var(--font-grotesk);
     font-size: clamp(14px, 1.5vw, 20px);
+    letter-spacing: 6px;
     margin-bottom: 8px;
     color: #666;
   }
@@ -12,6 +13,7 @@
     font-family: var(--font-display);
     font-weight: 600;
     font-size: clamp(28px, 5vw, 64px);
+    word-spacing: 8px;
     padding: 8px 24px;
     border: 2px solid #000;
     color: #000;
@@ -25,17 +27,45 @@
     position: relative;
     display: grid;
     gap: clamp(40px, 8vw, 120px);
+    margin-top: 2rem;
   }
 
-  /* Center vertical line */
-  &__line {
+&__line {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  top: -80px;      /* extend 40px above */
+  bottom: -80px;   /* extend 40px below */
+  width: 2px;
+  background: #000;
+  transform: translateX(-50%);
+  z-index: 0;
+
+  /* top transparent dot */
+  &::before,
+  &::after {
+    content: "";
     position: absolute;
-    inset: 0 auto 0 50%;
-    width: 2px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
     background: #000;
     transform: translateX(-50%);
-    z-index: 0;
+
   }
+
+  &::before {
+    top: -16px;
+    background: transparent;
+    border: 2px solid #000;
+  }
+
+  &::after {
+    bottom: -16px;
+    background: transparent;
+    border: 2px solid #000;  }
+}
+
 
   /* Each item occupies a side of the line (desktop) */
   &__item {
@@ -44,14 +74,14 @@
 
     &.left {
       width: 50%;
-      padding-right: 40px;
+      padding-right: 1px;
       margin-right: 50%;
       text-align: left;
-    }
+      }
 
     &.right {
       width: 50%;
-      padding-left: 40px;
+      padding-left: 1px ;
       margin-left: 50%;
       text-align: left;
     }
@@ -62,20 +92,18 @@
     background: #ededed;
     border-radius: 8px;
     width: 100%;
-    padding: clamp(14px, 2vw, 20px);
+ min-height: clamp(220px, 28vw, 350px);    padding: clamp(14px, 2vw, 20px);
     margin: 20px 0;
     color: #000;
     position: relative;
     z-index: 2;
-
     display: flex;
     gap: clamp(12px, 2vw, 20px);
-    align-items: flex-start;
+    align-items: center;
   }
 
   &__img {
-    flex: 0 0 30%;
-    max-width: 30%;
+flex: 0 0 clamp(28%, 30%, 34%);    max-width: 30%;
     border-radius: 6px;
     object-fit: cover;
     height: auto;
@@ -86,12 +114,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
 
   &__content h3 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(18px, 1.6vw, 22px);
+    font-size: clamp(18px, 1.6vw, 28px);
     margin: 0 0 10px;
     color: #000;
     line-height: 1.25;
@@ -104,6 +133,7 @@
     margin-bottom: 12px;
     line-height: 1.6;
     color: #000;
+    width: 80%;
   }
 
   &__btn {
@@ -143,42 +173,49 @@
     height: 14px;
     border-radius: 50%;
     background: #000;
-    z-index: 2;
+    z-index: 3;
   }
   &__item.left::before  { right: -7px; }
   &__item.right::before { left: -7px; }
 
-  /* Opposite-side year (light grey) + AOS scroll-in */
-  .venue-grid__year-opposite {
-    opacity: 0;
-    transform: translateY(-50%);
-    transition: opacity .6s ease, transform .6s ease;
-  }
-  .venue-grid__year-opposite[data-aos].aos-animate {
-    opacity: 1;
-    transform: translateY(-50%);
-  }
+  /* Year base styles */
+&__year-opposite {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(72px, 8vw, 120px);
+  color: #e0e0e0;
+  z-index: 0;          /* behind timeline dots, but not under the card */
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
 
-  &__year-opposite {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(72px, 8vw, 120px);
-    color: #e0e0e0;
-    z-index: 0;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  &__item.left  .venue-grid__year-opposite { left:  calc(100% + 40px); }
-  &__item.right .venue-grid__year-opposite { right: calc(100% + 40px); }
+&__year-opposite[data-aos].aos-animate {
+  opacity: 1;
+}
+
+/* For left items: year sits to the RIGHT side (opposite card) */
+&__item.left  .venue-grid__year-opposite {
+  right: -75%; /* push it out into the right half */
+  top: 30%; /* push it out into the right half */
+}
+
+/* For right items: year sits to the LEFT side (opposite card) */
+&__item.right .venue-grid__year-opposite {
+  left: -75%;  /* push it out into the left half */
+  top: 30%;
+}
+
 
   /* ============= Breakpoints ============= */
 
   /* Large tablets / small laptops */
   @media (max-width: 1199px) {
-    &__title { font-size: clamp(28px, 5vw, 48px); }
+    &__title { font-size: clamp(20px, 5vw, 48px); }
     &__btn {
       inline-size: clamp(180px, 40%, 260px);
       font-size: clamp(14px, 1.4vw, 16px);
@@ -212,8 +249,8 @@
     left: 50%;
     transform: translateX(-50%);
     right: auto;
-    top: 34px;                        /* start at first item area */
-    bottom: 34px;                     /* end at last item area */
+    top: 0;                        /* start at first item area */
+    bottom: 0;                     /* end at last item area */
   }
 
   &__btn {
@@ -284,7 +321,7 @@
   &__timeline { padding-block: 20px; }
   &__kicker { font-size: 13px; }
   &__content h3 { font-size: 18px; }
-  &__content p  { font-size: 13px; }
+  &__content p  { font-size: 13px; width: 100%;}
   &__card { max-width: min(440px, 94vw); }
       &__btn {
       font-size: 14px;

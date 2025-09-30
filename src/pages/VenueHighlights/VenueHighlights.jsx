@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { venueData } from "../../data/venueData";
 import "./VenueHighlights.scss";
 
+
 /* venue logos */
 import logoThay  from "../../assets/logos/thay_logo.png";
 import logoTderm from "../../assets/logos/tderm_logo.png";
@@ -100,7 +101,7 @@ export default function VenueHighlight() {
     <section className={`eh section eh--${slug}`}>
       <div className="container">
         <header className="eh__header">
-          <Link to={`/${slug}`} className="eh__back">← Back to {venue.title}</Link>
+          {/* <Link to={`/${slug}`} className="eh__back">← Back to {venue.title}</Link> */}
           {logoSrc ? <img className="eh__logo" src={logoSrc} alt={`${venue.title} logo`} /> : null}
           <div className="eh__subhead"><span className="eh__kicker">Event Highlights</span></div>
         </header>
@@ -154,6 +155,12 @@ export default function VenueHighlight() {
             );
           })
         )}
+        {/* Footer back link (always shown at the end) */}
+        <div className="eh__footer">
+          <Link to={`/${slug}`} className="eh__back" aria-label={`Back to ${venue.title}`}>
+            ← Back to {venue.title}
+          </Link>
+        </div>
       </div>
     </section>
   );

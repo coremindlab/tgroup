@@ -1,5 +1,7 @@
+// src/components/Partner/Partner.jsx
 import React from "react";
 import "./Partner.scss";
+
 import partner1 from "../../assets/partners/partner1.png";
 import partner2 from "../../assets/partners/partner2.jpg";
 import partner3 from "../../assets/partners/partner3.png";
@@ -17,27 +19,49 @@ const logos = [
   { id: 5, src: partner5, alt: "Partner 5" },
   { id: 6, src: partner6, alt: "Partner 6" },
   { id: 7, src: partner7, alt: "Partner 7" },
-  { id: 7, src: partner8, alt: "Partner 8" },
+  { id: 8, src: partner8, alt: "Partner 8" },
 ];
 
 const Partner = () => {
+  const loopLogos = logos.concat(logos); // for marquee
+
   return (
     <section className="partner section">
       <div className="container">
         <h2 className="partner__title">Partners</h2>
 
-        <div className="partner__grid">
-          <div className="partner__row">
-            {logos.slice(0, 3).map((logo) => (
-              <div key={logo.id} className="partner__item">
+        {/* Desktop/Tablet: two rows */}
+        <div className="partner__grid partner__grid--static">
+          <div className="partner__row partner__row--top">
+            {logos.slice(0, 3).map((logo, i) => (
+              <div
+                key={logo.id}
+                className={`partner__item ${
+                  i === 0 ? "partner__item--wide" : ""
+                }`}
+              >
                 <img src={logo.src} alt={logo.alt} />
               </div>
             ))}
           </div>
 
-          <div className="partner__row">
+          <div className="partner__row partner__row--bottom">
             {logos.slice(3).map((logo) => (
               <div key={logo.id} className="partner__item">
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: single marquee */}
+        <div className="partner__slider">
+          <div className="partner__track">
+            {loopLogos.map((logo, i) => (
+              <div
+                key={`slide-${i}`}
+                className="partner__item partner__item--slide"
+              >
                 <img src={logo.src} alt={logo.alt} />
               </div>
             ))}

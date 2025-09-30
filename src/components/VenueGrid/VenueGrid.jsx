@@ -74,19 +74,19 @@ export default function VenueGrid() {
             return (
               <div key={v.slug} className={`venue-grid__item ${side}`}>
                 {/* Opposite-side big year */}
-                <span
-                  className="venue-grid__year-opposite"
-                  aria-hidden
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                  data-aos-offset="200"
-                >
-                  {v.year}
-                </span>
+                  <span
+    className="venue-grid__year-opposite"
+    aria-hidden
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-offset="160"
+  >
+    {v.year}
+  </span>
 
                 {/* Card */}
                 <div className="venue-grid__card">
-                  <img src={v.img} alt={v.title} className="venue-grid__img" />
+                  <img src={v.img} alt={v.title} className="venue-grid__img" draggable="false"/>
                   <div className="venue-grid__content">
                     <h3>
                       {v.year} <br />

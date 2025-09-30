@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import "./VenueLayout.scss";
 import iconHappy from "../../assets/icons/thayicon1.png";
 import iconHeart from "../../assets/icons/thayicon2.png";
 import iconSad   from "../../assets/icons/thayicon3.png";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 /** Escape a string for use in RegExp */
 function escapeRegExp(str) {
@@ -39,6 +42,10 @@ export default function VenueLayout({
     }
   });
 
+    useEffect(() => {
+      AOS.init({ duration: 800, once: true });
+    }, []);
+
   return (
     <div
       className={`venue-layout venue-layout--${accent || "default"} ${classNameExtra}`}
@@ -63,22 +70,26 @@ export default function VenueLayout({
           {/* Inline fontSize ensures var(--quote-size) wins absolutely */}
           <blockquote
             className="venue-layout__blockquote"
-            style={{ fontSize: "var(--quote-size)" }}
+            style={{ fontSize: "var(--quote-size)" 
+            }}
+            data-aos="fade-down"
+            data-aos-duration="3000"
           >
             {quotes[0]}
           </blockquote>
+                    <div
+            className="venue-layout__quote-icon venue-layout__quote-icon--top"
+            aria-hidden="true"
+          >
+          <FormatQuoteIcon />
+          </div>
         </section>
       )}
 
       {/* PARAGRAPHS + INSERTS */}
       {paragraphs.length > 0 && (
         <section className="venue-layout__paragraph">
-          <div
-            className="venue-layout__quote-icon venue-layout__quote-icon--top"
-            aria-hidden="true"
-          >
-            <FormatQuoteIcon />
-          </div>
+
 
           {paragraphs.map((p, i) => (
             <React.Fragment key={`para-${i}`}>
@@ -122,25 +133,25 @@ export default function VenueLayout({
             </React.Fragment>
           ))}
 
-          <div
-            className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
-            aria-hidden="true"
-          >
-            <FormatQuoteIcon />
-          </div>
         </section>
       )}
 
       {/* CTA QUOTE + BUTTONS */}
       {quotes[1] && (
         <section className="venue-layout__quote venue-layout__quote--cta">
+          <div
+            className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
+            aria-hidden="true"
+          >
+            <FormatQuoteIcon />
+          </div>
           {accent === "tderm" && (
             <div className="venue-layout__hline venue-layout__hline--center" />
           )}
           <blockquote
-            className="venue-layout__blockquote"
+            className="venue-layout__blockquote venue-layout__blockquote--cta"
             style={{ fontSize: "var(--quote-size)" }}
-          >
+          > 
             {quotes[1]}
           </blockquote>
 

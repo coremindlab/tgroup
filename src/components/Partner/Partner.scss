@@ -1,69 +1,144 @@
 .partner {
   text-align: center;
-  padding-bottom: 100px; /* ⬅ extra bottom space for whole section */
+  padding-bottom: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
 
   &__title {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 64px);
+    letter-spacing: 4px;
     padding: 8px 24px;
     border: 2px solid #000;
     color: #000;
     border-radius: 50px;
     display: inline-block;
-    margin-bottom: 80px; /* ⬅ bigger margin under title */
+    margin-bottom: 80px;
   }
 
-  &__grid {
+  /* Desktop/Tablet static grid */
+  &__grid--static {
     display: flex;
     flex-direction: column;
-    gap: 60px; /* ⬅ more gap between the two rows */
+    gap: 60px;
     align-items: center;
+    width: 100%;
   }
 
   &__row {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: center; /* center instead of space-evenly */
     gap: 40px;
     flex-wrap: wrap;
   }
 
   &__item {
-    flex: 0 1 160px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 1 160px;
 
     img {
+      display: block;
       max-width: 100%;
-      max-height: 240px;
       object-fit: contain;
+      max-height: 140px;
+    }
+  }
+
+  /* Top row larger */
+  &__row--top .partner__item img {
+    max-height: 200px;
+  }
+
+  /* First item in top row wider */
+  &__item--wide {
+    flex: 0 1 350px; /* give it more width */
+  }
+
+  /* Bottom row normal */
+  &__row--bottom .partner__item img {
+    max-height: 140px;
+  }
+
+  /* Mobile marquee */
+  &__slider {
+    display: none;
+    width: 100%;
+    overflow: hidden;
+  }
+  &__track {
+    display: inline-flex;
+    width: max-content;
+    gap: 44px;
+    will-change: transform;
+    animation: partner-scroll-left 22s linear infinite;
+  }
+  &__item--slide {
+    flex: 0 0 auto;
+    width: 160px;
+    img {
+      max-height: 120px;
+    }
+  }
+
+  @keyframes partner-scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    &__row--top .partner__item img {
+      max-height: 160px;
+    }
+    &__row--bottom .partner__item img {
+      max-height: 120px;
+    }
+    &__item--wide {
+      flex: 0 1 200px;
     }
   }
 
   @media (max-width: 768px) {
-    padding-bottom: 60px;
-
-    &__title {
-      font-size: 28px;
-      margin-bottom: 40px; /* smaller on mobile */
+    &__grid--static {
+      display: none;
+    }
+    &__slider {
+      display: block;
     }
 
-    &__grid {
-      gap: 40px;
+    &__item--slide {
+      width: 180px;
     }
-
-    &__row {
-      gap: 20px;
+    &__item--slide img {
+      max-height: 140px;
     }
+  }
 
-    &__item {
-      flex: 0 1 120px;
+  @media (max-width: 480px) {
+    &__item--slide {
+      width: 160px;
+    }
+    &__item--slide img {
+      max-height: 120px;
+    }
+    &__track {
+      animation-duration: 26s;
+      gap: 12px;
+    }
+  }
 
-      img {
-        max-height: 100px;
-      }
+  @media (prefers-reduced-motion: reduce) {
+    &__track {
+      animation: none;
     }
   }
 }

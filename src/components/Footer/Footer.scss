@@ -6,7 +6,7 @@
 .footer--got   { --accent: #f2da76; }
 .footer--rec   { --accent: #f4eacf; }
 .footer--xim   { --accent: #d9d9d9; }
-.footer--home  { --accent: rgba(255,255,255,0.35); }
+.footer--home  { --accent: rgb(255, 255, 255); }
 
 .footer {
   background: #000;
@@ -17,7 +17,7 @@
     margin: 0 auto;
     padding: 40px 2rem 28px;
     display: grid;
-    grid-template-columns: 1.2fr 1fr 0.8fr;
+    grid-template-columns: 1.6fr 0.7fr 0.7fr;
     gap: 24px;
     align-items: start;
   }
@@ -26,25 +26,34 @@
   .footer__left { width: 80%; }
   &__title {
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 400;
     font-size: clamp(22px, 2.2vw, 32px);
     margin: 0 0 6px 0;
-    letter-spacing: .5px;
+    letter-spacing: 2px;
     color: var(--accent);
   }
   &__subtitle {
     font-family: var(--font-grotesk);
-    font-weight: 400;
+    font-weight: 300;
+    letter-spacing: 4px;
     font-size: clamp(14px, 1.2vw, 18px);
     color: #e5e5e5;
     margin: 0 0 22px 0;
   }
   &__row {
-    font-family: var(--font-anuphan);
+    font-family: var(--font-grotesk);
     font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 300;
     margin: 14px 0;
+    width: 80%;
   }
-  &__label { color: #fff; opacity: .9; }
+  &__label { 
+    color: #fff; 
+    opacity: .9; 
+    font-size: clamp(14px, 1.2vw, 18px);
+    letter-spacing: 2px;
+    word-spacing: 4px;
+  }
 
   /* MIDDLE */
   &__middle {
@@ -56,7 +65,7 @@
   }
   &__social {
     font-family: var(--font-grotesk);
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: .12em;
     font-size: 14px;
     text-decoration: none;
@@ -76,10 +85,12 @@
     &__link,
     &__trigger {
       font-family: var(--font-grotesk);
+      font-weight: 400;
+      letter-spacing: 2px;
       font-size: 14px;
       color: #fff;
       text-decoration: none;
-      padding: .6rem 1rem;                 /* bigger touch target */
+      padding: .6rem 1rem; /* bigger touch target */
       border-radius: 999px;
       border: 2px solid transparent;
       background: transparent;
@@ -118,21 +129,26 @@
       display: grid;
       gap: 10px;
       padding: 10px 0 0;
-      width: 100%;
       max-width: 260px;
+      justify-items: end;
     }
 
     &__item {
+      display: inline-block; /* shrink to text */
       font-family: var(--font-grotesk);
       font-size: 14px;
       color: #fff;
       text-decoration: none;
       padding: .4rem .2rem;
-      text-align: right;
+      border-bottom: .6px dotted grey;
       transition: color .2s ease, opacity .2s ease;
 
       &:hover { opacity: .9; }
       &.is-active { color: var(--accent); font-weight: 600; }
+
+      &:last-child {
+        border-bottom: none; /* no border on last */
+      }
     }
   }
 
@@ -143,8 +159,10 @@
     padding: 0 2rem 20px;
   }
   &__hr {
+    border: none;
     height: 2px;
-    background: var(--accent);
+    margin-bottom: 1rem;
+    background: var(--accent); /* defaults to accent mapping */
     opacity: .8;
   }
   &__copyright {
@@ -163,7 +181,7 @@
   /* Large laptops / small desktops */
   @media (max-width: 1280px) {
     &__container {
-      grid-template-columns: 1fr 1fr .9fr; /* ease the left width on smaller screens */
+      grid-template-columns: 1fr 1fr .9fr;
       gap: 20px;
       padding: 36px 1.5rem 24px;
     }
@@ -177,10 +195,8 @@
       gap: 28px;
       padding: 32px 1.25rem 22px;
     }
+    .footer__left { width: 100%; line-height: 2;}
 
-    .footer__left { width: 100%; }
-
-    /* Center left block heading on tablet for balance */
     &__title { font-size: clamp(22px, 3.4vw, 30px); }
     &__subtitle { font-size: clamp(14px, 2.2vw, 18px); }
 
@@ -194,10 +210,9 @@
       gap: 22px;
       padding: 28px 1rem 18px;
     }
-    &__row { font-size: 14px; }
+    &__row { font-size: 14px; width: 100%; }
     &__copyright { font-size: 11px; }
 
-    /* Make socials appear horizontally with wrap for small screens */
     &__middle {
       grid-auto-flow: column;
       grid-auto-columns: max-content;
@@ -206,17 +221,19 @@
       display: flex;
     }
 
-    /* Stack nav items full width and left align */
     .footer-nav {
       justify-items: stretch;
       &__link,
       &__trigger {
         text-align: left;
         padding: .65rem 1rem;
+        font-size: 11px;
       }
       &__menu {
         width: 100%;
         max-width: none;
+        justify-items: start;
+        padding: 10px 15px 0;
       }
       &__item {
         text-align: left;
@@ -230,10 +247,9 @@
 
   /* Very small phones */
   @media (max-width: 380px) {
-
     &__title { font-size: 20px; }
     .footer-nav__link,
-    .footer-nav__trigger { font-size: 13px; }
+    .footer-nav__trigger { font-size: 11px; }
     &__social { font-size: 13px; }
   }
 }

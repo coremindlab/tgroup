@@ -4,12 +4,12 @@
   background: #fff;
   color: #000;
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 48px 1.5rem 80px; }
+  .container { max-width: 1500px; margin: 0 auto; padding: 48px 1.5rem 80px; }
 
   &__title {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 72px);
     letter-spacing: .02em;
     color: #000;
     border: 2px solid #000;
@@ -24,7 +24,7 @@
 
   &__name {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 500;
     font-size: clamp(18px, 2.2vw, 22px);
     letter-spacing: .06em;
     margin: 6px 0 14px;
@@ -34,10 +34,11 @@
   /* ROW: label | clickable value | chevron (desktop) */
   &__row {
     display: grid;
-    grid-template-columns: 140px 1fr auto; /* label | value | chevron slot */
+    grid-template-columns: 100px 1fr auto; /* label | value | chevron slot */
     gap: 8px 12px;
     align-items: baseline;
     margin: 8px 0;
+    letter-spacing: 2px;
   }
 
   &__label {

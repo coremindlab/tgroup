@@ -8,6 +8,7 @@ import slide4 from "../../assets/home/slide4.jpg";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import TypewriterText from "../TypeWriter/TypeWriterText";
 
 const SLIDES = [slide1, slide2, slide3, slide4];
 const INTERVAL_MS = 3000; // ⏱️ 3 seconds
@@ -44,13 +45,17 @@ export default function Hero() {
     <section className="hero">
       <div className="hero__inner container">
         {/* Left: copy */}
-        <div className="hero__copy" data-aos="fade-up">
-          <h1 className="hero__title">From a personal passion to a beloved music bar.</h1>
-          <p className="hero__line" >
+        <div className="hero__copy">
+          <h1 className="hero__title"><TypewriterText
+              text="From a personal passion to a beloved music bar."
+              speed={45}
+              startDelay={400}
+            /></h1>
+          <p className="hero__line" data-aos="fade-right">
             From different places and institutions, united by a shared love for music, evolving into a team of
             entrepreneurs with music at the heart of their vision.
           </p>
-          <p className="hero__line">
+          <p className="hero__line" data-aos="fade-right">
             Bringing the lively vibe of university-town bars to the city center, creating a go-to hangout where
             young people can always have fun, anytime.
           </p>
@@ -66,6 +71,7 @@ export default function Hero() {
             className="hero__slider"
             aria-roledescription="carousel"
             aria-label="Venue highlights"
+            data-aos="fade-left"
           >
             {SLIDES.map((src, i) => (
               <img

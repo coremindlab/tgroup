@@ -34,13 +34,14 @@
       font-size: 14px;
       color: #fff;
       text-decoration: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 12px;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
       border: 1px solid transparent;
+      transition: border-color .2s ease, color .2s ease, background .2s ease;
 
       &.is-active {
-        border-color: #fff;      /* desktop/tablet pill */
-        font-weight: 700;
+        border-color: #fff;      /* pill active */
+        font-weight: 400;
       }
     }
 
@@ -51,16 +52,17 @@
       .navbar__dropdown-trigger {
         appearance: none;
         background: transparent;
-        border: 1px solid transparent;  /* neutral by default */
+        border: 1px solid transparent;
         color: #fff;
         cursor: pointer;
         text-transform: inherit;
-        padding: 0.4rem 0.8rem;
-        border-radius: 12px;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
         font-family: var(--font-grotesk);
         font-size: 14px;
         font-weight: 400;
         display: inline-flex; align-items: center; gap: 8px;
+        transition: border-color .2s ease, color .2s ease, background .2s ease;
       }
 
       /* On venue pages, accent the trigger (desktop/tablet) */
@@ -111,6 +113,22 @@
         &.active { color: #fff; border-color: #fff; font-weight: 500; }
       }
     }
+
+    /* ───────── Desktop/Tablet hover = white pill */
+    @media (hover:hover) {
+      .navlink:hover,
+      .navlink:focus-visible {
+        border-color: #fff;                 /* same look as active */
+        outline: none;
+      }
+
+      /* Only white-hover when NOT already accent-active */
+      .navbar__dropdown:not(.is-active) .navbar__dropdown-trigger:hover,
+      .navbar__dropdown:not(.is-active) .navbar__dropdown-trigger:focus-visible {
+        border-color: #fff;                 /* same padding/radius already set */
+        outline: none;
+      }
+    }
   }
 
   &__toggle { display: none; background: none; color: #fff; font-size: 1.8rem; cursor: pointer; border: none; }
@@ -153,31 +171,33 @@
 
       &.active { display: flex; }
 
-      /* HOME / CONTACT rows — full width row; underline only on label when active */
       .navlink {
         width: 100%;
         font-size: 14px;
         padding: var(--padY) var(--padX);
-        border: 0;               /* kill pill border on mobile */
+        border: 0;
         border-radius: 0;
         text-decoration: none;
 
         .navbar__label {
           display: inline-block;
-          border-bottom: 2px solid transparent;  /* hidden by default */
+          border-bottom: 2px solid transparent;
           line-height: 1.2;
         }
 
-        &.is-active {
-          border: 0 !important;                  /* ensure no pill border returns */
-        }
+        /* keep mobile underline-only active */
+        &.is-active { border: 0 !important; }
         &.is-active .navbar__label {
-          border-bottom-color: #fff;             /* text-only underline */
+          border-bottom-color: #fff;
           font-weight: 700;
+        }
+
+        /* kill any hover pill on touch devices */
+        @media (hover:hover) {
+          &:hover, &:focus-visible { border-color: transparent; }
         }
       }
 
-      /* VENUES dropdown — same text-only underline on label; no pill border */
       .navbar__dropdown {
         width: 100%;
 
@@ -197,7 +217,6 @@
           color: #fff;
           cursor: pointer;
 
-          /* only keep the row divider, not a pill border */
           border: 0;
           border-bottom: 1px solid var(--divider);
 
@@ -208,12 +227,9 @@
           }
         }
 
-        /* Container has .is-active on venue routes */
-        &.is-active .navbar__dropdown-trigger {
-          border: 0 !important;                  /* remove desktop accent/pill border */
-        }
+        &.is-active .navbar__dropdown-trigger { border: 0 !important; }
         &.is-active .navbar__dropdown-trigger .navbar__label {
-          border-bottom-color: var(--accent);    /* text-only underline */
+          border-bottom-color: var(--accent);
           color: var(--accent);
           font-weight: 700;
         }
@@ -239,7 +255,6 @@
         }
       }
 
-      /* Language buttons row */
       .navbar__lang button {
         width: 100%;
         padding: var(--padY) var(--padX);
@@ -250,7 +265,6 @@
       }
     }
 
-    /* Tap targets */
     .navlink,
     .navbar__dropdown .navbar__dropdown-trigger,
     .navbar__lang button,

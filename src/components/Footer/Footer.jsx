@@ -12,14 +12,14 @@ const PAGE_META = {
     subtitle: "Where People & Places Connect.",
     location: "Bangkok, Thailand",
     tel: null,
-    socials: null, // ✅ hidden on home
-    accent: "white",  // no color bar on home
+    socials: null,
+    accent: "home", // ✅ neutral for home
   },
   thay: {
     key: "thay",
     title: "THAY",
     subtitle: null,
-    location: "Sukhumvit 63, Phra Khanong Nuea.",
+    location: "Sukhumvit 63, Phra Khanong Nuea, Watthana, Bangkok 10110",
     tel: "081 666 9969",
     socials: {
       instagram: "https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
@@ -31,10 +31,10 @@ const PAGE_META = {
     key: "tderm",
     title: "TDERM",
     subtitle: null,
-    location: "455 Sukhumvit 63, Khlong Tan Nuea.",
+    location: "455 Sukhumvit 63, Khlong Tan Nuea, Watthana, Bangkok 10110",
     tel: "084 455 6663",
     socials: {
-      instagram: "https://www.instagram.com/tderm.bangkok?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      instagram: "https://www.instagram.com/tderm.bangkok",
       facebook: "https://www.facebook.com/tdermx455",
     },
     accent: "tderm",
@@ -69,8 +69,8 @@ const PAGE_META = {
     subtitle: "(Coming Soon)",
     location: null,
     tel: null,
-    socials: null, // add later if you get links
-    accent: "xim", // uses neutral styling unless you add a color
+    socials: null,
+    accent: "xim",
   },
 };
 
@@ -78,11 +78,20 @@ export default function Footer() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const first = pathname.split("/")[1] || "";
-  const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "home";
+  const pageKey =
+    first === ""
+      ? "home"
+      : VENUE_SLUGS.includes(first)
+      ? first
+      : "home";
   const meta = PAGE_META[pageKey];
 
   return (
-    <footer className={`footer ${meta.accent ? `footer--${meta.accent}` : "footer--home"}`}>
+    <footer
+      className={`footer ${
+        meta.accent ? `footer--${meta.accent}` : "footer--home"
+      }`}
+    >
       <div className="footer__container">
         {/* Left: dynamic identity */}
         <div className="footer__left">
@@ -90,7 +99,8 @@ export default function Footer() {
           {meta.subtitle && <p className="footer__subtitle">{meta.subtitle}</p>}
           {meta.location && (
             <p className="footer__row">
-              <span className="footer__label">Location :</span> {meta.location}
+              <span className="footer__label">Location :</span>{" "}
+              {meta.location}
             </p>
           )}
           {meta.tel && (
@@ -100,7 +110,7 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Middle: social (hidden on home) */}
+        {/* Middle: socials */}
         {meta.socials ? (
           <div className="footer__middle">
             <a
@@ -124,13 +134,14 @@ export default function Footer() {
           <div className="footer__middle footer__middle--empty" />
         )}
 
-        {/* Right: vertical navigation with Venues+ dropdown */}
+        {/* Right: footer nav */}
         <div className="footer__right">
           <FooterNav onNavigate={(to) => navigate(to)} />
         </div>
       </div>
 
       <div className="footer__bottom">
+        {/* hr: styled by accent */}
         <div className="footer__hr" />
         <p className="footer__copyright">
           © {new Date().getFullYear()} T-Hospitality. All rights reserved.

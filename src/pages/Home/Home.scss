@@ -2,7 +2,7 @@
   background: #737373; /* grey background */
   color: #fff;
   width: 100%;
-  min-height: 60svh;
+  height: 100%;
   display: grid;
   place-items: center;
   margin-top: 4rem;
@@ -11,7 +11,7 @@
     width: 100%;
     max-width: 1600px;
     height: 100%; /* make the grid fill section */
-    padding: 60px 2rem;
+    padding: 40px 2rem;
     margin: 0 auto;
 
     display: grid;
@@ -29,9 +29,9 @@
 
     p {
       font-family: var(--font-anuphan);
-      font-weight: 400;
-      font-size: clamp(16px, 1.4vw, 22px);
-      line-height: 1.6;
+      font-weight: 300;
+      font-size: clamp(16px, 1.4vw, 16px);
+      line-height: 1.15;
       margin: 0;
       max-width: 580px;
     }
@@ -44,10 +44,10 @@
 
     h2 {
       font-family: var(--font-display);
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1.05;
       margin: 0;
-      font-size: clamp(36px, 6vw, 88px);
+      font-size: clamp(36px, 6vw, 72px);
     }
   }
 
