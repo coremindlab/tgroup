@@ -22,6 +22,7 @@
 
   &__logo {
     font-family: var(--font-display); font-weight: 600; font-size: 24px;
+    letter-spacing: 4px;
     text-decoration: none; color: #fff;
   }
 
@@ -69,7 +70,7 @@
       &.is-active .navbar__dropdown-trigger {
         border-color: var(--accent);
         color: var(--accent);
-        font-weight: 600;
+        font-weight: 500;
       }
 
       .dropdown-menu {

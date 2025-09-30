@@ -30,9 +30,10 @@
     p {
       font-family: var(--font-anuphan);
       font-weight: 300;
-      font-size: clamp(16px, 1.4vw, 16px);
+      font-size: clamp(16px, 1.4vw, 20px);
       line-height: 1.15;
       margin: 0;
+      margin-bottom: 20px;
       max-width: 580px;
     }
   }
@@ -44,7 +45,7 @@
 
     h2 {
       font-family: var(--font-display);
-      font-weight: 400;
+      font-weight: 500;
       line-height: 1.05;
       margin: 0;
       font-size: clamp(36px, 6vw, 72px);

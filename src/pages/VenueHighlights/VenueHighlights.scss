@@ -220,6 +220,10 @@
       display: inline-block;
       font-size: 12px;
     }
+
+    &__event-title {
+    padding: 34px 0;
+  }
   }
 
   @media (max-width: 640px) {

@@ -9,7 +9,7 @@
   --bg: #0f0f0f;
 
   --hero-h: min(56vw, 680px);
-  --quote-size: clamp(24px, 8vw, 98px);  /* desktop tops at 98px */
+  --quote-size: clamp(24px, 8vw, 90px);  /* desktop tops at 98px */
   --para-size: 16px;
   --btn-radius: 999px;
   --btn-border: 2px;
@@ -140,10 +140,9 @@
 
   /* ✅ TDERM-only adjustment (applies globally, not just mobile) */
   &.venue-layout--tderm {
-    .venue-layout__paragraph > .venue-layout__p:nth-of-type(2),
     .venue-layout__paragraph > .venue-layout__p:nth-of-type(3) {
       padding: 10px 0 !important;
-      font-family: var(--font-grotesk);
+      font-family: var(--font-grotesk) !important;
 
     }
   }
@@ -156,7 +155,7 @@
     display: flex;
 
     svg {
-      font-size: 16rem;
+      font-size: 12rem;
       fill: transparent;
       stroke: var(--accent);
     }
@@ -234,7 +233,7 @@
   &__vline {
     position: relative;
     width: 2px;
-    height: clamp(140px, 16vw, 290px);
+    height: clamp(140px, 18vw, 290px);
     margin: 24px auto;
     background: var(--accent);
 

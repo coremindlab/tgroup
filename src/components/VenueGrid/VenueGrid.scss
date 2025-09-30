@@ -26,15 +26,15 @@
   &__timeline {
     position: relative;
     display: grid;
-    gap: clamp(60px, 8vw, 120px);
+    gap: clamp(80px, 8vw, 120px);
     margin-top: 2rem;
   }
 
 &__line {
   position: absolute;
   inset: 0 auto 0 50%;
-  top: -80px;      /* extend 40px above */
-  bottom: -80px;   /* extend 40px below */
+  top: -50px;      /* extend 40px above */
+  bottom: -50px;   /* extend 40px below */
   width: 2px;
   background: #000;
   transform: translateX(-50%);
@@ -46,8 +46,8 @@
     content: "";
     position: absolute;
     left: 50%;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: #000;
     transform: translateX(-50%);
@@ -125,11 +125,12 @@ flex: 0 0 clamp(28%, 30%, 34%);    max-width: 30%;
     color: #000;
     line-height: 1.25;
   }
-  &__content h3 span { font-weight: 700; }
+  &__content h3 span { font-weight: 600; }
 
   &__content p {
     font-family: var(--font-anuphan);
     font-size: clamp(13px, 1.4vw, 14px);
+    font-weight: 400;
     margin-bottom: 12px;
     line-height: 1.6;
     color: #000;

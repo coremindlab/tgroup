@@ -18,7 +18,7 @@
     margin-bottom: 80px;
   }
 
-  /* ============= Desktop / Tablet (static) ============= */
+  /* ===== Desktop/Tablet: static rows ===== */
   &__grid--static {
     display: flex;
     flex-direction: column;
@@ -46,94 +46,92 @@
       max-width: 100%;
       object-fit: contain;
       max-height: 140px;
+      vertical-align: middle;
     }
   }
 
-  /* Top row larger (and first a bit wider if it's a rectangle) */
+  /* Top row larger + first wider */
   &__row--top .partner__item img { max-height: 200px; }
   &__item--wide { flex: 0 1 350px; }
 
   /* Bottom row normal */
   &__row--bottom .partner__item img { max-height: 140px; }
 
-  /* ============= Mobile (two-row slider) ============= */
+  /* ===== Mobile: TWO marquee rows ===== */
   &__slider {
     display: none;
     width: 100%;
     overflow: hidden;
-    /* gap between the two sliding rows */
-    --row-gap: 18px;
-    margin-top: var(--row-gap);
+    gap: 18px;
   }
 
-  /* Each track is an inline-flex row that is duplicated (2x content) for seamless loop */
+  /* marquee viewport */
+  &__marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    // force GPU on iOS for smoother animation
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    will-change: transform;
+
+    &:not(:last-child) { margin-bottom: 14px; }
+  }
+
+  /* inner track that moves */
   &__track {
     display: inline-flex;
-    width: max-content;
-    gap: 36px;
-    will-change: transform;
-    -webkit-backface-visibility: hidden;
+    white-space: nowrap;
+    gap: 28px;
+    // do NOT use width:max-content (can be glitchy on iOS)
     backface-visibility: hidden;
     transform: translate3d(0,0,0);
   }
 
-  /* Slide item size on mobile */
+  /* items inside marquee */
   &__item--slide {
     flex: 0 0 auto;
-    width: 160px;
-    img { max-height: 120px; }
+    width: 180px;        /* nice large boxes on mobile */
+    img { max-height: 140px; }
   }
 
-  /* Opposite directions */
-  &__track--a { animation: marquee-right 24s linear infinite; }  /* left -> right */
-  &__track--b { animation: marquee-left  24s linear infinite; }  /* right -> left */
+  /* Directions & timing (smooth, not rushed) */
+  &__marquee--left  .partner__track { animation: partner-marquee-left 18s linear infinite; }
+  &__marquee--right .partner__track { animation: partner-marquee-right 20s linear infinite; }
 
-  /* Keyframes use translate3d for smoother iOS Safari performance */
-  @keyframes marquee-left {
-    0%   { transform: translate3d(0,0,0); }
-    100% { transform: translate3d(-50%,0,0); } /* content duplicated 2x */
-  }
-  @keyframes marquee-right {
-    0%   { transform: translate3d(-50%,0,0); }
-    100% { transform: translate3d(0,0,0); }
+  /* Make it even smoother on very small screens */
+  @media (max-width: 480px) {
+    &__item--slide { width: 160px; img { max-height: 120px; } }
+    &__marquee--left  .partner__track { animation-duration: 22s; }
+    &__marquee--right .partner__track { animation-duration: 24s; }
   }
 
-  /* Stack the two sliding rows with a small vertical gap */
-  &__slider .partner__track + .partner__track { margin-top: var(--row-gap); }
+  /* ===== Keyframes: translate by 50% (because we duplicated content) ===== */
+  @keyframes partner-marquee-left {
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes partner-marquee-right {
+    0%   { transform: translate3d(-50%, 0, 0); } /* start mid to reverse the direction */
+    100% { transform: translate3d(0, 0, 0); }
+  }
 
-  /* ============= Responsive ============= */
+  /* ===== Responsive switches ===== */
   @media (max-width: 992px) {
     &__row--top .partner__item img { max-height: 160px; }
     &__row--bottom .partner__item img { max-height: 120px; }
-    &__item--wide { flex: 0 1 220px; }
+    &__item--wide { flex: 0 1 240px; }
   }
 
   @media (max-width: 768px) {
-    /* Hide static grid; show two-row marquee */
     &__grid--static { display: none; }
-    &__slider      { display: block; }
-
-    /* slightly bigger logos on mobile */
-    &__item--slide { width: 180px; }
-    &__item--slide img { max-height: 140px; }
+    &__slider      { display: grid; }
   }
 
-  @media (max-width: 480px) {
-    &__item--slide { width: 160px; }
-    &__item--slide img { max-height: 120px; }
-
-    /* slow a touch more on very small screens */
-    &__track--a,
-    &__track--b { animation-duration: 28s; }
-
-    /* tighten gaps */
-    &__track { gap: 24px; }
-    &__slider { --row-gap: 14px; }
-  }
-
-  /* Respect user setting; on iOS with Reduce Motion ON, animations will stop */
-  @media (prefers-reduced-motion: reduce) {
-    &__track--a,
-    &__track--b { animation: none; }
-  }
+  /* If you want to respect “Reduce Motion”, enable this again.
+     Note: it will stop auto play for users who turned it on in iOS Settings. */
+  // @media (prefers-reduced-motion: reduce) {
+  //   &__marquee--left  .partner__track,
+  //   &__marquee--right .partner__track { animation: none; }
+  // }
 }
