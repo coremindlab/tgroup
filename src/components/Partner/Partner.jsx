@@ -1,4 +1,3 @@
-// src/components/Partner/Partner.jsx
 import React from "react";
 import "./Partner.scss";
 
@@ -23,22 +22,26 @@ const logos = [
 ];
 
 const Partner = () => {
-  const loopLogos = logos.concat(logos); // for marquee
+  // Desktop/tablet static sets
+  const rowA = logos.slice(0, 3); // 3 logos
+  const rowB = logos.slice(3, 8); // 5 logos
+
+  // Mobile marquee sets (duplicated for seamless loop)
+  const loopA = [...rowA, ...rowA];
+  const loopB = [...rowB, ...rowB];
 
   return (
     <section className="partner section">
       <div className="container">
         <h2 className="partner__title">Partners</h2>
 
-        {/* Desktop/Tablet: two rows */}
+        {/* Desktop/Tablet: two static rows */}
         <div className="partner__grid partner__grid--static">
           <div className="partner__row partner__row--top">
-            {logos.slice(0, 3).map((logo, i) => (
+            {rowA.map((logo, i) => (
               <div
                 key={logo.id}
-                className={`partner__item ${
-                  i === 0 ? "partner__item--wide" : ""
-                }`}
+                className={`partner__item ${i === 0 ? "partner__item--wide" : ""}`}
               >
                 <img src={logo.src} alt={logo.alt} />
               </div>
@@ -46,7 +49,7 @@ const Partner = () => {
           </div>
 
           <div className="partner__row partner__row--bottom">
-            {logos.slice(3).map((logo) => (
+            {rowB.map((logo) => (
               <div key={logo.id} className="partner__item">
                 <img src={logo.src} alt={logo.alt} />
               </div>
@@ -54,19 +57,27 @@ const Partner = () => {
           </div>
         </div>
 
-        {/* Mobile: single marquee */}
-        <div className="partner__slider">
-          <div className="partner__track">
-            {loopLogos.map((logo, i) => (
-              <div
-                key={`slide-${i}`}
-                className="partner__item partner__item--slide"
-              >
+        {/* Mobile: two-row marquee */}
+        <div className="partner__slider" aria-hidden="true">
+          {/* Row A: 3 logos, left -> right */}
+          <div className="partner__track partner__track--a">
+            {loopA.map((logo, i) => (
+              <div key={`a-${i}`} className="partner__item partner__item--slide">
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            ))}
+          </div>
+
+          {/* Row B: 5 logos, right -> left */}
+          <div className="partner__track partner__track--b">
+            {loopB.map((logo, i) => (
+              <div key={`b-${i}`} className="partner__item partner__item--slide">
                 <img src={logo.src} alt={logo.alt} />
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

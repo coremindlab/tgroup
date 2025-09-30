@@ -12,7 +12,7 @@
   &__title {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(28px, 5vw, 64px);
+    font-size: clamp(20px, 5vw, 64px);
     word-spacing: 8px;
     padding: 8px 24px;
     border: 2px solid #000;
@@ -26,7 +26,7 @@
   &__timeline {
     position: relative;
     display: grid;
-    gap: clamp(40px, 8vw, 120px);
+    gap: clamp(60px, 8vw, 120px);
     margin-top: 2rem;
   }
 
@@ -215,7 +215,6 @@ flex: 0 0 clamp(28%, 30%, 34%);    max-width: 30%;
 
   /* Large tablets / small laptops */
   @media (max-width: 1199px) {
-    &__title { font-size: clamp(20px, 5vw, 48px); }
     &__btn {
       inline-size: clamp(180px, 40%, 260px);
       font-size: clamp(14px, 1.4vw, 16px);

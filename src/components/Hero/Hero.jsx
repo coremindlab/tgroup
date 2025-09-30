@@ -11,7 +11,7 @@ import "aos/dist/aos.css";
 import TypewriterText from "../TypeWriter/TypeWriterText";
 
 const SLIDES = [slide1, slide2, slide3, slide4];
-const INTERVAL_MS = 3000; // ⏱️ 3 seconds
+const INTERVAL_MS = 4000; // ⏱️ 3 seconds
 
 export default function Hero() {
   const [idx, setIdx] = useState(0);

@@ -8,7 +8,7 @@
   &__title {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(28px, 5vw, 64px);
+    font-size: clamp(20px, 5vw, 64px);
     letter-spacing: 4px;
     padding: 8px 24px;
     border: 2px solid #000;
@@ -18,7 +18,7 @@
     margin-bottom: 80px;
   }
 
-  /* Desktop/Tablet static grid */
+  /* ============= Desktop / Tablet (static) ============= */
   &__grid--static {
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
   &__row {
     display: flex;
     width: 100%;
-    justify-content: center; /* center instead of space-evenly */
+    justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
   }
@@ -49,96 +49,91 @@
     }
   }
 
-  /* Top row larger */
-  &__row--top .partner__item img {
-    max-height: 200px;
-  }
-
-  /* First item in top row wider */
-  &__item--wide {
-    flex: 0 1 350px; /* give it more width */
-  }
+  /* Top row larger (and first a bit wider if it's a rectangle) */
+  &__row--top .partner__item img { max-height: 200px; }
+  &__item--wide { flex: 0 1 350px; }
 
   /* Bottom row normal */
-  &__row--bottom .partner__item img {
-    max-height: 140px;
-  }
+  &__row--bottom .partner__item img { max-height: 140px; }
 
-  /* Mobile marquee */
+  /* ============= Mobile (two-row slider) ============= */
   &__slider {
     display: none;
     width: 100%;
     overflow: hidden;
+    /* gap between the two sliding rows */
+    --row-gap: 18px;
+    margin-top: var(--row-gap);
   }
+
+  /* Each track is an inline-flex row that is duplicated (2x content) for seamless loop */
   &__track {
     display: inline-flex;
     width: max-content;
-    gap: 44px;
+    gap: 36px;
     will-change: transform;
-    animation: partner-scroll-left 22s linear infinite;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0,0,0);
   }
+
+  /* Slide item size on mobile */
   &__item--slide {
     flex: 0 0 auto;
     width: 160px;
-    img {
-      max-height: 120px;
-    }
+    img { max-height: 120px; }
   }
 
-  @keyframes partner-scroll-left {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  /* Opposite directions */
+  &__track--a { animation: marquee-right 24s linear infinite; }  /* left -> right */
+  &__track--b { animation: marquee-left  24s linear infinite; }  /* right -> left */
+
+  /* Keyframes use translate3d for smoother iOS Safari performance */
+  @keyframes marquee-left {
+    0%   { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(-50%,0,0); } /* content duplicated 2x */
+  }
+  @keyframes marquee-right {
+    0%   { transform: translate3d(-50%,0,0); }
+    100% { transform: translate3d(0,0,0); }
   }
 
-  /* Responsive */
+  /* Stack the two sliding rows with a small vertical gap */
+  &__slider .partner__track + .partner__track { margin-top: var(--row-gap); }
+
+  /* ============= Responsive ============= */
   @media (max-width: 992px) {
-    &__row--top .partner__item img {
-      max-height: 160px;
-    }
-    &__row--bottom .partner__item img {
-      max-height: 120px;
-    }
-    &__item--wide {
-      flex: 0 1 200px;
-    }
+    &__row--top .partner__item img { max-height: 160px; }
+    &__row--bottom .partner__item img { max-height: 120px; }
+    &__item--wide { flex: 0 1 220px; }
   }
 
   @media (max-width: 768px) {
-    &__grid--static {
-      display: none;
-    }
-    &__slider {
-      display: block;
-    }
+    /* Hide static grid; show two-row marquee */
+    &__grid--static { display: none; }
+    &__slider      { display: block; }
 
-    &__item--slide {
-      width: 180px;
-    }
-    &__item--slide img {
-      max-height: 140px;
-    }
+    /* slightly bigger logos on mobile */
+    &__item--slide { width: 180px; }
+    &__item--slide img { max-height: 140px; }
   }
 
   @media (max-width: 480px) {
-    &__item--slide {
-      width: 160px;
-    }
-    &__item--slide img {
-      max-height: 120px;
-    }
-    &__track {
-      animation-duration: 26s;
-      gap: 12px;
-    }
+    &__item--slide { width: 160px; }
+    &__item--slide img { max-height: 120px; }
+
+    /* slow a touch more on very small screens */
+    &__track--a,
+    &__track--b { animation-duration: 28s; }
+
+    /* tighten gaps */
+    &__track { gap: 24px; }
+    &__slider { --row-gap: 14px; }
   }
 
+  /* Respect user setting; on iOS with Reduce Motion ON, animations will stop */
   @media (prefers-reduced-motion: reduce) {
-    &__track {
-      animation: none;
-    }
+    &__track--a,
+    &__track--b { animation: none; }
   }
 }

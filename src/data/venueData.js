@@ -235,7 +235,7 @@ export const venueData = {
     heroImage: slide3,
     quotes: [
       "Where Nostalgia Meets Modern Elegance-",
-      "GOT: Good Old Times — a timeless space for friends and moments.",
+      "GOT : Good Old Times — a timeless space for friends and moments.",
     ],
     paragraphs: [
       "Building on its 1980s-inspired concept, Good Old Times (GOT) offers a timeless yet modern experience. Every detail, from vintage décor and warm ambient lighting to signature cocktails, is curated to create a space that celebrates the charm of the past while embracing the style of today.",
