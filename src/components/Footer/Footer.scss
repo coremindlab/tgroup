@@ -24,6 +24,15 @@
 
   /* LEFT */
   .footer__left { width: 80%; }
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    transition: color .2s ease, border-color .2s ease, opacity .2s ease;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
   &__title {
     font-family: var(--font-display);
     font-weight: 500;
