@@ -225,7 +225,7 @@ export const venueData = {
     gallery: [tderm_1, tderm_2, tderm_3, tderm_4],
     themeVars: { "--bg": "#0f0d0b" },
     quoteIcons: { top: "center", bottom: "center" },
-    paraAlign: ["center", "left", "right", "center", "center"],
+    paraAlign: ["center", "center", "center", "center", "center"],
   },
 
   got: {
@@ -322,22 +322,22 @@ export const venueData = {
 
   rec: {
     year: "2025",
-    title: "REC",
+    title: "REC.",
     accent: "rec",
     heroImage: slide4,
     quotes: [
       "Where Nostalgia Meets Modern Elegance-",
-      "REC : Record Room —transforms every night into a destination of style, music, and unforgettable moments.",
+      "REC. : Record Room —transforms every night into a destination of style, music, and unforgettable moments.",
     ],
     paragraphs: [
-      "REC redefines luxury nightlife, blending sophistication with vibrant energy. At its heart is the DJ Corner, designed like a recording studio, where music sets the tone of the night.",
+      "REC. redefines luxury nightlife, blending sophistication with vibrant energy. At its heart is the DJ Corner, designed like a recording studio, where music sets the tone of the night.",
       "The modern-classic décor, with stone and warm neutral tones, creates a glamorous yet welcoming atmosphere. A striking highlight is the Metronome Details, a large centerpiece placed on the share table at the venue’s center — fully movable and designed to symbolize the rhythm that drives REC.",
       "Completing the experience is the High-Energy Bar, serving signature cocktails crafted to amplify the beat. More than a venue",
     ],
     // align highlights with paragraphs (2 paras)
     highlights: [
-      ["REC", "DJ Corner"],               // para 0
-      ["Metronome Details", "REC"],       // para 1
+      ["REC.", "DJ Corner"],               // para 0
+      ["Metronome Details", "REC."],       // para 1
     ],
 
     eventHighlights: [

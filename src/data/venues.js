@@ -27,7 +27,7 @@ export const VENUES = {
     heroImage:'/assets/hero/got.jpg', tagline:'Good Old Times, Reimagined', year:'2019', symbol:'/assets/symbols/got.svg'
   },
   rec: {
-    slug:'rec', name:'REC', theme:'#f4eacf', bg:'#141312',
+    slug:'rec', name:'REC.', theme:'#f4eacf', bg:'#141312',
     socials:{ ig:'https://www.instagram.com/rec.bangkok/', fb:'https://www.facebook.com/profile.php?id=61577228738918' },
     menuUrl:'https://drive.google.com/file/d/1TmDyw_KAAlZF-VI5-cwvxGW71Uj1Vyrw/view?usp=sharing',
     eventUrl:'/events/rec',

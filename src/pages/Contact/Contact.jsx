@@ -69,13 +69,13 @@ export default function Contact() {
                 </a>
               </p>
 
-              {/* Email → mailto */}
+              {/* Email → mailto
               <p className="contact__row contact__row--link">
                 <span className="contact__label">Email</span>
                 <a className="contact__value" href={`mailto:${v.email}`}>
                   <span className="contact__text">: {v.email}</span>
                 </a>
-              </p>
+              </p> */}
 
               <div className="contact__rule" aria-hidden />
             </div>

@@ -56,7 +56,7 @@ const PAGE_META = {
   },
   rec: {
     key: "rec",
-    title: "REC",
+    title: "REC.",
     subtitle: null,
     location: "63 Wireless Road (Witthayu), Lumphini Pathumwan, Bangkok, Thailand 10300",
     map: "https://maps.app.goo.gl/9EaoXJH7jU8PqUSX7",

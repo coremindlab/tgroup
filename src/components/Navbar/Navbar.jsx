@@ -73,16 +73,20 @@ const Navbar = () => {
 
             {showVenueDropdown && (
               <div className="dropdown-menu" role="menu">
-                {VENUE_SLUGS.map((slug) => (
-                  <div
-                    key={slug}
-                    className="dropdown-item"
-                    role="menuitem"
-                    onClick={() => goToVenue(slug)}   // ⬅️ XIM triggers modal
-                  >
-                    {slug.toUpperCase()}
-                  </div>
-                ))}
+                {VENUE_SLUGS.map((slug) => {
+  // Display label customization
+  const label = slug === "rec" ? "REC ." : slug.toUpperCase();
+  return (
+    <div
+      key={slug}
+      className="dropdown-item"
+      role="menuitem"
+      onClick={() => goToVenue(slug)}  // still navigates to /rec
+    >
+      {label}
+    </div>
+  );
+})}
               </div>
             )}
           </div>

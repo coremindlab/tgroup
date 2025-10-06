@@ -1,21 +1,20 @@
-// components/Footer/FooterNav.jsx
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ComingSoonPopup from "../../components/ComingSoonPopup/ComingSoonPopup"; // ⬅️ add this
+import ComingSoonPopup from "../../components/ComingSoonPopup/ComingSoonPopup";
 
-const VENUES = ["thay", "tderm", "got", "rec", "xim"];
+const VENUES = ["thay", "tderm", "got", "rec", "xim"]; // ✅ no extra dot here
 
 export default function FooterNav({ onNavigate }) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const [ximOpen, setXimOpen] = useState(false);           // ⬅️ modal state
+  const [ximOpen, setXimOpen] = useState(false);
   const isVenuePage = VENUES.some((v) => pathname.startsWith(`/${v}`));
   const menuRef = useRef(null);
 
-  // Close on any route change
+  // Close dropdown on route change
   useEffect(() => { setOpen(false); }, [pathname]);
 
-  // Close when clicking outside
+  // Close dropdown on outside click
   useEffect(() => {
     if (!open) return;
     const onDocClick = (e) => {
@@ -26,12 +25,12 @@ export default function FooterNav({ onNavigate }) {
   }, [open]);
 
   const handleVenueClick = (slug) => {
-    if (slug === "xim") {       // ⬅️ intercept XIM
+    if (slug === "xim") {
       setXimOpen(true);
       setOpen(false);
       return;
     }
-    onNavigate(`/${slug}`);
+    onNavigate(`/${slug}`); // ✅ still clean URL (/rec)
     setOpen(false);
   };
 
@@ -68,6 +67,8 @@ export default function FooterNav({ onNavigate }) {
             <div id="footer-venues-menu" role="menu" className="footer-nav__menu">
               {VENUES.map((slug) => {
                 const active = pathname.startsWith(`/${slug}`) ? "is-active" : "";
+                // ✅ Custom label just for REC
+                const label = slug === "rec" ? "REC ." : slug.toUpperCase();
                 return (
                   <button
                     key={slug}
@@ -76,7 +77,7 @@ export default function FooterNav({ onNavigate }) {
                     className={`footer-nav__item ${active}`}
                     role="menuitem"
                   >
-                    {slug.toUpperCase()}
+                    {label}
                   </button>
                 );
               })}

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+
+
 import "./VenueLayout.scss";
 import iconHappy from "../../assets/icons/thayicon1.png";
 import iconHeart from "../../assets/icons/thayicon2.png";
@@ -46,6 +47,7 @@ export default function VenueLayout({
       AOS.init({ duration: 800, once: true });
     }, []);
 
+  
   return (
     <div
       className={`venue-layout venue-layout--${accent || "default"} ${classNameExtra}`}
@@ -77,11 +79,11 @@ export default function VenueLayout({
           >
             {quotes[0]}
           </blockquote>
-                    <div
+          <div
             className="venue-layout__quote-icon venue-layout__quote-icon--top"
             aria-hidden="true"
           >
-          <FormatQuoteIcon />
+           <span className="venue-layout__quote-mark">“</span>
           </div>
         </section>
       )}
@@ -89,7 +91,7 @@ export default function VenueLayout({
       {/* PARAGRAPHS + INSERTS */}
       {paragraphs.length > 0 && (
         <section className="venue-layout__paragraph">
-
+            
 
           {paragraphs.map((p, i) => (
             <React.Fragment key={`para-${i}`}>
@@ -132,18 +134,17 @@ export default function VenueLayout({
               )}
             </React.Fragment>
           ))}
-
         </section>
       )}
 
       {/* CTA QUOTE + BUTTONS */}
       {quotes[1] && (
         <section className="venue-layout__quote venue-layout__quote--cta">
-          <div
+           <div
             className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
             aria-hidden="true"
           >
-            <FormatQuoteIcon />
+           <span className="venue-layout__quote-mark">”</span>
           </div>
           {accent === "tderm" && (
             <div className="venue-layout__hline venue-layout__hline--center" />
