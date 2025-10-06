@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-
-
 import "./VenueLayout.scss";
 import iconHappy from "../../assets/icons/thayicon1.png";
 import iconHeart from "../../assets/icons/thayicon2.png";
@@ -71,14 +69,43 @@ export default function VenueLayout({
           </div>
           {/* Inline fontSize ensures var(--quote-size) wins absolutely */}
           <blockquote
-            className="venue-layout__blockquote"
-            style={{ fontSize: "var(--quote-size)" 
-            }}
-            data-aos="fade-down"
-            data-aos-duration="3000"
-          >
-            {quotes[0]}
-          </blockquote>
+  className="venue-layout__blockquote"
+  style={{ fontSize: "var(--quote-size)" }}
+  data-aos="fade-down"
+  data-aos-duration="5000"
+>
+ {accent === "got" ? (
+        (() => {
+          const parts = String(quotes[0]).split(/\s*\n\s*/);
+          return (
+            <>
+              {/* line 1 = RIGHT */}
+              <span className="got-line" style={{ display: "block", textAlign: "right" }}>
+                {parts[0] || ""}
+              </span>
+
+              {/* line 2 = LEFT */}
+              {parts[1] && (
+                <span className="got-line" style={{ display: "block", textAlign: "left" }}>
+                  {parts[1]}
+                </span>
+              )}
+
+              {/* line 3 = LEFT */}
+              {parts[2] && (
+                <span className="got-line" style={{ display: "block", textAlign: "left" }}>
+                  {parts[2]}
+                </span>
+              )}
+            </>
+          );
+        })()
+      ) : (
+        quotes[0]
+      )}
+
+</blockquote>
+
           <div
             className="venue-layout__quote-icon venue-layout__quote-icon--top"
             aria-hidden="true"
@@ -100,7 +127,13 @@ export default function VenueLayout({
                 <div className="venue-layout__insert">
                   <div className="venue-layout__icon-row">
                     <img src={iconHappy} alt="Happy" loading="lazy" decoding="async" />
-                    <img src={iconHeart} alt="Heart" loading="lazy" decoding="async" />
+                    <img
+      src={iconHeart}
+      alt="Heart"
+      loading="lazy"
+      decoding="async"
+      className="venue-layout__icon--heart"
+    />
                     <img src={iconSad}   alt="Sad"   loading="lazy" decoding="async" />
                   </div>
                 </div>

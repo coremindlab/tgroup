@@ -31,11 +31,11 @@ export const venueData = {
     heroImage: slide1,
     quotes: [
       "Elevates the Ekkamai Experience-",
-      "THAY is more than a venue — it’s a destination where every visit becomes part of your story.",
+      "THAY is more than a venue —\n it’s a destination where every visit becomes part of your story.",
     ],
     paragraphs: [
       "Building on the foundation set in 2015, THAY elevates the Ekkamai experience with a sophisticated blend of contemporary design and vibrant energy. Every corner of the venue is curated to create memorable moments — from intimate gatherings to lively social nights.",
-      "With thoughtfully crafted interiors, ambient lighting, and signature music programming, THAY invites guests to relax, connect, and celebrate. The space embodies a seamless fusion of style and comfort, reflecting the modern lifestyle of the city’s discerning crowd.",
+      "With thoughtfully crafted interiors, ambient lighting, and signature music programming, THAY invites guests to\n relax, connect, and celebrate. The space embodies a seamless fusion of style and comfort, reflecting the modern lifestyle of the city’s discerning crowd.",
       "Whether it’s a quiet evening with friends or a dynamic night of music and cocktails,",
     ],
     // phrases to accent per paragraph index
@@ -157,14 +157,14 @@ export const venueData = {
     heroImage: slide2,
     quotes: [
       "The Heart of Modern Nightlife-",
-      "TDERM is more than a nightlife spot — it’s the city’s vibrant hub.",
+      "TDERM is more than\n a nightlife spot —\n it’s the city’s vibrant hub.",
     ],
     paragraphs: [
       "Building on its growth in 2017, TDERM has established itself as a modern nightlife destination in the city. Equipped with state-of-the-art light and sound systems, attentive service, and exclusive perks, the venue creates an immersive experience that appeals to college and international students, young professionals, and nightlife enthusiasts alike.",
       "Every visit to TDERM is designed to",
-      "connect friends, celebrate milestones, and enjoy the vibrant energy of the night.",
+      "connect friends, celebrate milestones, and\n enjoy the vibrant energy of the night.",
       "From intimate gatherings to lively parties, the venue balances excitement with comfort, offering a space where unforgettable memories are made.",
-      "Whether it’s a quiet evening with friends or a dynamic night of music and cocktails,",
+      "Whether it’s a quiet evening with friends or a dynamic\n night of music and cocktails,",
     ],
     highlights: [
       ["TDERM"], // para 0
@@ -234,12 +234,12 @@ export const venueData = {
     accent: "got",
     heroImage: slide3,
     quotes: [
-      "Where Nostalgia Meets Modern Elegance-",
-      "GOT : Good Old Times — a timeless space for friends and moments.",
+      "Where Nostalgia\nMeets Modern\nElegance-",
+      "GOT : Good Old Times —\n a timeless space for friends and moments.",
     ],
     paragraphs: [
-      "Building on its 1980s-inspired concept, Good Old Times (GOT) offers a timeless yet modern experience. Every detail, from vintage décor and warm ambient lighting to signature cocktails, is curated to create a space that celebrates the charm of the past while embracing the style of today.",
-      "Whether you’re gathering with friends, enjoying a quiet evening, or celebrating a special occasion, GOT provides a warm and inviting atmosphere where every visit feels like stepping into a cherished memory.",
+      "Building on its 1980s-inspired concept, Good Old Times (GOT) offers a timeless yet modern experience.\n Every detail, from vintage décor and warm ambient lighting to signature cocktails, is curated to create a space that celebrates the charm of the past while embracing the style of today.",
+      "Whether you’re gathering with friends, enjoying a quiet evening, or celebrating a special occasion,\n GOT provides a warm and inviting atmosphere where every visit feels like stepping into a cherished memory.",
     ],
     highlights: [
       ["Good Old Times (GOT)"], // para 0
@@ -326,13 +326,13 @@ export const venueData = {
     accent: "rec",
     heroImage: slide4,
     quotes: [
-      "Where Nostalgia Meets Modern Elegance-",
-      "REC. : Record Room —transforms every night into a destination of style, music, and unforgettable moments.",
+      "Where Rhythm\n Meets Refinement-",
+      "REC. : Record Room —\ntransforms every night into a destination of style, music, and unforgettable moments.",
     ],
     paragraphs: [
       "REC. redefines luxury nightlife, blending sophistication with vibrant energy. At its heart is the DJ Corner, designed like a recording studio, where music sets the tone of the night.",
-      "The modern-classic décor, with stone and warm neutral tones, creates a glamorous yet welcoming atmosphere. A striking highlight is the Metronome Details, a large centerpiece placed on the share table at the venue’s center — fully movable and designed to symbolize the rhythm that drives REC.",
-      "Completing the experience is the High-Energy Bar, serving signature cocktails crafted to amplify the beat. More than a venue",
+      "The modern-classic décor, with stone and warm neutral tones, creates a glamorous yet welcoming atmosphere.\n A striking highlight is the Metronome Details, a large centerpiece placed on the share table at the venue’s center —\n fully movable and designed to symbolize the rhythm that drives REC.",
+      "Completing the experience is the High-Energy Bar, serving signature cocktails crafted to amplify the beat.\n More than a venue",
     ],
     // align highlights with paragraphs (2 paras)
     highlights: [
