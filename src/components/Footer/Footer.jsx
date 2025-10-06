@@ -24,7 +24,7 @@ const PAGE_META = {
     tel: "081 666 9969",
     socials: {
       instagram: "https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-      facebook: "https://www.facebook.com/thaygroup",
+      facebook: "https://www.facebook.com/thayekamai",
     },
     accent: "thay",
   },

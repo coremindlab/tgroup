@@ -245,12 +245,30 @@
     animation: venue-heart-bounce 1.25s ease-in-out infinite;
     will-change: transform;
   }
+
+  /* --- Respect system Reduce Motion by default --- */
+@media (prefers-reduced-motion: reduce) {
+  .venue-layout__icon--heart {
+    animation: none;
+    -webkit-animation: none;
+  }
+  /* Opt-in override JUST for this element if you really want it to move */
+  .venue-layout__icon--heart[data-allow-motion="true"] {
+    animation: venue-heart-bounce 1.25s ease-in-out infinite !important;
+    -webkit-animation: venue-heart-bounce 1.25s ease-in-out infinite !important;
+  }
+}
 }
 
 /* Heart keyframes at root */
 @keyframes venue-heart-bounce {
   0%, 100% { transform: translateY(0) scale(1); }
   50%      { transform: translateY(-4px) scale(1.02); }
+}
+
+@-webkit-keyframes venue-heart-bounce {
+  0%, 100% { -webkit-transform: translateY(0) scale(1); }
+  50%      { -webkit-transform: translateY(-4px) scale(1.02); }
 }
 
 /* -----------------------

@@ -1,7 +1,7 @@
 export const VENUES = {
   thay: {
     slug:'thay', name:'THAY', theme:'#1fff93', bg:'#000000',
-    socials:{ ig:'https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', fb:'https://www.facebook.com/thaygroup' },
+    socials:{ ig:'https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', fb:'https://www.facebook.com/thayekamai' },
     menuUrl:'https://drive.google.com/file/d/1c2fQdMh5ksObkT5zKT0Zyrz-GN8w8cGP/view?usp=sharing',
     eventUrl:'/events/thay',
     eventAssetUrl:'https://www.canva.com/design/DAGv8ebCSEc/z6FTdC9dj6AMW_gMxpjfMg/',

@@ -133,6 +133,7 @@ export default function VenueLayout({
       loading="lazy"
       decoding="async"
       className="venue-layout__icon--heart"
+      data-allow-motion="true"
     />
                     <img src={iconSad}   alt="Sad"   loading="lazy" decoding="async" />
                   </div>
