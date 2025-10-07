@@ -6,9 +6,11 @@ const VENUES = ["thay", "tderm", "got", "rec", "xim"]; // ✅ no extra dot here
 
 export default function FooterNav({ onNavigate }) {
   const { pathname } = useLocation();
+  // const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const [ximOpen, setXimOpen] = useState(false);
-  const isVenuePage = VENUES.some((v) => pathname.startsWith(`/${v}`));
+  const isVenuePage = VENUES.some((v) => pathname.startsWith(`/venue/${v}`));
   const menuRef = useRef(null);
 
   // Close dropdown on route change

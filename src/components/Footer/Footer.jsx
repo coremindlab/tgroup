@@ -6,100 +6,33 @@ import "./Footer.scss";
 const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim"];
 
 const PAGE_META = {
-  home: {
-    key: "home",
-    title: "T-HOSPITALITY",
-    subtitle: "Where People & Places Connect.",
-    location: "Bangkok, Thailand",
-    tel: null,
-    socials: null,
-    accent: "home",
-  },
-  thay: {
-    key: "thay",
-    title: "THAY",
-    subtitle: null,
-    location: "Sukhumvit 63, Phra Khanong Nuea, Watthana, Bangkok 10110",
-    map: "https://maps.app.goo.gl/E5LkfeLkYV71t8kV7",
-    tel: "081 666 9969",
-    socials: {
-      instagram: "https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-      facebook: "https://www.facebook.com/thayekamai",
-    },
-    accent: "thay",
-  },
-  tderm: {
-    key: "tderm",
-    title: "TDERM",
-    subtitle: null,
-    location: "455 Sukhumvit 63, Khlong Tan Nuea, Watthana, Bangkok 10110",
-    map: "https://maps.app.goo.gl/EC6NDyFr1TFyfCwP7",
-    tel: "084 455 6663",
-    socials: {
-      instagram: "https://www.instagram.com/tderm.bangkok",
-      facebook: "https://www.facebook.com/tdermx455",
-    },
-    accent: "tderm",
-  },
-  got: {
-    key: "got",
-    title: "GOT",
-    subtitle: null,
-    location: "97 Sukhumvit 24 Alley, Khlong Tan, Khlong Toei, Bangkok 10110",
-    map: "https://maps.app.goo.gl/F9L3WtWT3Bp8Eo6e9",
-    tel: "080 626 6999",
-    socials: {
-      instagram: "https://www.instagram.com/gotbangkok/",
-      facebook: "https://www.facebook.com/goodoldtimesbkk",
-    },
-    accent: "got",
-  },
-  rec: {
-    key: "rec",
-    title: "REC.",
-    subtitle: null,
-    location: "63 Wireless Road (Witthayu), Lumphini Pathumwan, Bangkok, Thailand 10300",
-    map: "https://maps.app.goo.gl/9EaoXJH7jU8PqUSX7",
-    tel: "096 539 6696",
-    socials: {
-      instagram: "https://www.instagram.com/rec.bangkok/",
-      facebook: "https://www.facebook.com/profile.php?id=61577228738918",
-    },
-    accent: "rec",
-  },
-  xim: {
-    key: "xim",
-    title: "XIM",
-    subtitle: "(Coming Soon)",
-    location: null,
-    tel: null,
-    socials: null,
-    accent: "xim",
-  },
+  home: { key: "home", title: "T-HOSPITALITY", subtitle: "Where People & Places Connect.", location: "Bangkok, Thailand", tel: null, socials: null, accent: "home" },
+  thay: { key: "thay", title: "THAY", subtitle: null, location: "Sukhumvit 63, Phra Khanong Nuea, Watthana, Bangkok 10110", map: "https://maps.app.goo.gl/E5LkfeLkYV71t8kV7", tel: "081 666 9969", socials: { instagram: "https://www.instagram.com/thayekamai_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", facebook: "https://www.facebook.com/thayekamai" }, accent: "thay" },
+  tderm: { key: "tderm", title: "TDERM", subtitle: null, location: "455 Sukhumvit 63, Khlong Tan Nuea, Watthana, Bangkok 10110", map: "https://maps.app.goo.gl/EC6NDyFr1TFyfCwP7", tel: "084 455 6663", socials: { instagram: "https://www.instagram.com/tderm.bangkok", facebook: "https://www.facebook.com/tdermx455" }, accent: "tderm" },
+  got: { key: "got", title: "GOT", subtitle: null, location: "97 Sukhumvit 24 Alley, Khlong Tan, Khlong Toei, Bangkok 10110", map: "https://maps.app.goo.gl/F9L3WtWT3Bp8Eo6e9", tel: "080 626 6999", socials: { instagram: "https://www.instagram.com/gotbangkok/", facebook: "https://www.facebook.com/goodoldtimesbkk" }, accent: "got" },
+  rec: { key: "rec", title: "REC.", subtitle: null, location: "63 Wireless Road (Witthayu), Lumphini Pathumwan, Bangkok, Thailand 10300", map: "https://maps.app.goo.gl/9EaoXJH7jU8PqUSX7", tel: "096 539 6696", socials: { instagram: "https://www.instagram.com/rec.bangkok/", facebook: "https://www.facebook.com/profile.php?id=61577228738918" }, accent: "rec" },
+  xim: { key: "xim", title: "XIM", subtitle: "(Coming Soon)", location: null, tel: null, socials: null, accent: "xim" },
 };
 
 export default function Footer() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const first = pathname.split("/")[1] || "";
-  const pageKey = first === "" ? "home" : VENUE_SLUGS.includes(first) ? first : "home";
+  // ✅ correct slug parsing for /venue/:slug
+  const segments = pathname.split("/");
+  const currentVenue = segments[1] === "venue" ? (segments[2] || "") : "";
+  const pageKey =
+    currentVenue && VENUE_SLUGS.includes(currentVenue)
+      ? currentVenue
+      : "home";
+
   const meta = PAGE_META[pageKey];
-
-  // Helpers
-  const isContactPage = pathname.toLowerCase().includes("/contact");
-  const canLinkLocation = !!meta.location && pageKey !== "home" && !isContactPage;
-
-  const buildMapsHref = (title, location) => {
-    const query = encodeURIComponent(`${title} ${location}`.trim());
-    return `https://www.google.com/maps/search/?api=1&query=${query}`;
-  };
 
   const buildTelHref = (tel) => {
     if (!tel) return "";
-    const digits = tel.replace(/[^\d+]/g, ""); // keep digits and leading +
+    const digits = tel.replace(/[^\d+]/g, "");
     return `tel:${digits}`;
-  };
+    };
 
   return (
     <footer className={`footer ${meta.accent ? `footer--${meta.accent}` : "footer--home"}`}>
@@ -109,21 +42,21 @@ export default function Footer() {
           <h3 className="footer__title">{meta.title}</h3>
           {meta.subtitle && <p className="footer__subtitle">{meta.subtitle}</p>}
 
-          {/* Location (link to Google Maps on venue pages only) */}
+          {/* Location */}
           {meta.location && (
             <p className="footer__row">
               <span className="footer__label">Location :</span>{" "}
               {meta.map ? (
-      <a href={meta.map} target="_blank" rel="noreferrer" className="footer__link">
-        {meta.location}
-      </a>
-    ) : (
-      meta.location
-    )}
+                <a href={meta.map} target="_blank" rel="noreferrer" className="footer__link">
+                  {meta.location}
+                </a>
+              ) : (
+                meta.location
+              )}
             </p>
           )}
 
-          {/* Tel (always tap-to-call when present) */}
+          {/* Tel */}
           {meta.tel && (
             <p className="footer__row">
               <span className="footer__label">Tel :</span>{" "}
