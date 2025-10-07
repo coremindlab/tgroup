@@ -138,7 +138,7 @@ export const venueData = {
     ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1c2fQdMh5ksObkT5zKT0Zyrz-GN8w8cGP/view", external: true },
-      { label: "EVENT HIGHLIGHTS", href: "/thay/highlight" },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/thay/highlight" },
     ],
     gallery: [thay_1, thay_2, thay_3, thay_4],
     themeVars: {
@@ -220,7 +220,7 @@ export const venueData = {
     ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/136Us-TGTSPrj2WyPfRsJWn4S7b7VWhsR/view", external: true },
-      { label: "EVENT HIGHLIGHTS", href: "/tderm/highlight" },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/tderm/highlight" },
     ],
     gallery: [tderm_1, tderm_2, tderm_3, tderm_4],
     themeVars: { "--bg": "#0f0d0b" },
@@ -312,7 +312,7 @@ export const venueData = {
     ],
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1Ik-5Mut9Amy8vY-ychLhsTIw-xJRfnvL/view", external: true },
-      { label: "EVENT HIGHLIGHTS", href: "/got/highlight" },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/got/highlight" },
     ],
     gallery: [got_1, got_2, got_3, got_4],
     themeVars: { "--bg": "#14120e" },
@@ -375,7 +375,7 @@ export const venueData = {
     
     buttons: [
       { label: "MENU", href: "https://drive.google.com/file/d/1TmDyw_KAAlZF-VI5-cwvxGW71Uj1Vyrw/view", external: true },
-      { label: "EVENT HIGHLIGHTS", href: "/rec/highlight" },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/rec/highlight" },
     ],
     gallery: [rec_1, rec_2, rec_3, rec_4],
     themeVars: { "--bg": "#141312" },

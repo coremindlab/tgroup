@@ -7,10 +7,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-
-
-
-
+import NotFound from "./pages/NotFound/NotFound";
 // ✅ New: data-driven venue pages
 import VenueDetails from "./pages/VenueDetails/VenueDetails";
 import VenueHighlights from "./pages/VenueHighlights/VenueHighlights";
@@ -21,15 +18,13 @@ const App = () => {
       <ScrollToTop />
       <Navbar />
       <LanguageSwitcher />
-
-      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/:slug/highlight" element={<VenueHighlights />} />
-        <Route path="/:slug" element={<VenueDetails />} />
+        <Route path="/venue/:slug/highlight" element={<VenueHighlights />} />
+        <Route path="/venue/:slug" element={<VenueDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </Router>
   );

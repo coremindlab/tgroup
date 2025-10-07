@@ -106,7 +106,7 @@ export default function VenueGrid() {
                         Coming Soon
                       </button>
                     ) : (
-                      <Link to={`/${v.slug}`} className="venue-grid__btn">
+                      <Link to={`venue/${v.slug}`} className="venue-grid__btn">
                         Read More &gt;
                       </Link>
                     )}

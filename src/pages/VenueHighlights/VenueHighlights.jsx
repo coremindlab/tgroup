@@ -157,7 +157,7 @@ export default function VenueHighlight() {
         )}
         {/* Footer back link (always shown at the end) */}
         <div className="eh__footer">
-          <Link to={`/${slug}`} className="eh__back" aria-label={`Back to ${venue.title}`}>
+          <Link to={`/venue/${slug}`} className="eh__back" aria-label={`Back to ${venue.title}`}>
             ← Back to {venue.title}
           </Link>
         </div>

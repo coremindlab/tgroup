@@ -29,9 +29,9 @@
   &__title {
     font-family: var(--font-grotesk);
     font-weight: 400;
-    font-size: 72px;
+    font-size: 68px;
     margin: 0 0 8px;
-    height: 250px;
+    height: 270px;
   }
   &__line {
     font-family: var(--font-anuphan);
@@ -116,10 +116,10 @@
    ──────────────────────────────────────────────────────────── */
 
 /* Laptop */
-@media (max-width: 1199px) {
+@media (max-width: 1250px) {
   &__inner { grid-template-columns: 0.95fr 1.05fr; gap: 20px; }
   &__slider { height: 60vh; min-height: 320px; max-height: 480px; }
-  &__title { font-size: 48px; height: 100px;}
+  &__title { font-size: 48px; height: 150px;}
 }
 
 /* Tablet */
@@ -136,7 +136,7 @@
     gap: 20px;
   }
   &__copy { padding: 0 16px; }
-  &__title { font-size: 36px; }
+  &__title { font-size: 36px; height: 80px;}
   &__line  { font-size: 18px; }
   &__slider { height: 45vh; min-height: 260px; max-height: 420px; }
   }

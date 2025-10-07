@@ -30,7 +30,7 @@ export default function FooterNav({ onNavigate }) {
       setOpen(false);
       return;
     }
-    onNavigate(`/${slug}`); // ✅ still clean URL (/rec)
+    onNavigate(`/venue/${slug}`); // ✅ still clean URL (/rec)
     setOpen(false);
   };
 
@@ -66,7 +66,7 @@ export default function FooterNav({ onNavigate }) {
           {open && (
             <div id="footer-venues-menu" role="menu" className="footer-nav__menu">
               {VENUES.map((slug) => {
-                const active = pathname.startsWith(`/${slug}`) ? "is-active" : "";
+                const active = pathname.startsWith(`/venue/${slug}`) ? "is-active" : "";
                 // ✅ Custom label just for REC
                 const label = slug === "rec" ? "REC ." : slug.toUpperCase();
                 return (

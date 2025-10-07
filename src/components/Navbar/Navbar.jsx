@@ -44,7 +44,7 @@ const Navbar = () => {
       setShowVenueDropdown(false);
       return;
     }
-    navigate(`/${slug}`);
+    navigate(`/venue/${slug}`);
     setShowVenueDropdown(false);
     setMenuOpen(false);
   };
