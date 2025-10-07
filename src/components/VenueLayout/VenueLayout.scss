@@ -456,7 +456,7 @@
     }
 
     &__gallery { max-width: 1000px; padding: 20px 1.5rem 44px; }
-    &__gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    &__gallery-grid { gap: 18px; }
     &__gallery-highlight img { height: 60vh; min-height: 420px; }
   }
 }
@@ -524,7 +524,7 @@
     }
 
     &__hline {
-      width: clamp(96px, 40vw, 220px);
+      width: clamp(96px, 60vw, 220px);
       &--left, &--right { margin-inline: auto; }
     }
 

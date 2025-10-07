@@ -124,8 +124,11 @@
 
 /* Tablet */
 @media (max-width: 992px) {
-  /* ⬅️ add space under fixed navbar */
-  &__inner {
+  & {
+    min-height: 100%;
+
+    /* ⬅️ add space under fixed navbar */
+    &__inner {
     grid-template-columns: 1fr;
     grid-template-areas:
       "media"
@@ -136,6 +139,7 @@
   &__title { font-size: 36px; }
   &__line  { font-size: 18px; }
   &__slider { height: 45vh; min-height: 260px; max-height: 420px; }
+  }
 }
 
 /* Mobile */

@@ -225,6 +225,9 @@ flex: 0 0 clamp(28%, 30%, 34%);    max-width: 30%;
 
   /* Tablets */
   @media (max-width: 992px) {
+    &__card {
+      flex-direction: column;
+    }
     &__item.left  { padding-right: 28px; }
     &__item.right { padding-left: 28px; }
     &__btn {
@@ -236,6 +239,11 @@ flex: 0 0 clamp(28%, 30%, 34%);    max-width: 30%;
     &__img {
       flex-basis: 35%;
       max-width: 35%;
+    }
+
+    &__content {
+      align-items: center;
+      text-align: center;
     }
   }
 

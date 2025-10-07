@@ -31,7 +31,7 @@ export default function ComingSoonPopup({ open, onClose, title = "Coming Soon" }
           onClick={(e) => e.stopPropagation()}
         >
           <h3 id="cs-title" className="cs-title">{title}</h3>
-          <p className="cs-text">XIM is not open yet. Stay tuned for updates ✨</p>
+          <p className="cs-text">XIM is on the way — stay tuned for something exciting ✨</p>
           <button className="cs-btn" onClick={onClose}>Close</button>
         </div>
       </div>
