@@ -238,12 +238,19 @@ export const venueData = {
       "GOT : Good Old Times —\n a timeless space for friends and moments.",
     ],
     paragraphs: [
-      "Building on its 1980s-inspired concept, Good Old Times (GOT) offers a timeless yet modern experience.\n Every detail, from vintage décor and warm ambient lighting to signature cocktails, is curated to create a space that celebrates the charm of the past while embracing the style of today.",
-      "Whether you’re gathering with friends, enjoying a quiet evening, or celebrating a special occasion,\n GOT provides a warm and inviting atmosphere where every visit feels like stepping into a cherished memory.",
+      "Step inside and you’ll feel it instantly—the sense of slipping into a different time. This bar is crafted around a simple idea: creating a space that captures the pure joy of yesterday and brings back the “good old times,” but with a modern edge. The design follows a Retrofuturism concept, blending old-fashioned charm with futuristic touches to create a nightlife experiencethat feels both nostalgic and new.", "Inspired by hidden clubs of the 1980s, GOT leans into mood, memory, and a little mystery. One of the standout features is the seamless connection between the DJ’s hidden booth and the retro-style drinking bar. These two zones play off each other like parallel worlds—one pulling you back into the past, the other grounding you in the present. The result is a setting that feels cinematic, immersive, and intentionally crafted for nights you’ll want to remember.", "Warm lighting, vintage silhouettes, and subtle high-tech details set the tone, creating an atmosphere that sets the tone for the night. Whether you’re looking to have a casual drink, or a full night out, we got it covered here.",
+      "We’ve got it all, premium alcohol, champagne and the best crafted cocktails, with menus ranging from xx to xx.",
+      "Music takes center stage here. The bar features an open-format sound, mixing genres and eras to match the night’s mood. Expect everything from feel-good classics to modern beats and a weekly rotation of themes, guest & resident DJs and international names.",
+      "Where to find us: Mahogany Tower, Suhkhumvit 24 Opening Hours: Everyday, 7pm-late", "Whether you’re after a throwback moment, a fresh night out, or a blend of both, this bar offers a unique escape. It’s where nostalgia meets now, wrapped in thoughtful design and effortless cool. Come for the cocktails, stay for the vibes, and return for the experience you’ll want to relive.",
     ],
+    
     highlights: [
-      ["Good Old Times (GOT)"], // para 0
-      ["GOT"],                  // para 1
+      ["good old times", "GOT"], // para 0
+      ["GOT"], //1
+      [], //2
+      [], //3
+      [], //4
+      ["Where to find us:", "Everyday, 7pm-late"] // para 5
     ],
     eventHighlights: [
       {
@@ -317,7 +324,7 @@ export const venueData = {
     gallery: [got_1, got_2, got_3, got_4],
     themeVars: { "--bg": "#14120e" },
     quoteIcons: { top: "right", bottom: "left" },
-    paraAlign: ["left", "right"],
+    paraAlign: ["left", "right", "left", "center", "center", "center", "center"],
   },
 
   rec: {

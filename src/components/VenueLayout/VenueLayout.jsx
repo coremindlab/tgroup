@@ -166,6 +166,13 @@ export default function VenueLayout({
               {accent === "got" && i === 1 && (
                 <div className="venue-layout__hline venue-layout__hline--right" />
               )}
+              {accent === "got" && i === 2 && (
+                <div className="venue-layout__hline venue-layout__hline--left" />
+              )}
+              {accent === "got" && i === 4 && (
+                <div className="venue-layout__hline venue-layout__hline--center" />
+              )}
+
             </React.Fragment>
           ))}
         </section>

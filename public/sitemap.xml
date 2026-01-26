@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
+  <url>
+    <loc>https://t-hospitality.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://t-hospitality.com/contact</loc>
+  </url>
+
+  <!-- Venues -->
+  <url>
+    <loc>https://t-hospitality.com/venue/thay</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/thay/highlight</loc>
+  </url>
+
+  <url>
+    <loc>https://t-hospitality.com/venue/tderm</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/tderm/highlight</loc>
+  </url>
+
+  <url>
+    <loc>https://t-hospitality.com/venue/got</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/got/highlight</loc>
+  </url>
+
+  <url>
+    <loc>https://t-hospitality.com/venue/rec</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/rec/highlight</loc>
+  </url>
+
+  <!-- <url>
+    <loc>https://t-hospitality.com/venue/xim</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/xim/highlight</loc>
+  </url> -->
+
+</urlset>
