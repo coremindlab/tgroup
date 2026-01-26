@@ -170,9 +170,9 @@
   /* GOT-only fine-tune (Opening hours) */
 &.venue-layout--got {
   .venue-layout__paragraph > .venue-layout__p:nth-of-type(6) {
+    letter-spacing: 0.05em;
     line-height: 1.2;
     padding: 12px 0;
-    opacity: 0.9;
   }
 }
 
