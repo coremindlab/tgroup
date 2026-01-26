@@ -167,6 +167,16 @@
     }
   }
 
+  /* GOT-only fine-tune (Opening hours) */
+&.venue-layout--got {
+  .venue-layout__paragraph > .venue-layout__p:nth-of-type(6) {
+    line-height: 1.2;
+    padding: 12px 0;
+    opacity: 0.9;
+  }
+}
+
+
   /* -----------------------
      QUOTE ICON (Outlined “ ”)
   ------------------------*/
@@ -543,6 +553,12 @@
     &.venue-layout--tderm {
       .venue-layout__blockquote { text-align: center; margin: 0 auto 1rem; }
       .venue-layout__p { margin-inline: auto; }
+    }
+
+
+    &.venue-layout--got {
+      .venue-layout__paragraph > .venue-layout__p:nth-child(6) {
+      }
     }
   }
 }
