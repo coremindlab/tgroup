@@ -61,15 +61,19 @@
         font-size: clamp(28px, 6vw, 54px) !important;
         font-weight: 300;
         line-height: 1.3;
-        margin: 6rem auto 0;
+        margin: 0 auto;
         max-width: 900px;
         height: auto;
         letter-spacing: 0 !important;
         color: var(--accent);
+        text-align: center;
       }
     }
   }
 
+  &.venue-layout--xim {
+    .venue-layout__quote { text-align: left; }
+  }
 
 
   /* -----------------------
@@ -155,6 +159,68 @@
     }
   }
 
+  /* -----------------------
+     MENU (Recommended)
+  ------------------------*/
+  &__menu {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 40px;
+    text-align: center;
+
+    &-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(24px, 4vw, 40px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin: 4.5rem 0;
+    }
+
+    &-list {
+      display: grid;
+      gap: 42px;
+      text-align: left;
+    }
+
+    &-item {
+      display: grid;
+      grid-template-columns: minmax(220px, 300px) 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    &-text { align-self: center; max-width: 560px; }
+
+    &-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #0b0b0b;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    &-name {
+      font-family: var(--font-anuphan);
+      font-weight: 600;
+      font-size: clamp(18px, 2.2vw, 28px);
+      color: #f2f2f2;
+      margin: 0 0 30px;
+    }
+
+    &-desc {
+      font-family: var(--font-anuphan);
+      font-weight: 300;
+      font-size: clamp(14px, 1.6vw, 20px);
+      line-height: 1.5;
+      color: #cfcfcf;
+      margin: 0;
+    }
+  }
+
 
 
   /* TDERM-only fine-tune */
@@ -175,6 +241,27 @@
     padding: 12px 0;
   }
 }
+
+  /* XIM-only fine-tune */
+  &.venue-layout--xim {
+    .venue-layout__paragraph > .venue-layout__p:nth-of-type(5) {
+      color: var(--accent);
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(20px, 2.6vw, 30px);
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+      width: min(92vw, 980px);
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .venue-layout__gallery-highlight img {
+      height: 100vh;
+      max-height: none;
+    }
+  }
 
 
   /* -----------------------
@@ -223,6 +310,10 @@
     .venue-layout__quote-icon--bottom { justify-content: flex-start; }
   }
   &.venue-layout--rec {
+    .venue-layout__quote-icon--top    { justify-content: flex-start; }
+    .venue-layout__quote-icon--bottom { justify-content: flex-end; }
+  }
+  &.venue-layout--xim {
     .venue-layout__quote-icon--top    { justify-content: flex-start; }
     .venue-layout__quote-icon--bottom { justify-content: flex-end; }
   }
@@ -317,7 +408,7 @@
   &__vline {
     position: relative;
     width: 2px;
-    height: clamp(140px, 18vw, 300px);
+    height: clamp(170px, 20vw, 340px);
     margin: 24px auto;
     background: var(--accent);
 
@@ -549,6 +640,22 @@
     &__gallery-grid { grid-template-columns: 1fr; gap: 12px; }
     &__gallery-highlight img { height: 50vh; min-height: 280px; }
 
+    &.venue-layout--xim {
+      .venue-layout__gallery-highlight img {
+        height: 50vh;
+        min-height: 280px;
+      }
+    }
+
+    &__menu {
+      padding: 0 1rem;
+      margin-bottom: 3rem;
+
+      &-item { grid-template-columns: 1fr; text-align: center; }
+      &-img { max-width: 240px; margin: 0 auto; }
+      &-text { text-align: center; }
+    }
+
     /* TDERM mobile tweaks */
     &.venue-layout--tderm {
       .venue-layout__blockquote { text-align: center; margin: 0 auto 1rem; }
@@ -569,6 +676,13 @@
 
     &__paragraph .venue-layout__p { font-size: clamp(13px, 4.1vw, 16px); }
     &__btn { font-size: 13px; padding: 7px 12px; }
+
+    &.venue-layout--xim {
+      .venue-layout__gallery-highlight img {
+        height: 45vh;
+        min-height: 240px;
+      }
+    }
   }
 }
 
@@ -579,3 +693,4 @@
 .venue-layout.venue-layout--tderm { --accent: #bf8347; --bg: #0f0d0b; }
 .venue-layout.venue-layout--got   { --accent: #f2da76; --bg: #14120e; }
 .venue-layout.venue-layout--rec   { --accent: #f4eacf; --bg: #141312; }
+.venue-layout.venue-layout--xim   { --accent: #aea05d; --bg: #000000; }

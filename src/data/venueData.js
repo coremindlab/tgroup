@@ -4,6 +4,7 @@ import slide2 from "../assets/home/slide2.jpg";
 import slide3 from "../assets/home/slide3.jpg";
 // import slide4 from "../assets/home/slide4.jpg";
 import slide4 from "../assets/home/slide4.png";
+import slide5 from "../assets/home/slide5.jpg";
 import thay_1 from "../assets/thay/thay_1.jpg";
 import thay_2 from "../assets/thay/thay_2.jpg";
 import thay_3 from "../assets/thay/thay_3.jpg";
@@ -21,6 +22,14 @@ import rec_2 from "../assets/rec/rec_2.jpg";
 import rec_3 from "../assets/rec/rec_3.jpg";
 import rec_4 from "../assets/rec/rec_4.jpg";
 
+import xim_eastwest from "../assets/xim/1.East vs. West.png";
+import xim_matter from "../assets/xim/2.Matter- Solid _ Liquid _ Gas.png";
+import xim_nochoc from "../assets/xim/3.No Chocolate.png";
+import xim_mangosteen from "../assets/xim/4.Mangosteen.png";
+import xim_grid_1 from "../assets/xim/XIMBKKSNAP40.jpeg";
+import xim_grid_2 from "../assets/xim/7.3.26 XimxLedukaan0052.jpeg";
+import xim_grid_3 from "../assets/xim/XIMBKKSNAP93.jpeg";
+import xim_grid_4 from "../assets/xim/6811-03 XIM (Portait)_060 1_Original.JPG";
 
 
 export const venueData = {
@@ -386,7 +395,78 @@ export const venueData = {
     ],
     gallery: [rec_1, rec_2, rec_3, rec_4],
     themeVars: { "--bg": "#141312" },
-        quoteIcons: { top: "left", bottom: "right" },
+    quoteIcons: { top: "left", bottom: "right" },
         paraAlign: ["left", "right", "left"],
+  },
+
+  xim: {
+    year: "2025",
+    title: "XIM",
+    accent: "xim",
+    heroImage: slide5,
+    quotes: [
+      "Where Flavor Meets Connection-",
+      "XIM — Where every flavor connects, and every night becomes a story worth tasting.",
+    ],
+    paragraphs: [
+      "XIM Bar is crafted as a nightlife destination where classic charm meets contemporary expression. With distinctive interiors, warm refined tones, and a curated drink philosophy, it creates a space that feels both elevated and inviting.",
+      "Every moment at XIM is designed for discovery from layered cocktails to meaningful conversations, all set within a carefully shaped sound and atmosphere. Whether it's an intimate evening or a vibrant night with friends, XIM adapts effortlessly to the mood you seek.",
+      "XIM is not just a name. It represents the intersection of meanings where the vibrant colors of life (XIM) meet the delicate balance of flavors (ชิม), brought to life through the art of tasting (ชิม). Built on the philosophy of mixing (MIX) and connection, XIM weaves people, emotions, and moments into one seamless journey.",
+      "From flavor and culture to the harmony of life, everything comes together at XIM.",
+      "Each cocktail at XIM is an exploration of concept and contrast\nwhere flavor, form and imagination come together through a\ndistinct creative direction.",
+    ],
+    highlights: [
+      [],
+      [],
+      ["(XIM)", "(ชิม)", "(MIX)"],
+      [],
+    ],
+    eventHighlights: [
+      {
+        id: "xim-le-du-kaan",
+        title: "Event : XIM x LE DU KAAN",
+        gallery: {
+          small: [
+            "/images/highlights/xim/ledukaan/1.jpg",
+            "/images/highlights/xim/ledukaan/2.jpg",
+            "/images/highlights/xim/ledukaan/3.jpg",
+          ],
+          highlight: "/images/highlights/xim/ledukaan/4.jpg",
+        },
+      },
+    ],
+    buttons: [
+      { label: "MENU", href: "https://drive.google.com/file/d/1vgwEbPka5VLpp45D8Bs-44nvaFnnafSU/view", external: true },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/xim/highlight" },
+    ],
+    gallery: [xim_grid_4, xim_grid_2, xim_grid_1, xim_grid_3],
+    themeVars: { "--bg": "#000000" },
+    quoteIcons: { top: "left", bottom: "right" },
+    paraAlign: ["left", "right", "left", "left", "center"],
+    menu: {
+      title: "Recommended",
+      items: [
+        {
+          title: "East vs. West",
+          desc: "Kimchi meets Mexican smoke, with pineapple reimagined as tepache and finished with mezcal-infused chicken oil. A harmony of two worlds.",
+          img: xim_eastwest,
+        },
+        {
+          title: "Matter: Solid / Liquid / Gas",
+          desc: "A shifting form of flavor frozen, melted, and transformed within a single sip.",
+          img: xim_matter,
+        },
+        {
+          title: "No Chocolate",
+          desc: "A chocolate illusion without cocoa—aged rum, nut liqueurs, and coffee create a rich, imagined depth.",
+          img: xim_nochoc,
+        },
+        {
+          title: "Mangosteen",
+          desc: "Mangosteen meets pisco, guava, and grape—served with sorbet for a refined tropical finish.",
+          img: xim_mangosteen,
+        },
+      ],
+    },
   },
 };

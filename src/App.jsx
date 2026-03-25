@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound/NotFound";
 // ✅ New: data-driven venue pages
 import VenueDetails from "./pages/VenueDetails/VenueDetails";
 import VenueHighlights from "./pages/VenueHighlights/VenueHighlights";
+import Xim from "./pages/VenueDetails/Xim";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/venue/:slug/highlight" element={<VenueHighlights />} />
+        <Route path="/venue/xim" element={<Xim />} />
         <Route path="/venue/:slug" element={<VenueDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

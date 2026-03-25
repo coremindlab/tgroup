@@ -28,11 +28,19 @@ const VENUES = [
   },
   {
     key: "rec",
-    title: "REC (RECORD ROOM)",
+    title: "REC. (RECORD ROOM)",
     address: ["63 Wireless Road (Witthayu),", "Lumphini Pathumwan, Bangkok, Thailand 10330"],
     tel: "096 539 6696",
     email: "contact@got.co.th",
     mapUrl: "https://maps.app.goo.gl/XmT6YnAQsC3vjt4k9",
+  },
+  {
+    key: "xim",
+    title: "XIM",
+    address: ["The 49 Terrace, 3rd Floor, Sukhumvit 49 Road,", "Khlong Tan Nuea, Watthana, Bangkok 10110"],
+    tel: "095 509 9996",
+    email: "contact@xim.co.th",
+    mapUrl: null,
   },
 ];
 
@@ -56,9 +64,15 @@ export default function Contact() {
               {/* Location → Google Maps (exact link) */}
               <p className="contact__row contact__row--link">
                 <span className="contact__label">Location</span>
-                <a className="contact__value" href={v.mapUrl} target="_blank" rel="noreferrer">
-                  <span className="contact__text">: {v.address.join(" ")}</span>
-                </a>
+                {v.mapUrl ? (
+                  <a className="contact__value" href={v.mapUrl} target="_blank" rel="noreferrer">
+                    <span className="contact__text">: {v.address.join(" ")}</span>
+                  </a>
+                ) : (
+                  <span className="contact__value">
+                    <span className="contact__text">: {v.address.join(" ")}</span>
+                  </span>
+                )}
               </p>
 
               {/* Tel → click to call */}
@@ -69,13 +83,15 @@ export default function Contact() {
                 </a>
               </p>
 
-              {/* Email → mailto
-              <p className="contact__row contact__row--link">
-                <span className="contact__label">Email</span>
-                <a className="contact__value" href={`mailto:${v.email}`}>
-                  <span className="contact__text">: {v.email}</span>
-                </a>
-              </p> */}
+              {/* Email → mailto */}
+              {v.email && (
+                <p className="contact__row contact__row--link">
+                  <span className="contact__label">Email</span>
+                  <a className="contact__value" href={`mailto:${v.email}`}>
+                    <span className="contact__text">: {v.email}</span>
+                  </a>
+                </p>
+              )}
 
               <div className="contact__rule" aria-hidden />
             </div>

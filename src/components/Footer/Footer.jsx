@@ -11,7 +11,19 @@ const PAGE_META = {
   tderm: { key: "tderm", title: "TDERM", subtitle: null, location: "455 Sukhumvit 63, Khlong Tan Nuea, Watthana, Bangkok 10110", map: "https://maps.app.goo.gl/EC6NDyFr1TFyfCwP7", tel: "084 455 6663", socials: { instagram: "https://www.instagram.com/tderm.bangkok", facebook: "https://www.facebook.com/tdermx455" }, accent: "tderm" },
   got: { key: "got", title: "GOT", subtitle: null, location: "97 Sukhumvit 24 Alley, Khlong Tan, Khlong Toei, Bangkok 10110", map: "https://maps.app.goo.gl/F9L3WtWT3Bp8Eo6e9", tel: "080 626 6999", socials: { instagram: "https://www.instagram.com/gotbangkok/", facebook: "https://www.facebook.com/goodoldtimesbkk" }, accent: "got" },
   rec: { key: "rec", title: "REC.", subtitle: null, location: "63 Wireless Road (Witthayu), Lumphini Pathumwan, Bangkok, Thailand 10300", map: "https://maps.app.goo.gl/9EaoXJH7jU8PqUSX7", tel: "096 539 6696", socials: { instagram: "https://www.instagram.com/rec.bangkok/", facebook: "https://www.facebook.com/profile.php?id=61577228738918" }, accent: "rec" },
-  xim: { key: "xim", title: "XIM", subtitle: "(Coming Soon)", location: null, tel: null, socials: null, accent: "xim" },
+  xim: {
+    key: "xim",
+    title: "XIM",
+    subtitle: null,
+    hours: "Open daily: 19:00 - 02:00 (7 PM - 2 AM)",
+    location: "The 49 Terrace, 3rd Floor, Sukhumvit 49 Road, Khlong Tan Nuea, Watthana, Bangkok 10110",
+    tel: "095 509 9996",
+    socials: {
+      instagram: "https://www.instagram.com/xim.bangkok",
+      facebook: "https://www.facebook.com/profile.php?id=61583001766510",
+    },
+    accent: "xim",
+  },
 };
 
 export default function Footer() {
@@ -56,6 +68,13 @@ export default function Footer() {
             </p>
           )}
 
+          {/* Hours */}
+          {meta.hours && (
+            <p className="footer__row">
+              <span className="footer__label">Open daily :</span> {meta.hours.replace(/^Open daily:\s*/i, "")}
+            </p>
+          )}
+
           {/* Tel */}
           {meta.tel && (
             <p className="footer__row">
@@ -68,14 +87,18 @@ export default function Footer() {
         </div>
 
         {/* Middle: socials */}
-        {meta.socials ? (
+        {meta.socials?.instagram || meta.socials?.facebook ? (
           <div className="footer__middle">
-            <a href={meta.socials.instagram} target="_blank" rel="noreferrer" className="footer__social">
-              INSTAGRAM
-            </a>
-            <a href={meta.socials.facebook} target="_blank" rel="noreferrer" className="footer__social">
-              FACEBOOK
-            </a>
+            {meta.socials?.instagram && (
+              <a href={meta.socials.instagram} target="_blank" rel="noreferrer" className="footer__social">
+                INSTAGRAM
+              </a>
+            )}
+            {meta.socials?.facebook && (
+              <a href={meta.socials.facebook} target="_blank" rel="noreferrer" className="footer__social">
+                FACEBOOK
+              </a>
+            )}
           </div>
         ) : (
           <div className="footer__middle footer__middle--empty" />

@@ -1,8 +1,7 @@
 // components/VenueGrid/VenueGrid.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./VenueGrid.scss";
-import ComingSoonPopup from "../ComingSoonPopup/ComingSoonPopup"; // ⬅️ modal
 
 // Images
 import imgThay from "../../assets/venues/thay.jpg";
@@ -46,7 +45,7 @@ const VENUES = [
   },
   {
     year: "2025",
-    title: "(Coming Soon)",
+    title: "Where Flavors Meets Connection",
     desc:
       "XIM celebrates the vibrant colors of life through the harmonious blend of flavors, cultures, and creativity. With uncompromising standards and a dedication to innovation, it aims to set a new benchmark for quality and experience in the cocktail bar scene.",
     img: imgXim,
@@ -55,8 +54,6 @@ const VENUES = [
 ];
 
 export default function VenueGrid() {
-  const [ximOpen, setXimOpen] = useState(false); // ⬅️ modal state
-
   return (
     <section className="venue-grid section">
       <div className="container">
@@ -69,7 +66,6 @@ export default function VenueGrid() {
 
           {VENUES.map((v, i) => {
             const side = i % 2 ? "right" : "left";
-            const isComingSoon = v.slug === "xim";
 
             return (
               <div key={v.slug} className={`venue-grid__item ${side}`}>
@@ -94,22 +90,9 @@ export default function VenueGrid() {
                     </h3>
                     <p>{v.desc}</p>
 
-                    {/* CTA: link for live venues, modal trigger for XIM */}
-                    {isComingSoon ? (
-                      <button
-                        type="button"
-                        className="venue-grid__btn"
-                        onClick={() => setXimOpen(true)}
-                        aria-haspopup="dialog"
-                        aria-controls="xim-coming-soon"
-                      >
-                        Coming Soon
-                      </button>
-                    ) : (
-                      <Link to={`venue/${v.slug}`} className="venue-grid__btn">
-                        Read More &gt;
-                      </Link>
-                    )}
+                    <Link to={`venue/${v.slug}`} className="venue-grid__btn">
+                      Read More &gt;
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -117,14 +100,6 @@ export default function VenueGrid() {
           })}
         </div>
       </div>
-
-      {/* Coming Soon modal (shared instance) */}
-      <ComingSoonPopup
-        open={ximOpen}
-        onClose={() => setXimOpen(false)}
-        title="Coming Soon"
-        id="xim-coming-soon"
-      />
     </section>
   );
 }

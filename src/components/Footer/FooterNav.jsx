@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ComingSoonPopup from "../../components/ComingSoonPopup/ComingSoonPopup";
 
 const VENUES = ["thay", "tderm", "got", "rec", "xim"]; // ✅ no extra dot here
 
@@ -9,7 +8,6 @@ export default function FooterNav({ onNavigate }) {
   // const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const [ximOpen, setXimOpen] = useState(false);
   const isVenuePage = VENUES.some((v) => pathname.startsWith(`/venue/${v}`));
   const menuRef = useRef(null);
 
@@ -27,11 +25,6 @@ export default function FooterNav({ onNavigate }) {
   }, [open]);
 
   const handleVenueClick = (slug) => {
-    if (slug === "xim") {
-      setXimOpen(true);
-      setOpen(false);
-      return;
-    }
     onNavigate(`/venue/${slug}`); // ✅ still clean URL (/rec)
     setOpen(false);
   };
@@ -95,12 +88,6 @@ export default function FooterNav({ onNavigate }) {
         </div>
       </nav>
 
-      {/* Coming Soon modal for XIM */}
-      <ComingSoonPopup
-        open={ximOpen}
-        onClose={() => setXimOpen(false)}
-        title="Coming Soon"
-      />
     </>
   );
 }

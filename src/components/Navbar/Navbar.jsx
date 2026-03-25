@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
-import ComingSoonPopup from "../ComingSoonPopup/ComingSoonPopup";
 import "./Navbar.scss";
 
 const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim"];
@@ -11,7 +10,6 @@ const Navbar = () => {
   const { t } = useLanguage();
   const [showVenueDropdown, setShowVenueDropdown] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [ximOpen, setXimOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
@@ -43,12 +41,6 @@ const Navbar = () => {
   }, [showVenueDropdown]);
 
   const goToVenue = (slug) => {
-    if (slug === "xim") {
-      setXimOpen(true);
-      setMenuOpen(false);
-      setShowVenueDropdown(false);
-      return;
-    }
     navigate(`/venue/${slug}`);
     setShowVenueDropdown(false);
     setMenuOpen(false);
@@ -120,11 +112,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      <ComingSoonPopup
-        open={ximOpen}
-        onClose={() => setXimOpen(false)}
-        title="Coming Soon"
-      />
     </nav>
   );
 };

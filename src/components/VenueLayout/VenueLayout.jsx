@@ -31,6 +31,7 @@ export default function VenueLayout({
   highlights = [], paraAlign = [],
   themeVars = {}, classNameExtra = "",
   slots = {},
+  menu = null,
   inserts = [],
 }) {
   // Allow only CSS vars, but explicitly block --quote-size to prevent venue overrides
@@ -147,7 +148,24 @@ export default function VenueLayout({
               )}
 
               <p className={`venue-layout__p venue-layout__p--${paraAlign[i] || "center"}`}>
-                {renderWithHighlights(p, highlights[i] || [])}
+                {(() => {
+                  const phrases = highlights[i] || [];
+                  if (accent === "xim" && i === 0 && typeof p === "string") {
+                    const firstIdx = p.indexOf("XIM");
+                    if (firstIdx >= 0) {
+                      const before = p.slice(0, firstIdx);
+                      const after = p.slice(firstIdx + 3);
+                      return (
+                        <>
+                          {before}
+                          <span className="accent">XIM</span>
+                          {renderWithHighlights(after, phrases.filter(ph => ph !== "XIM"))}
+                        </>
+                      );
+                    }
+                  }
+                  return renderWithHighlights(p, phrases);
+                })()}
               </p>
 
               {/* Custom inserts scheduled after this paragraph */}
@@ -178,15 +196,46 @@ export default function VenueLayout({
         </section>
       )}
 
+      {/* RECOMMENDED MENU */}
+      {menu && Array.isArray(menu.items) && menu.items.length > 0 && (
+        <section className="venue-layout__menu">
+          {menu.title && <h3 className="venue-layout__menu-title">{menu.title}</h3>}
+          <div className="venue-layout__menu-list">
+            {menu.items.map((item, i) => (
+              <article key={item.title || `menu-${i}`} className="venue-layout__menu-item">
+                {item.img && (
+                  <img
+                    src={item.img}
+                    alt={item.title || `Menu item ${i + 1}`}
+                    className="venue-layout__menu-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                <div className="venue-layout__menu-text">
+                  {item.title && <h4 className="venue-layout__menu-name">{item.title}</h4>}
+                  {item.desc && <p className="venue-layout__menu-desc">{item.desc}</p>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* CTA QUOTE + BUTTONS */}
       {quotes[1] && (
         <section className="venue-layout__quote venue-layout__quote--cta">
-           <div
-            className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
-            aria-hidden="true"
-          >
-           <span className="venue-layout__quote-mark">”</span>
-          </div>
+          {accent === "xim" && (
+            <div className="venue-layout__hline venue-layout__hline--center" />
+          )}
+          {accent !== "xim" && (
+            <div
+              className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
+              aria-hidden="true"
+            >
+              <span className="venue-layout__quote-mark">”</span>
+            </div>
+          )}
           {accent === "tderm" && (
             <div className="venue-layout__hline venue-layout__hline--center" />
           )}
@@ -197,6 +246,9 @@ export default function VenueLayout({
             {quotes[1]}
           </blockquote>
 
+           {accent === "xim" && (
+            <div className="venue-layout__hline venue-layout__hline--center" />
+          )}
           {!!buttons.length && (
             <div className="venue-layout__buttons">
               {buttons.map((btn) => (
@@ -212,6 +264,7 @@ export default function VenueLayout({
               ))}
             </div>
           )}
+         
         </section>
       )}
 
