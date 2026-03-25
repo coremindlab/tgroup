@@ -41,8 +41,8 @@
       transition: border-color .2s ease, color .2s ease, background .2s ease;
 
       &.is-active {
-        border-color: #fff;      /* pill active */
-        font-weight: 400;
+        border: 2px solid #fff;  /* pill active */
+        font-weight: 500;
       }
     }
 
@@ -98,7 +98,7 @@
 
           &.is-active {
             color: var(--accent);
-            font-weight: 400;
+            font-weight: 500;
           }
         }
       }
@@ -235,6 +235,10 @@
           font-weight: 400;
         }
 
+        &.is-active .navbar__dropdown-trigger .navbar__label {
+          font-weight: bold;
+        }
+
         .dropdown-menu {
           position: static;
           box-shadow: none;
@@ -252,6 +256,10 @@
                      var(--padY) calc(var(--padX) + 8px);
             border-bottom: 1px solid var(--divider);
             position: relative;
+
+            &.is-active {
+              font-weight: 500;
+            }
           }
         }
       }
@@ -271,6 +279,14 @@
     .navbar__lang button,
     .dropdown-item {
       min-height: 44px;
+    }
+
+    .navbar__dropdown .dropdown-menu .dropdown-item.is-active {
+      font-weight: 500;
+    }
+
+    .navbar__dropdown.is-active .navbar__dropdown-trigger .navbar__label {
+      font-weight: 500;
     }
   }
 }

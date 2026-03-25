@@ -113,8 +113,8 @@
 
     /* Active normal links (HOME, CONTACT) get white border */
     &__link.is-active {
-      border-color: #fff;
-      font-weight: 400;
+      border: 2px solid #fff;
+      font-weight: 500;
     }
 
     &__dropdown {
@@ -131,7 +131,7 @@
 
     /* When Venues+ is active (on any venue page), it gets accent */
     &__trigger.is-active {
-      border-color: var(--accent);
+      border: 2px solid var(--accent);
       color: var(--accent);
       font-weight: 500;
       background: color-mix(in oklab, var(--accent) 10%, transparent);
