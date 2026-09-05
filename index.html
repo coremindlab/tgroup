@@ -8,37 +8,48 @@
     <title>T-HOSPITALITY GROUP | Bangkok’s Nightlife Collective</title>
     <meta
       name="description"
-      content="Experience Bangkok’s vibrant nightlife with T-HOSPITALITY GROUP — featuring THAY, TDERM, GOT, REC, and XIM."
+      content="Discover T-HOSPITALITY GROUP and six distinctive Bangkok destinations: THAY, TDERM, GOT, REC., XIM, and CHARTER."
     />
     <link rel="canonical" href="https://t-hospitality.com" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="theme-color" content="#000000" />
 
     <!-- 🔹 Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
+    <script id="site-structured-data" type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "T-HOSPITALITY GROUP",
-        "url": "https://t-hospitality.com",
-        "logo": "https://t-hospitality.com/t-hospitality.png",
-        "sameAs": [
-          "https://www.instagram.com/thaybkk",
-          "https://www.instagram.com/tdermbkk",
-          "https://www.instagram.com/gotbkk",
-          "https://www.instagram.com/recbkk",
-          "https://www.instagram.com/ximbkk"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://t-hospitality.com/#organization",
+            "name": "T-HOSPITALITY GROUP",
+            "alternateName": "T-Hospitality",
+            "url": "https://t-hospitality.com",
+            "logo": "https://t-hospitality.com/t-hospitality.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://t-hospitality.com/#website",
+            "name": "T-HOSPITALITY GROUP",
+            "alternateName": "T-Hospitality",
+            "url": "https://t-hospitality.com/",
+            "inLanguage": ["en", "th"],
+            "publisher": { "@id": "https://t-hospitality.com/#organization" }
+          }
         ]
       }
     </script>
 
     <!-- 🔹 Open Graph / Facebook / LINE preview -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_TH" />
     <meta property="og:url" content="https://t-hospitality.com" />
     <meta property="og:site_name" content="T-HOSPITALITY GROUP" />
     <meta property="og:title" content="T-HOSPITALITY GROUP | Bangkok’s Nightlife Collective" />
     <meta
       property="og:description"
-      content="Discover THAY, TDERM, GOT, REC, and XIM — five iconic nightlife venues in Bangkok."
+      content="Discover THAY, TDERM, GOT, REC., XIM, and CHARTER — six distinctive hospitality and nightlife destinations in Bangkok."
     />
     <meta property="og:image" content="https://t-hospitality.com/t-hospitality.png" />
     <meta property="og:image:secure_url" content="https://t-hospitality.com/t-hospitality.png" />
@@ -51,7 +62,7 @@
     <meta name="twitter:title" content="T-HOSPITALITY GROUP | Bangkok’s Nightlife Collective" />
     <meta
       name="twitter:description"
-      content="Discover THAY, TDERM, GOT, REC, and XIM — five iconic nightlife venues in Bangkok."
+      content="Discover THAY, TDERM, GOT, REC., XIM, and CHARTER — six distinctive hospitality and nightlife destinations in Bangkok."
     />
     <meta name="twitter:image" content="https://t-hospitality.com/t-hospitality.png" />
 
@@ -70,9 +81,7 @@
     />
 
     <!-- Favicons / PWA -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/t-hospitality.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
   </head>
 

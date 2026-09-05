@@ -9,6 +9,7 @@ import imgTderm from "../../assets/venues/tderm.jpg";
 import imgGot from "../../assets/venues/got.jpg";
 import imgRec from "../../assets/venues/rec.jpg";
 import imgXim from "../../assets/venues/xim.jpg";
+import imgCharter from "../../assets/venues/charter.jpg";
 
 const VENUES = [
   {
@@ -45,20 +46,34 @@ const VENUES = [
   },
   {
     year: "2025",
-    title: "Where Flavors Meets Connection",
+    title: "Where Flavors Meets Creativity",
     desc:
       "XIM celebrates the vibrant colors of life through the harmonious blend of flavors, cultures, and creativity. With uncompromising standards and a dedication to innovation, it aims to set a new benchmark for quality and experience in the cocktail bar scene.",
     img: imgXim,
     slug: "xim",
   },
+  {
+    year: "2026",
+    title: "A Social Corner for Every Hour",
+    desc:
+      "CHARTER is a day-to-night social destination in Thonglor, bringing together restaurants, cafés, and bars in one vibrant community. From morning coffee to late-night drinks, there’s always a corner for every hour.",
+    img: imgCharter,
+    slug: "charter",
+  },
 ];
 
-export default function VenueGrid() {
+export default function VenueGrid({
+  heading = "Our Journey Through Time",
+  headingLevel = 2,
+  showAllLink = true,
+}) {
+  const Heading = headingLevel === 1 ? "h1" : "h2";
+
   return (
-    <section className="venue-grid section">
+    <section id="venues" className="venue-grid section">
       <div className="container">
         <p className="venue-grid__kicker">Timeline</p>
-        <h2 className="venue-grid__title">Our Journey Through Time</h2>
+        <Heading className="venue-grid__title">{heading}</Heading>
 
         <div className="venue-grid__timeline">
           {/* center line */}
@@ -90,7 +105,7 @@ export default function VenueGrid() {
                     </h3>
                     <p>{v.desc}</p>
 
-                    <Link to={`venue/${v.slug}`} className="venue-grid__btn">
+                    <Link to={`/venue/${v.slug}`} className="venue-grid__btn">
                       Read More &gt;
                     </Link>
                   </div>
@@ -99,6 +114,12 @@ export default function VenueGrid() {
             );
           })}
         </div>
+
+        {showAllLink && (
+          <Link to="/venues" className="venue-grid__all-link">
+            Explore All Venues &gt;
+          </Link>
+        )}
       </div>
     </section>
   );

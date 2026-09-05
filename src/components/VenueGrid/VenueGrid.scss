@@ -22,6 +22,27 @@
     margin-bottom: clamp(32px, 6vw, 80px);
   }
 
+  &__all-link {
+    display: inline-block;
+    margin-top: clamp(48px, 7vw, 96px);
+    padding: 10px 24px;
+    border: 2px solid #000;
+    border-radius: 999px;
+    color: #000;
+    font-family: var(--font-grotesk);
+    font-size: clamp(13px, 1.3vw, 18px);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: #000;
+      color: #fff;
+      outline: none;
+    }
+  }
+
   /* Timeline wrapper */
   &__timeline {
     position: relative;

@@ -7,7 +7,7 @@ const VENUES = [
     title: "THAY EKAMAI",
     address: ["Sukhumvit 63, Phra Khanong Nuea,", "Watthana, Bangkok 10110"],
     tel: "081 666 9969",
-    email: "contact@thay.co.th",
+    lineUrl: "https://lin.ee/dxP4pHQ",
     mapUrl: "https://maps.app.goo.gl/GhSFikof3dfZcR1X7",
   },
   {
@@ -15,7 +15,7 @@ const VENUES = [
     title: "TDERM",
     address: ["455 Sukhumvit 63, Khlong Tan Nuea,", "Watthana, Bangkok 10110"],
     tel: "084 455 6663",
-    email: "contact@tderm.co.th",
+    lineUrl: "https://lin.ee/sqjSqPg",
     mapUrl: "https://maps.app.goo.gl/JLeEM5o8p13xHtW4A",
   },
   {
@@ -23,7 +23,7 @@ const VENUES = [
     title: "GOT (GOOD OLD TIMES)",
     address: ["97 Sukhumvit 24 Alley, Khlong Tan,", "Khlong Toei, Bangkok 10110"],
     tel: "080 626 6999",
-    email: "contact@got.co.th",
+    lineUrl: "https://lin.ee/DisGbsQ",
     mapUrl: "https://maps.app.goo.gl/6SuF4CTqx3qkGkXc6",
   },
   {
@@ -31,7 +31,7 @@ const VENUES = [
     title: "REC. (RECORD ROOM)",
     address: ["63 Wireless Road (Witthayu),", "Lumphini Pathumwan, Bangkok, Thailand 10330"],
     tel: "096 539 6696",
-    email: "contact@got.co.th",
+    lineUrl: "https://lin.ee/UNZicP7",
     mapUrl: "https://maps.app.goo.gl/XmT6YnAQsC3vjt4k9",
   },
   {
@@ -39,7 +39,15 @@ const VENUES = [
     title: "XIM",
     address: ["The 49 Terrace, 3rd Floor, Sukhumvit 49 Road,", "Khlong Tan Nuea, Watthana, Bangkok 10110"],
     tel: "095 509 9996",
-    email: "contact@xim.co.th",
+    lineUrl: "https://lin.ee/WKXrNpy",
+    mapUrl: null,
+  },
+  {
+    key: "charter",
+    title: "CHARTER",
+    address: ["72 Sukhumvit 55, Khlong Tan Nuea,", "Watthana, Bangkok 10110"],
+    tel: "095 383 6996",
+    lineUrl: "https://lin.ee/Xa8wS0r",
     mapUrl: null,
   },
 ];
@@ -83,12 +91,12 @@ export default function Contact() {
                 </a>
               </p>
 
-              {/* Email → mailto */}
-              {v.email && (
+              {/* Line OA */}
+              {v.lineUrl && (
                 <p className="contact__row contact__row--link">
-                  <span className="contact__label">Email</span>
-                  <a className="contact__value" href={`mailto:${v.email}`}>
-                    <span className="contact__text">: {v.email}</span>
+                  <span className="contact__label">Line OA</span>
+                  <a className="contact__value" href={v.lineUrl} target="_blank" rel="noreferrer">
+                    <span className="contact__text">: {v.lineUrl.replace("https://", "")}</span>
                   </a>
                 </p>
               )}

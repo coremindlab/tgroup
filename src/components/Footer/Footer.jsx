@@ -1,9 +1,9 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import FooterNav from "./FooterNav";
 import "./Footer.scss";
 
-const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim"];
+const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim", "charter"];
 
 const PAGE_META = {
   home: { key: "home", title: "T-HOSPITALITY", subtitle: "Where People & Places Connect.", location: "Bangkok, Thailand", tel: null, socials: null, accent: "home" },
@@ -24,11 +24,23 @@ const PAGE_META = {
     },
     accent: "xim",
   },
+  charter: {
+    key: "charter",
+    title: "CHARTER",
+    subtitle: null,
+    hours: "Open daily: 18.00 - Till late",
+    location: "72 Sukhumvit 55, Khlong Tan Nuea, Watthana, Bangkok 10110",
+    tel: "095 383 6996",
+    socials: {
+      instagram: "https://www.instagram.com/charter.bangkok",
+      facebook: "https://www.facebook.com/share/14nD5p5edJF/?mibextid=wwXIfr",
+    },
+    accent: "charter",
+  },
 };
 
 export default function Footer() {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   // ✅ correct slug parsing for /venue/:slug
   const segments = pathname.split("/");
@@ -106,7 +118,7 @@ export default function Footer() {
 
         {/* Right: footer nav */}
         <div className="footer__right">
-          <FooterNav onNavigate={(to) => navigate(to)} />
+          <FooterNav />
         </div>
       </div>
 

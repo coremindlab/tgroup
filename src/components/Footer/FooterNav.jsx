@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const VENUES = ["thay", "tderm", "got", "rec", "xim"]; // ✅ no extra dot here
+const VENUES = ["thay", "tderm", "got", "rec", "xim", "charter"];
 
-export default function FooterNav({ onNavigate }) {
+export default function FooterNav() {
   const { pathname } = useLocation();
   // const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const isVenuePage = VENUES.some((v) => pathname.startsWith(`/venue/${v}`));
+  const isVenuePage = pathname === "/venues" || VENUES.some((v) => pathname.startsWith(`/venue/${v}`));
   const menuRef = useRef(null);
 
   // Close dropdown on route change
@@ -23,11 +23,6 @@ export default function FooterNav({ onNavigate }) {
     document.addEventListener("click", onDocClick);
     return () => document.removeEventListener("click", onDocClick);
   }, [open]);
-
-  const handleVenueClick = (slug) => {
-    onNavigate(`/venue/${slug}`); // ✅ still clean URL (/rec)
-    setOpen(false);
-  };
 
   const isActive = (path) => (pathname === path ? "is-active" : "");
 
@@ -60,20 +55,28 @@ export default function FooterNav({ onNavigate }) {
 
           {open && (
             <div id="footer-venues-menu" role="menu" className="footer-nav__menu">
+              <Link
+                to="/venues"
+                className={`footer-nav__item ${pathname === "/venues" ? "is-active" : ""}`}
+                role="menuitem"
+                onClick={() => setOpen(false)}
+              >
+                ALL
+              </Link>
               {VENUES.map((slug) => {
                 const active = pathname.startsWith(`/venue/${slug}`) ? "is-active" : "";
                 // ✅ Custom label just for REC
                 const label = slug === "rec" ? "REC ." : slug.toUpperCase();
                 return (
-                  <button
+                  <Link
                     key={slug}
-                    type="button"
-                    onClick={() => handleVenueClick(slug)}
+                    to={`/venue/${slug}`}
+                    onClick={() => setOpen(false)}
                     className={`footer-nav__item ${active}`}
                     role="menuitem"
                   >
                     {label}
-                  </button>
+                  </Link>
                 );
               })}
             </div>

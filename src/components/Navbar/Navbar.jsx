@@ -1,10 +1,10 @@
 // Navbar.jsx
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import "./Navbar.scss";
 
-const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim"];
+const VENUE_SLUGS = ["thay", "tderm", "got", "rec", "xim", "charter"];
 
 const Navbar = () => {
   const { t } = useLanguage();
@@ -12,7 +12,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   // 👇 robust, simple slug extraction
@@ -23,6 +22,7 @@ const Navbar = () => {
   const isHome = pathname === "/";
   const isContact = pathname.startsWith("/contact");
   const isVenue = !!currentVenue && VENUE_SLUGS.includes(currentVenue);
+  const isVenueSection = isVenue || pathname === "/venues";
 
   // pageKey used for accent class on root
   const pageKey = isVenue ? currentVenue : isContact ? "contact" : "home";
@@ -40,12 +40,6 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", onDocClick);
   }, [showVenueDropdown]);
 
-  const goToVenue = (slug) => {
-    navigate(`/venue/${slug}`);
-    setShowVenueDropdown(false);
-    setMenuOpen(false);
-  };
-
   return (
     <nav className={`navbar navbar--${pageKey}`}>
       <div className="navbar__container">
@@ -62,7 +56,7 @@ const Navbar = () => {
 
           <div
             ref={dropdownRef}
-            className={`navbar__dropdown ${isVenue ? "is-active" : ""}`}
+            className={`navbar__dropdown ${isVenueSection ? "is-active" : ""}`}
           >
             <button
               type="button"
@@ -77,18 +71,33 @@ const Navbar = () => {
 
             {showVenueDropdown && (
               <div className="dropdown-menu" role="menu">
+                <Link
+                  to="/venues"
+                  className={`dropdown-item ${pathname === "/venues" ? "is-active" : ""}`}
+                  role="menuitem"
+                  onClick={() => {
+                    setShowVenueDropdown(false);
+                    setMenuOpen(false);
+                  }}
+                >
+                  ALL VENUES
+                </Link>
                 {VENUE_SLUGS.map((slug) => {
                   const label = slug === "rec" ? "REC ." : slug.toUpperCase();
                   const active = currentVenue === slug ? "is-active" : "";
                   return (
-                    <div
+                    <Link
                       key={slug}
+                      to={`/venue/${slug}`}
                       className={`dropdown-item ${active}`}
                       role="menuitem"
-                      onClick={() => goToVenue(slug)}
+                      onClick={() => {
+                        setShowVenueDropdown(false);
+                        setMenuOpen(false);
+                      }}
                     >
                       {label}
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

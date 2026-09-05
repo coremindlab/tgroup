@@ -5,6 +5,7 @@ import slide3 from "../assets/home/slide3.jpg";
 // import slide4 from "../assets/home/slide4.jpg";
 import slide4 from "../assets/home/slide4.png";
 import slide5 from "../assets/home/slide5.jpg";
+import slide6 from "../assets/home/slide6.jpg";
 import thay_1 from "../assets/thay/thay_1.jpg";
 import thay_2 from "../assets/thay/thay_2.jpg";
 import thay_3 from "../assets/thay/thay_3.jpg";
@@ -30,6 +31,10 @@ import xim_grid_1 from "../assets/xim/XIMBKKSNAP40.jpeg";
 import xim_grid_2 from "../assets/xim/7.3.26 XimxLedukaan0052.jpeg";
 import xim_grid_3 from "../assets/xim/XIMBKKSNAP93.jpeg";
 import xim_grid_4 from "../assets/xim/6811-03 XIM (Portait)_060 1_Original.JPG";
+import charter_1 from "../assets/charter/charter_1.jpg";
+import charter_2 from "../assets/charter/charter_2.jpg";
+import charter_3 from "../assets/charter/charter_3.jpg";
+import charter_4 from "../assets/charter/charter_4.jpg";
 
 
 export const venueData = {
@@ -405,7 +410,7 @@ export const venueData = {
     accent: "xim",
     heroImage: slide5,
     quotes: [
-      "Where Flavor Meets Connection-",
+      "Where Flavor Meets Creativity-",
       "XIM — Where every flavor connects, and every night becomes a story worth tasting.",
     ],
     paragraphs: [
@@ -468,5 +473,43 @@ export const venueData = {
         },
       ],
     },
+  },
+  charter: {
+    year: "2026",
+    title: "CHARTER",
+    accent: "charter",
+    heroImage: slide6,
+    quotes: [
+      "A Social Corner for\nEvery Hour-",
+      "CHARTER - Days turn into nights, and good moments keep going.",
+    ],
+    paragraphs: [
+      "CHARTER is an all-day destination in the heart of Thonglor, created for however your day unfolds. From your first coffee of the day to lunch, dinner, drinks, and nights that linger, it brings together a curated mix of restaurants, cafés, and bars for all-day dining, all in one place.",
+      "At its heart, it’s more than just somewhere to visit. It’s about community, a space where different people, lifestyles, and personalities naturally come together. Here, everyone can find their own rhythm. Come early, stay late, or drop by whenever. There’s always something happening.",
+      "We are a proudly pet-friendly community, so no one gets left behind. Bring your four-legged companion along and make them part of the experience.",
+      "Come as you are, bring who you love, and stay for as long as you like. Whatever the hour, there’s always a corner for you at CHARTER.",
+    ],
+    highlights: [["CHARTER"], [], [], []],
+    paraAlign: ["left", "right", "left", "center"],
+    eventHighlights: [
+      {
+        id: "charter-one-percent",
+        title: "EVENT: CHARTER 1 %",
+        gallery: {
+          small: [
+            "/images/highlights/charter/onepercent/charter1percent_1.jpg",
+            "/images/highlights/charter/onepercent/charter1percent_2.jpg",
+            "/images/highlights/charter/onepercent/charter1percent_3.jpg",
+          ],
+          highlight: "/images/highlights/charter/onepercent/charter1percent_cover.jpg",
+        },
+      },
+    ],
+    buttons: [
+      { label: "MENU", disabled: true, tooltip: "Coming soon..." },
+      { label: "EVENT HIGHLIGHTS", href: "/venue/charter/highlight" },
+    ],
+    gallery: [charter_1, charter_2, charter_3, charter_4],
+    themeVars: { "--bg": "#11100f" },
   },
 };

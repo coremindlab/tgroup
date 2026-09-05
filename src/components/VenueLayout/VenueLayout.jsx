@@ -66,7 +66,7 @@ export default function VenueLayout({
         <section className="venue-layout__quote">
           <div className="venue-layout__meta">
             <span className="venue-layout__year">{year}</span>
-            <span className="venue-layout__name">{title}</span>
+            <h1 className="venue-layout__name">{title}</h1>
           </div>
           {/* Inline fontSize ensures var(--quote-size) wins absolutely */}
           <blockquote
@@ -225,10 +225,10 @@ export default function VenueLayout({
       {/* CTA QUOTE + BUTTONS */}
       {quotes[1] && (
         <section className="venue-layout__quote venue-layout__quote--cta">
-          {accent === "xim" && (
+          {(accent === "xim" || accent === "charter") && (
             <div className="venue-layout__hline venue-layout__hline--center" />
           )}
-          {accent !== "xim" && (
+          {accent !== "xim" && accent !== "charter" && (
             <div
               className="venue-layout__quote-icon venue-layout__quote-icon--bottom"
               aria-hidden="true"
@@ -246,12 +246,23 @@ export default function VenueLayout({
             {quotes[1]}
           </blockquote>
 
-           {accent === "xim" && (
+          {(accent === "xim" || accent === "charter") && (
             <div className="venue-layout__hline venue-layout__hline--center" />
           )}
           {!!buttons.length && (
             <div className="venue-layout__buttons">
-              {buttons.map((btn) => (
+              {buttons.map((btn) => btn.disabled ? (
+                <span
+                  key={btn.label}
+                  className="venue-layout__btn venue-layout__btn--disabled"
+                  role="button"
+                  tabIndex="0"
+                  aria-disabled="true"
+                  data-tooltip={btn.tooltip || "Coming soon..."}
+                >
+                  {btn.label}
+                </span>
+              ) : (
                 <a
                   key={btn.label}
                   href={btn.href}

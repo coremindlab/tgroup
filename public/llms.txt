@@ -1,0 +1,20 @@
+# T-HOSPITALITY GROUP
+
+T-HOSPITALITY GROUP is a Bangkok hospitality and nightlife collective creating destinations for dining, drinks, music, events, and social connection.
+
+## Primary Pages
+
+- [Home](https://t-hospitality.com/): Overview of T-HOSPITALITY GROUP and its venues.
+- [Venues](https://t-hospitality.com/venues): Directory of all T-HOSPITALITY destinations.
+- [Contact](https://t-hospitality.com/contact): Official locations, telephone numbers, and LINE accounts.
+
+## Venues
+
+- [THAY](https://t-hospitality.com/venue/thay): Contemporary dining, music, cocktails, and social nights in Ekkamai.
+- [TDERM](https://t-hospitality.com/venue/tderm): Modern nightlife with immersive light, sound, music, and service.
+- [GOT](https://t-hospitality.com/venue/got): A retrofuturist bar with crafted cocktails and open-format music on Sukhumvit 24.
+- [REC.](https://t-hospitality.com/venue/rec): Refined nightlife, signature cocktails, and DJs on Wireless Road.
+- [XIM](https://t-hospitality.com/venue/xim): A cocktail and nightlife destination at The 49 Terrace.
+- [CHARTER](https://t-hospitality.com/venue/charter): A pet-friendly, day-to-night social destination in Thonglor.
+
+Each venue page links to its official event highlights, contact details, and social profiles where available.

@@ -4,6 +4,7 @@
 .navbar--got   { --accent: #f2da76; }
 .navbar--rec   { --accent: #f4eacf; }
 .navbar--xim   { --accent: #aea05d; }
+.navbar--charter { --accent: #bd753f; }
 .navbar--home  { --accent: #fff; } /* neutral */
 
 .navbar {
@@ -85,12 +86,14 @@
         min-width: 200px;
 
         .dropdown-item {
+          display: block;
           font-family: var(--font-grotesk);
           font-weight: 400;
           font-size: 14px;
           padding: 0.6rem 1rem;
           color: #fff;
           cursor: pointer;
+          text-decoration: none;
           border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
           &:last-child { border-bottom: 0; }

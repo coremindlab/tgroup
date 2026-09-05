@@ -11,6 +11,10 @@
     <loc>https://t-hospitality.com/contact</loc>
   </url>
 
+  <url>
+    <loc>https://t-hospitality.com/venues</loc>
+  </url>
+
   <!-- Venues -->
   <url>
     <loc>https://t-hospitality.com/venue/thay</loc>
@@ -40,11 +44,18 @@
     <loc>https://t-hospitality.com/venue/rec/highlight</loc>
   </url>
 
-  <!-- <url>
+  <url>
     <loc>https://t-hospitality.com/venue/xim</loc>
   </url>
   <url>
     <loc>https://t-hospitality.com/venue/xim/highlight</loc>
-  </url> -->
+  </url>
+
+  <url>
+    <loc>https://t-hospitality.com/venue/charter</loc>
+  </url>
+  <url>
+    <loc>https://t-hospitality.com/venue/charter/highlight</loc>
+  </url>
 
 </urlset>

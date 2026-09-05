@@ -11,7 +11,8 @@ import logoTderm from "../../assets/logos/tderm_logo.png";
 import logoGot   from "../../assets/logos/got_logo.png";
 import logoRec   from "../../assets/logos/rec_logo.png";
 import logoXim   from "../../assets/logos/xim_logo.png";
-const LOGOS = { thay: logoThay, tderm: logoTderm, got: logoGot, rec: logoRec, xim: logoXim };
+import logoCharter from "../../assets/logos/charter_logo.png";
+const LOGOS = { thay: logoThay, tderm: logoTderm, got: logoGot, rec: logoRec, xim: logoXim, charter: logoCharter };
 
 /* Eager import all highlight imgs under /src/assets/highlights */
 let highlightAssets = {};
@@ -102,7 +103,16 @@ export default function VenueHighlight() {
       <div className="container">
         <header className="eh__header">
           {/* <Link to={`/${slug}`} className="eh__back">← Back to {venue.title}</Link> */}
-          {logoSrc ? <img className="eh__logo" src={logoSrc} alt={`${venue.title} logo`} /> : null}
+          {logoSrc ? (
+            <>
+              <h1 className="eh__venue-name eh__venue-name--sr-only">
+                {venue.title} Event Highlights
+              </h1>
+              <img className="eh__logo" src={logoSrc} alt={`${venue.title} logo`} />
+            </>
+          ) : (
+            <h1 className="eh__venue-name">{venue.title} Event Highlights</h1>
+          )}
           <div className="eh__subhead"><span className="eh__kicker">Event Highlights</span></div>
         </header>
 
