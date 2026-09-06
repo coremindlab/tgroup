@@ -151,7 +151,7 @@ export const venueData = {
       },
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/file/d/1c2fQdMh5ksObkT5zKT0Zyrz-GN8w8cGP/view", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/11aZd8vtHNEyxnrLo42LmTqnyoUG-uIra/view?usp=sharing", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/venue/thay/highlight" },
     ],
     gallery: [thay_1, thay_2, thay_3, thay_4],
@@ -233,7 +233,7 @@ export const venueData = {
       },
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/file/d/136Us-TGTSPrj2WyPfRsJWn4S7b7VWhsR/view", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1pWXOqr9UA1CHHu8tV3B2m_OaqaPusPoZ/view?usp=sharing", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/venue/tderm/highlight" },
     ],
     gallery: [tderm_1, tderm_2, tderm_3, tderm_4],
@@ -332,7 +332,7 @@ export const venueData = {
       },
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/file/d/1Ik-5Mut9Amy8vY-ychLhsTIw-xJRfnvL/view", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1i4mWBGxW_IxqN8KVs_5WJCjev1SqHkzE/view?usp=sharing", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/venue/got/highlight" },
     ],
     gallery: [got_1, got_2, got_3, got_4],
@@ -395,7 +395,6 @@ export const venueData = {
     ],
     
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/file/d/1TmDyw_KAAlZF-VI5-cwvxGW71Uj1Vyrw/view", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/venue/rec/highlight" },
     ],
     gallery: [rec_1, rec_2, rec_3, rec_4],
@@ -441,7 +440,7 @@ export const venueData = {
       },
     ],
     buttons: [
-      { label: "MENU", href: "https://drive.google.com/file/d/1vgwEbPka5VLpp45D8Bs-44nvaFnnafSU/view", external: true },
+      { label: "MENU", href: "https://drive.google.com/file/d/1dFNaPTw9tlwfbkmQwkDAqQOhjk460clN/view?usp=sharing", external: true },
       { label: "EVENT HIGHLIGHTS", href: "/venue/xim/highlight" },
     ],
     gallery: [xim_grid_4, xim_grid_2, xim_grid_1, xim_grid_3],
